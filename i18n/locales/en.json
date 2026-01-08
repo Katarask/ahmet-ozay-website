@@ -1,55 +1,75 @@
 ﻿{
-  "nav": {
-    "home": "Home",
-    "articles": "Articles",
-    "about": "About",
-    "contact": "Contact"
-  },
-  "home": {
-    "eyebrow": "Latest Articles",
-    "title": "Ahmet Özay",
-    "subtitle": "Journalist",
-    "description": "Özay has traveled, observed, and documented Europe, Turkey, and the post-Soviet world – as correspondent, editor-in-chief, and bureau chief. For decades, he has stood between the discursive spaces of these regions, translating them – without partisanship, but with conviction.",
-    "readMore": "Read more",
-    "minutes": "minutes"
-  },
-  "article": {
-    "by": "By",
-    "publishedOn": "Published on",
-    "readingTime": "Reading time",
-    "minutes": "min",
-    "share": "Share article",
-    "relatedArticles": "Related Articles",
-    "toArticle": "read article",
-    "backToOverview": "Back to overview"
-  },
-  "breadcrumbs": {
-    "home": "Home",
-    "articles": "Articles"
-  },
-  "contact": {
-    "title": "Contact",
-    "subtitle": "Have questions or want to get in touch?",
-    "name": "Name",
-    "namePlaceholder": "Your full name",
-    "email": "Email",
-    "emailPlaceholder": "your@email.com",
-    "subject": "Subject",
-    "subjectPlaceholder": "What is this about?",
-    "message": "Message",
-    "messagePlaceholder": "Your message...",
-    "send": "Send Message",
-    "sending": "Sending...",
-    "success": "Thank you! Your message has been sent successfully.",
-    "error": "An error occurred. Please try again."
-  },
-  "footer": {
-    "copyright": "© 2025 Ahmet Özay",
-    "journalist": "Journalist",
-    "imprint": "Imprint"
-  },
-  "meta": {
-    "title": "Ahmet Özay - Journalist & Crimean Tatar Expert",
-    "description": "German-Turkish journalist from Cologne. 40+ years experience at WDR, BBC, Deutsche Welle. Expert on Crimean Tatars, racism, and minority rights."
-  }
+    "nav":  {
+                "home":  "Home",
+                "articles":  "Articles",
+                "about":  "About",
+                "contact":  "Contact"
+            },
+    "home":  {
+                 "eyebrow":  "Journalist | Author | Expert",
+                 "intro":  "40 years of experience as a journalist at WDR, BBC and Deutsche Welle. Expert on German-Turkish relations, Crimean Tatars and minority rights.",
+                 "latestArticles":  "Latest Articles",
+                 "viewAll":  "View All",
+                 "noArticles":  "No articles available yet."
+             },
+    "articles":  {
+                     "title":  "Articles",
+                     "subtitle":  "Analyses, reports and background stories from four decades of journalism.",
+                     "breadcrumb":  "Articles",
+                     "noArticles":  "No articles available yet.",
+                     "by":  "By"
+                 },
+    "about":  {
+                  "title":  "About Ahmet Özay",
+                  "breadcrumb":  "About",
+                  "intro":  "German-Turkish journalist with over 40 years of experience in international reporting.",
+                  "paragraph1":  "Ahmet Özay was born in Turkey and came to Germany in the 1970s. He studied journalism and began his career at Westdeutscher Rundfunk (WDR) in Cologne.",
+                  "paragraph2":  "For over four decades, he reported from Europe, Turkey and the post-Soviet states. As correspondent, editor-in-chief and managing editor, he bridged cultural and political discourse spaces.",
+                  "paragraph3":  "His work focuses on German-Turkish relations, the history of the Crimean Tatars, minority rights and the analysis of racism and discrimination in Europe.",
+                  "experienceTitle":  "Professional Experience"
+              },
+    "contact":  {
+                    "title":  "Contact",
+                    "breadcrumb":  "Contact",
+                    "subtitle":  "Do you have questions or would you like to get in touch?",
+                    "name":  "Name",
+                    "namePlaceholder":  "Your full name",
+                    "email":  "Email",
+                    "emailPlaceholder":  "your@email.com",
+                    "subject":  "Subject",
+                    "subjectPlaceholder":  "What is this about?",
+                    "message":  "Message",
+                    "messagePlaceholder":  "Your message...",
+                    "send":  "Send Message",
+                    "sending":  "Sending...",
+                    "success":  "Thank you! Your message has been sent successfully.",
+                    "error":  "An error occurred. Please try again."
+                },
+    "footer":  {
+                   "copyright":  "© 2025 Ahmet Özay. All rights reserved.",
+                   "imprint":  "Imprint",
+                   "privacy":  "Privacy"
+               },
+    "meta":  {
+                 "home":  {
+                              "title":  "Ahmet Özay - Journalist \u0026 Author",
+                              "description":  "German-Turkish journalist with 40+ years experience at WDR, BBC and Deutsche Welle."
+                          },
+                 "articles":  {
+                                  "title":  "Articles | Ahmet Özay",
+                                  "description":  "Analyses, reports and background stories by Ahmet Özay."
+                              },
+                 "about":  {
+                               "title":  "About | Ahmet Özay",
+                               "description":  "Learn more about Ahmet Özay\u0027s journalistic career and expertise."
+                           },
+                 "contact":  {
+                                 "title":  "Contact | Ahmet Özay",
+                                 "description":  "Get in touch with Ahmet Özay."
+                             }
+             },
+    "breadcrumbs":  {
+                        "home":  "Home",
+                        "articles":  "Articles"
+                    }
 }

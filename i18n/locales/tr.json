@@ -1,55 +1,75 @@
 ﻿{
-  "nav": {
-    "home": "Ana Sayfa",
-    "articles": "Makaleler",
-    "about": "Hakkımda",
-    "contact": "İletişim"
-  },
-  "home": {
-    "eyebrow": "Son Yazılar",
-    "title": "Ahmet Özay",
-    "subtitle": "Gazeteci",
-    "description": "Özay, Avrupa'yı, Türkiye'yi ve post-Sovyet dünyasını muhabir, yayın yönetmeni ve genel yayın yönetmeni olarak gezdi, gözlemledi ve anlattı. Onlarca yıldır bu bölgelerin söylem alanları arasında duruyor ve onları tercüme ediyor – tarafsız ama tutumlu.",
-    "readMore": "Devamını oku",
-    "minutes": "dakika"
-  },
-  "article": {
-    "by": "Yazar",
-    "publishedOn": "Yayın tarihi",
-    "readingTime": "Okuma süresi",
-    "minutes": "dk",
-    "share": "Makaleyi paylaş",
-    "relatedArticles": "İlgili Makaleler",
-    "toArticle": "makaleye git",
-    "backToOverview": "Genel bakışa dön"
-  },
-  "breadcrumbs": {
-    "home": "Ana Sayfa",
-    "articles": "Makaleler"
-  },
-  "contact": {
-    "title": "İletişim",
-    "subtitle": "Sorularınız mı var veya benimle iletişime geçmek mi istiyorsunuz?",
-    "name": "İsim",
-    "namePlaceholder": "Tam adınız",
-    "email": "E-posta",
-    "emailPlaceholder": "email@adresiniz.com",
-    "subject": "Konu",
-    "subjectPlaceholder": "Konu nedir?",
-    "message": "Mesaj",
-    "messagePlaceholder": "Mesajınız...",
-    "send": "Mesaj Gönder",
-    "sending": "Gönderiliyor...",
-    "success": "Teşekkürler! Mesajınız başarıyla gönderildi.",
-    "error": "Bir hata oluştu. Lütfen tekrar deneyin."
-  },
-  "footer": {
-    "copyright": "© 2025 Ahmet Özay",
-    "journalist": "Gazeteci",
-    "imprint": "Künye"
-  },
-  "meta": {
-    "title": "Ahmet Özay - Gazeteci & Kırım Tatar Uzmanı",
-    "description": "Köln'den Türk-Alman gazeteci. WDR, BBC, Deutsche Welle'de 40+ yıl deneyim. Kırım Tatarları, ırkçılık ve azınlık hakları uzmanı."
-  }
+    "nav":  {
+                "home":  "Ana Sayfa",
+                "articles":  "Makaleler",
+                "about":  "Hakkımda",
+                "contact":  "İletişim"
+            },
+    "home":  {
+                 "eyebrow":  "Gazeteci | Yazar | Uzman",
+                 "intro":  "WDR, BBC ve Deutsche Welle\u0027de 40 yıllık gazetecilik deneyimi. Türk-Alman ilişkileri, Kırım Tatarları ve azınlık hakları uzmanı.",
+                 "latestArticles":  "Son Makaleler",
+                 "viewAll":  "Tümünü Gör",
+                 "noArticles":  "Henüz makale bulunmuyor."
+             },
+    "articles":  {
+                     "title":  "Makaleler",
+                     "subtitle":  "Kırk yıllık gazeteciliğin analizleri, röportajları ve arka plan hikayeleri.",
+                     "breadcrumb":  "Makaleler",
+                     "noArticles":  "Henüz makale bulunmuyor.",
+                     "by":  "Yazan"
+                 },
+    "about":  {
+                  "title":  "Ahmet Özay Hakkında",
+                  "breadcrumb":  "Hakkımda",
+                  "intro":  "40 yılı aşkın uluslararası gazetecilik deneyimine sahip Türk-Alman gazeteci.",
+                  "paragraph1":  "Ahmet Özay Türkiye\u0027de doğdu ve 1970\u0027lerde Almanya\u0027ya geldi. Gazetecilik eğitimi aldı ve kariyerine Köln\u0027deki Westdeutscher Rundfunk\u0027ta (WDR) başladı.",
+                  "paragraph2":  "Kırk yılı aşkın süredir Avrupa, Türkiye ve eski Sovyet ülkelerinden haberler yaptı. Muhabir, editör ve genel yayın yönetmeni olarak kültürel ve politik söylem alanları arasında köprü kurdu.",
+                  "paragraph3":  "Çalışmaları Türk-Alman ilişkileri, Kırım Tatarlarının tarihi, azınlık hakları ve Avrupa\u0027da ırkçılık ve ayrımcılık analizi üzerine yoğunlaşmaktadır.",
+                  "experienceTitle":  "Mesleki Deneyim"
+              },
+    "contact":  {
+                    "title":  "İletişim",
+                    "breadcrumb":  "İletişim",
+                    "subtitle":  "Sorularınız mı var veya iletişime geçmek mi istiyorsunuz?",
+                    "name":  "Ad",
+                    "namePlaceholder":  "Tam adınız",
+                    "email":  "E-posta",
+                    "emailPlaceholder":  "sizin@email.com",
+                    "subject":  "Konu",
+                    "subjectPlaceholder":  "Konu nedir?",
+                    "message":  "Mesaj",
+                    "messagePlaceholder":  "Mesajınız...",
+                    "send":  "Mesaj Gönder",
+                    "sending":  "Gönderiliyor...",
+                    "success":  "Teşekkürler! Mesajınız başarıyla gönderildi.",
+                    "error":  "Bir hata oluştu. Lütfen tekrar deneyin."
+                },
+    "footer":  {
+                   "copyright":  "© 2025 Ahmet Özay. Tüm hakları saklıdır.",
+                   "imprint":  "Künye",
+                   "privacy":  "Gizlilik"
+               },
+    "meta":  {
+                 "home":  {
+                              "title":  "Ahmet Özay - Gazeteci \u0026 Yazar",
+                              "description":  "WDR, BBC ve Deutsche Welle\u0027de 40+ yıllık deneyime sahip Türk-Alman gazeteci."
+                          },
+                 "articles":  {
+                                  "title":  "Makaleler | Ahmet Özay",
+                                  "description":  "Ahmet Özay\u0027ın analizleri, röportajları ve arka plan hikayeleri."
+                              },
+                 "about":  {
+                               "title":  "Hakkımda | Ahmet Özay",
+                               "description":  "Ahmet Özay\u0027ın gazetecilik kariyeri ve uzmanlığı hakkında bilgi edinin."
+                           },
+                 "contact":  {
+                                 "title":  "İletişim | Ahmet Özay",
+                                 "description":  "Ahmet Özay ile iletişime geçin."
+                             }
+             },
+    "breadcrumbs":  {
+                        "home":  "Ana Sayfa",
+                        "articles":  "Makaleler"
+                    }
 }

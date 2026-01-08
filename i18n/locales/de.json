@@ -1,55 +1,75 @@
 ﻿{
-  "nav": {
-    "home": "Startseite",
-    "articles": "Artikel",
-    "about": "Über mich",
-    "contact": "Kontakt"
-  },
-  "home": {
-    "eyebrow": "Neueste Beiträge",
-    "title": "Ahmet Özay",
-    "subtitle": "Journalist",
-    "description": "Özay hat Europa, die Türkei und die postsowjetische Welt bereist, beobachtet, beschrieben – als Korrespondent, Redaktionsleiter, Chefredakteur. Seit Jahrzehnten steht er zwischen den Diskursräumen dieser Regionen und übersetzt sie – ohne Partei, aber mit Haltung.",
-    "readMore": "Weiterlesen",
-    "minutes": "Minuten"
-  },
-  "article": {
-    "by": "Von",
-    "publishedOn": "Veröffentlicht am",
-    "readingTime": "Lesezeit",
-    "minutes": "Min.",
-    "share": "Artikel teilen",
-    "relatedArticles": "Weitere Artikel",
-    "toArticle": "zum Artikel",
-    "backToOverview": "Zurück zur Übersicht"
-  },
-  "breadcrumbs": {
-    "home": "Startseite",
-    "articles": "Artikel"
-  },
-  "contact": {
-    "title": "Kontakt",
-    "subtitle": "Haben Sie Fragen oder möchten Sie mit mir in Verbindung treten?",
-    "name": "Name",
-    "namePlaceholder": "Ihr vollständiger Name",
-    "email": "E-Mail",
-    "emailPlaceholder": "ihre@email.de",
-    "subject": "Betreff",
-    "subjectPlaceholder": "Worum geht es?",
-    "message": "Nachricht",
-    "messagePlaceholder": "Ihre Nachricht...",
-    "send": "Nachricht senden",
-    "sending": "Wird gesendet...",
-    "success": "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.",
-    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
-  },
-  "footer": {
-    "copyright": "© 2025 Ahmet Özay",
-    "journalist": "Journalist",
-    "imprint": "Impressum"
-  },
-  "meta": {
-    "title": "Ahmet Özay - Journalist & Krimtataren-Experte",
-    "description": "Deutsch-türkischer Journalist aus Köln. 40+ Jahre Erfahrung bei WDR, BBC, Deutsche Welle. Experte für Krimtataren, Rassismus und Minderheitenrechte."
-  }
+    "nav":  {
+                "home":  "Startseite",
+                "articles":  "Artikel",
+                "about":  "Über mich",
+                "contact":  "Kontakt"
+            },
+    "home":  {
+                 "eyebrow":  "Journalist | Autor | Experte",
+                 "intro":  "40 Jahre Erfahrung als Journalist bei WDR, BBC und Deutsche Welle. Experte für deutsch-türkische Beziehungen, Krimtataren und Minderheitenrechte.",
+                 "latestArticles":  "Neueste Artikel",
+                 "viewAll":  "Alle Artikel",
+                 "noArticles":  "Noch keine Artikel verfügbar."
+             },
+    "articles":  {
+                     "title":  "Artikel",
+                     "subtitle":  "Analysen, Reportagen und Hintergrundberichte aus vier Jahrzehnten Journalismus.",
+                     "breadcrumb":  "Artikel",
+                     "noArticles":  "Noch keine Artikel verfügbar.",
+                     "by":  "Von"
+                 },
+    "about":  {
+                  "title":  "Über Ahmet Özay",
+                  "breadcrumb":  "Über mich",
+                  "intro":  "Deutsch-türkischer Journalist mit über 40 Jahren Erfahrung in der internationalen Berichterstattung.",
+                  "paragraph1":  "Ahmet Özay wurde in der Türkei geboren und kam in den 1970er Jahren nach Deutschland. Er studierte Journalistik und begann seine Karriere beim Westdeutschen Rundfunk (WDR) in Köln.",
+                  "paragraph2":  "Über vier Jahrzehnte berichtete er aus Europa, der Türkei und den postsowjetischen Staaten. Als Korrespondent, Redaktionsleiter und Chefredakteur überbrückte er kulturelle und politische Diskursräume.",
+                  "paragraph3":  "Seine Arbeit konzentriert sich auf deutsch-türkische Beziehungen, die Geschichte der Krimtataren, Minderheitenrechte und die Analyse von Rassismus und Diskriminierung in Europa.",
+                  "experienceTitle":  "Berufserfahrung"
+              },
+    "contact":  {
+                    "title":  "Kontakt",
+                    "breadcrumb":  "Kontakt",
+                    "subtitle":  "Haben Sie Fragen oder möchten Sie in Kontakt treten?",
+                    "name":  "Name",
+                    "namePlaceholder":  "Ihr vollständiger Name",
+                    "email":  "E-Mail",
+                    "emailPlaceholder":  "ihre@email.de",
+                    "subject":  "Betreff",
+                    "subjectPlaceholder":  "Worum geht es?",
+                    "message":  "Nachricht",
+                    "messagePlaceholder":  "Ihre Nachricht...",
+                    "send":  "Nachricht senden",
+                    "sending":  "Wird gesendet...",
+                    "success":  "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.",
+                    "error":  "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+                },
+    "footer":  {
+                   "copyright":  "© 2025 Ahmet Özay. Alle Rechte vorbehalten.",
+                   "imprint":  "Impressum",
+                   "privacy":  "Datenschutz"
+               },
+    "meta":  {
+                 "home":  {
+                              "title":  "Ahmet Özay - Journalist \u0026 Autor",
+                              "description":  "Deutsch-türkischer Journalist mit 40+ Jahren Erfahrung bei WDR, BBC und Deutsche Welle."
+                          },
+                 "articles":  {
+                                  "title":  "Artikel | Ahmet Özay",
+                                  "description":  "Analysen, Reportagen und Hintergrundberichte von Ahmet Özay."
+                              },
+                 "about":  {
+                               "title":  "Über mich | Ahmet Özay",
+                               "description":  "Erfahren Sie mehr über Ahmet Özays journalistische Karriere und Expertise."
+                           },
+                 "contact":  {
+                                 "title":  "Kontakt | Ahmet Özay",
+                                 "description":  "Nehmen Sie Kontakt mit Ahmet Özay auf."
+                             }
+             },
+    "breadcrumbs":  {
+                        "home":  "Startseite",
+                        "articles":  "Artikel"
+                    }
 }

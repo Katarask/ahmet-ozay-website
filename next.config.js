@@ -3,7 +3,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['cdn.prod.website-files.com'],
+    domains: ['cdn.prod.website-files.com', 'cdn.sanity.io'],
     formats: ['image/webp', 'image/avif'],
   },
 }

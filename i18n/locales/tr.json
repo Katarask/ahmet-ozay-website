@@ -46,6 +46,7 @@
                     "error":  "Bir hata oluştu. Lütfen tekrar deneyin."
                 },
     "footer":  {
+                   "journalist": "Gazeteci",
                    "copyright":  "© 2025 Ahmet Özay. Tüm hakları saklıdır.",
                    "imprint":  "Künye",
                    "privacy":  "Gizlilik"

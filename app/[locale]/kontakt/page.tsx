@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ContactForm from '@/components/ContactForm';
 
@@ -13,6 +13,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export default function ContactPage({ params: { locale } }: { params: { locale: string } }) {
+  setRequestLocale(locale);
   const t = useTranslations('contact');
 
   return (

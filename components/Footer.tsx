@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { type Locale } from '@/i18n/config';
 
 interface FooterProps {
-  locale: string;
+  locale: Locale;
 }
 
 export default function Footer({ locale }: FooterProps) {

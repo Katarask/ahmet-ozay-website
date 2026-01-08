@@ -72,5 +72,34 @@
     "breadcrumbs":  {
                         "home":  "Ana Sayfa",
                         "articles":  "Makaleler"
-                    }
+                    },
+    "faq":  {
+                  "title":  "Sıkça Sorulan Sorular",
+                  "items":  [
+                                 {
+                                     "question":  "Ahmet Özay makalelerinde hangi konuları ele alıyor?",
+                                     "answer":  "Ahmet Özay, Almanya-Türkiye ilişkileri, Kırım Tatarlarının tarihi, azınlık hakları, göç ve entegrasyon ile Avrupa'da basın özgürlüğü hakkında yazıyor. Çalışmaları, gazetecilik perspektifinden siyasi ve sosyal gelişmeleri analiz etmeye odaklanıyor."
+                                 },
+                                 {
+                                     "question":  "Ahmet Özay'a bir röportaj talebi için nasıl ulaşabilirim?",
+                                     "answer":  "Bu web sitesindeki iletişim formu aracılığıyla Ahmet Özay'a ulaşabilirsiniz. Lütfen talebinizde iletişim nedeni, istenen konu ve zaman çerçevenizi belirtin. En kısa sürede size geri dönecektir."
+                                 },
+                                 {
+                                     "question":  "Ahmet Özay'ın makaleleri nerede yayınlandı?",
+                                     "answer":  "WDR, BBC World Service ve Deutsche Welle'deki kariyeri boyunca Ahmet Özay, çok sayıda makale, röportaj ve analiz yayınladı. Çalışmaları hem bu web sitesinde hem de çeşitli medya kuruluşlarında yer alıyor."
+                                 },
+                                 {
+                                     "question":  "Yeni makaleler hakkında bilgilendirilmek için bir yol var mı?",
+                                     "answer":  "Şu anda yeni makaleleri okumak için bu web sitesini düzenli olarak ziyaret edebilirsiniz. Bir bülten işlevi planlanmaktadır ve yakında kullanıma sunulacaktır."
+                                 },
+                                 {
+                                     "question":  "Ahmet Özay'ı konferans veya atölye çalışmaları için rezerve edebilir miyim?",
+                                     "answer":  "Evet, Ahmet Özay konferanslar ve atölye çalışmaları için müsait. Lütfen iletişim formunu kullanın ve etkinlik formatınızı, istenen konuyu ve zaman çerçevenizi açıklayın. Talebinizi inceleyecek ve sizinle iletişime geçecektir."
+                                 },
+                                 {
+                                     "question":  "Bu web sitesinde hangi diller destekleniyor?",
+                                     "answer":  "Web sitesi üç dilde mevcuttur: Almanca, İngilizce ve Türkçe. Navigasyondaki dil değiştiriciyi kullanarak istediğiniz zaman dili değiştirebilirsiniz."
+                                 }
+                             ]
+              }
 }

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -19,7 +20,6 @@ export default function Navigation({ locale }: NavigationProps) {
       title: t('articles'),
       links: [
         { label: 'Neueste Artikel', href: `/${locale}` },
-        { label: 'Krimtataren', href: `/${locale}/artikel` },
         { label: 'Alle Artikel', href: `/${locale}/artikel` }
       ],
       bgColor: '#0A0A0B',
@@ -28,9 +28,9 @@ export default function Navigation({ locale }: NavigationProps) {
     {
       title: t('about'),
       links: [
+        { label: 'Über mich', href: `/${locale}/about` },
         { label: 'Biografie', href: `/${locale}/about` },
-        { label: 'Werdegang', href: `/${locale}/about` },
-        { label: 'Expertise', href: `/${locale}/about` }
+        { label: 'Werdegang', href: `/${locale}/about` }
       ],
       bgColor: '#121214',
       accentColor: '#024D81'
@@ -38,9 +38,9 @@ export default function Navigation({ locale }: NavigationProps) {
     {
       title: t('contact'),
       links: [
+        { label: 'Kontakt', href: `/${locale}/kontakt` },
         { label: 'Kontaktformular', href: `/${locale}/kontakt` },
-        { label: 'Social Media', href: `/${locale}/kontakt` },
-        { label: 'Impressum', href: `/${locale}/kontakt` }
+        { label: 'Social Media', href: `/${locale}/kontakt` }
       ],
       bgColor: '#1A1A1D',
       accentColor: '#024D81'
@@ -63,14 +63,15 @@ export default function Navigation({ locale }: NavigationProps) {
 
           {/* Logo */}
           <Link href={`/${locale}`} className="nav-logo">
-            <img
+            <Image
               src="/images/logo.png"
               width={32}
               height={32}
               alt="Ahmet Özay"
               className="nav-logo-img"
+              priority
             />
-            <span className="nav-logo-text">Ahmet Özay</span>
+            <span className="nav-logo-text hidden md:inline">Ahmet Özay</span>
           </Link>
 
           {/* Desktop Navigation - nur Desktop */}
@@ -116,8 +117,7 @@ export default function Navigation({ locale }: NavigationProps) {
               <div 
                 className="nav-card-inner"
                 style={{ 
-                  backgroundColor: card.bgColor,
-                  borderLeft: `3px solid ${card.accentColor}`
+                  backgroundColor: card.bgColor
                 }}
               >
                 <h3 className="nav-card-title">{card.title}</h3>

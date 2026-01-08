@@ -1,14 +1,49 @@
 ﻿import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getArticles } from '@/lib/sanity';
 import ArticleCard from '@/components/ArticleCard';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations({ locale, namespace: 'meta' });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
+  const url = `${baseUrl}/${locale}`;
+  const imageUrl = `${baseUrl}/images/ahmet-portrait.png`;
   
   return {
     title: t('home.title'),
     description: t('home.description'),
+    alternates: {
+      canonical: url,
+      languages: {
+        'de': `${baseUrl}/de`,
+        'en': `${baseUrl}/en`,
+        'tr': `${baseUrl}/tr`,
+      },
+    },
+    openGraph: {
+      title: t('home.title'),
+      description: t('home.description'),
+      url: url,
+      siteName: 'Ahmet Özay',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: 'Ahmet Özay',
+        },
+      ],
+      locale: locale,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('home.title'),
+      description: t('home.description'),
+      images: [imageUrl],
+      creator: '@aoezay',
+    },
   };
 }
 
@@ -34,16 +69,44 @@ export default async function HomePage({ params: { locale } }: { params: { local
     image: article.image?.asset ? article.image : undefined,
   }));
 
+  // Strukturierte Daten (JSON-LD Schema.org) - Person Schema
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Ahmet Özay',
+    jobTitle: 'Journalist & Autor',
+    description: t('intro'),
+    url: `${baseUrl}/${locale}`,
+    image: `${baseUrl}/images/ahmet-portrait.png`,
+    sameAs: [
+      'https://x.com/aoezay',
+      'https://www.linkedin.com/in/ahmet-özay-34b97a200/',
+    ],
+    knowsAbout: ['Journalismus', 'Deutsch-türkische Beziehungen', 'Krimtataren', 'Minderheitenrechte'],
+    inLanguage: locale,
+  };
+
   return (
-    <div className="mx-auto px-4 py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <div className="mx-auto px-4 py-12">
       {/* Hero Section */}
       <section className="max-w-6xl mx-auto mb-16">
         <div className="flex flex-col md:flex-row gap-8 items-center">
           <div className="hidden md:block md:w-1/4">
-            <img 
-              src="/images/ahmet-portrait.png" 
+            <Image
+              src="/images/ahmet-portrait.png"
               alt="Ahmet Özay"
-              className="md:w-56 md:h-auto object-cover rounded-sm"
+              width={224}
+              height={300}
+              className="object-cover rounded-sm"
+              priority
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
             />
           </div>
           <div className="w-full md:w-3/4">
@@ -91,5 +154,6 @@ export default async function HomePage({ params: { locale } }: { params: { local
         )}
       </section>
     </div>
+    </>
   );
 }

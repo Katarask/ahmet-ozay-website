@@ -1,23 +1,82 @@
-﻿import { useTranslations } from 'next-intl';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+﻿import { getTranslations, setRequestLocale } from 'next-intl/server';
+import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import FAQ from '@/components/FAQ';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations({ locale, namespace: 'meta' });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
+  const url = `${baseUrl}/${locale}/about`;
+  const imageUrl = `${baseUrl}/images/ahmet-portrait.png`;
   
   return {
     title: t('about.title'),
     description: t('about.description'),
+    alternates: {
+      canonical: url,
+      languages: {
+        'de': `${baseUrl}/de/about`,
+        'en': `${baseUrl}/en/about`,
+        'tr': `${baseUrl}/tr/about`,
+      },
+    },
+    openGraph: {
+      title: t('about.title'),
+      description: t('about.description'),
+      url: url,
+      siteName: 'Ahmet Özay',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: 'Ahmet Özay',
+        },
+      ],
+      locale: locale,
+      type: 'profile',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('about.title'),
+      description: t('about.description'),
+      images: [imageUrl],
+      creator: '@aoezay',
+    },
   };
 }
 
-export default function AboutPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function AboutPage({ params: { locale } }: { params: { locale: string } }) {
   // Enable static rendering
   setRequestLocale(locale);
   
-  const t = useTranslations('about');
+  const t = await getTranslations({ locale, namespace: 'about' });
+  const tFaq = await getTranslations({ locale, namespace: 'faq' });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
+  
+  // FAQ-Daten aus Übersetzungen laden
+  const faqItems = tFaq.raw('items') as Array<{ question: string; answer: string }>;
+  
+  // FAQ Schema.org (JSON-LD)
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
 
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     <div className="max-w-4xl mx-auto px-4 py-12">
       <Breadcrumbs 
         items={[
@@ -29,10 +88,15 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       <article className="mt-8">
         <div className="flex flex-col md:flex-row gap-12">
           <div className="md:w-1/3">
-            <img 
-              src="/images/ahmet-portrait.png" 
+            <Image
+              src="/images/ahmet-portrait.png"
               alt="Ahmet Özay"
-              className="w-full h-auto"
+              width={300}
+              height={400}
+              className="w-full h-auto object-cover rounded-sm"
+              priority
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
             />
           </div>
           
@@ -74,6 +138,10 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
           </div>
         </div>
       </article>
+      
+      {/* FAQ Section */}
+      <FAQ items={faqItems} title={tFaq('title')} />
     </div>
+    </>
   );
 }

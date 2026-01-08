@@ -4,10 +4,34 @@ import ArticlesPageClient from './ArticlesPageClient';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations({ locale, namespace: 'meta' });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
+  const url = `${baseUrl}/${locale}/artikel`;
   
   return {
     title: t('articles.title'),
     description: t('articles.description'),
+    alternates: {
+      canonical: url,
+      languages: {
+        'de': `${baseUrl}/de/artikel`,
+        'en': `${baseUrl}/en/artikel`,
+        'tr': `${baseUrl}/tr/artikel`,
+      },
+    },
+    openGraph: {
+      title: t('articles.title'),
+      description: t('articles.description'),
+      url: url,
+      siteName: 'Ahmet Özay',
+      locale: locale,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary',
+      title: t('articles.title'),
+      description: t('articles.description'),
+      creator: '@aoezay',
+    },
   };
 }
 

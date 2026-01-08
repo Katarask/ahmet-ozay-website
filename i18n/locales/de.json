@@ -72,5 +72,34 @@
     "breadcrumbs":  {
                         "home":  "Startseite",
                         "articles":  "Artikel"
-                    }
+                    },
+    "faq":  {
+                  "title":  "Häufig gestellte Fragen",
+                  "items":  [
+                                 {
+                                     "question":  "Welche Themenbereiche deckt Ahmet Özay in seinen Artikeln ab?",
+                                     "answer":  "Ahmet Özay schreibt über deutsch-türkische Beziehungen, die Geschichte der Krimtataren, Minderheitenrechte, Migration und Integration sowie Pressefreiheit in Europa. Seine Arbeit konzentriert sich auf die Analyse politischer und gesellschaftlicher Entwicklungen aus einer journalistischen Perspektive."
+                                 },
+                                 {
+                                     "question":  "Wie kann ich Ahmet Özay für eine Interview-Anfrage kontaktieren?",
+                                     "answer":  "Sie können Ahmet Özay über das Kontaktformular auf dieser Website erreichen. Bitte geben Sie in Ihrer Anfrage den Grund für den Kontakt, das gewünschte Thema und Ihr Zeitfenster an. Er wird sich so schnell wie möglich bei Ihnen melden."
+                                 },
+                                 {
+                                     "question":  "Wo wurden Ahmet Özays Artikel veröffentlicht?",
+                                     "answer":  "Ahmet Özay hat während seiner Karriere bei WDR, BBC World Service und Deutsche Welle zahlreiche Artikel, Reportagen und Analysen veröffentlicht. Seine Arbeiten erscheinen sowohl auf dieser Website als auch in verschiedenen Medien."
+                                 },
+                                 {
+                                     "question":  "Gibt es eine Möglichkeit, über neue Artikel benachrichtigt zu werden?",
+                                     "answer":  "Derzeit können Sie diese Website regelmäßig besuchen, um neue Artikel zu lesen. Eine Newsletter-Funktion ist in Planung und wird in Kürze verfügbar sein."
+                                 },
+                                 {
+                                     "question":  "Kann ich Ahmet Özay für Vorträge oder Workshops buchen?",
+                                     "answer":  "Ja, Ahmet Özay steht für Vorträge und Workshops zur Verfügung. Bitte nutzen Sie das Kontaktformular und beschreiben Sie Ihr Veranstaltungsformat, das gewünschte Thema und Ihren Zeitrahmen. Er wird Ihre Anfrage prüfen und mit Ihnen in Kontakt treten."
+                                 },
+                                 {
+                                     "question":  "Welche Sprachen werden auf dieser Website unterstützt?",
+                                     "answer":  "Die Website ist in drei Sprachen verfügbar: Deutsch, Englisch und Türkisch. Sie können die Sprache jederzeit über den Sprachumschalter in der Navigation ändern."
+                                 }
+                             ]
+              }
 }

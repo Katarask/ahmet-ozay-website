@@ -1,8 +1,9 @@
 ﻿import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
-import { getArticleBySlug, getArticles } from '@/lib/sanity';
+import { getArticleBySlug, getArticles, urlFor } from '@/lib/sanity';
 import PortableTextRenderer from '@/components/PortableTextRenderer';
+import ShareButtons from '@/components/ShareButtons';
 
 import { locales } from '@/i18n/config';
 
@@ -28,10 +29,49 @@ export async function generateMetadata({
 
   const title = article.title[locale as 'de' | 'en' | 'tr'] || article.title.de;
   const excerpt = article.excerpt[locale as 'de' | 'en' | 'tr'] || article.excerpt.de;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
+  const articleUrl = `${baseUrl}/${locale}/artikel/${slug}`;
+  const imageUrl = article.image?.asset 
+    ? urlFor(article.image).width(1200).height(630).fit('crop').url()
+    : `${baseUrl}/images/ahmet-portrait.png`;
   
   return {
     title: `${title} | Ahmet Özay`,
     description: excerpt,
+    alternates: {
+      canonical: articleUrl,
+      languages: {
+        'de': `${baseUrl}/de/artikel/${slug}`,
+        'en': `${baseUrl}/en/artikel/${slug}`,
+        'tr': `${baseUrl}/tr/artikel/${slug}`,
+      },
+    },
+    openGraph: {
+      title: `${title} | Ahmet Özay`,
+      description: excerpt,
+      url: articleUrl,
+      siteName: 'Ahmet Özay',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: article.image?.alt || title,
+        },
+      ],
+      locale: locale,
+      type: 'article',
+      publishedTime: article.publishedAt,
+      authors: [article.author],
+      section: article.category,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} | Ahmet Özay`,
+      description: excerpt,
+      images: [imageUrl],
+      creator: '@aoezay',
+    },
   };
 }
 
@@ -58,8 +98,50 @@ export default async function ArticlePage({
     day: 'numeric',
   });
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
+  const articleUrl = `${baseUrl}/${locale}/artikel/${slug}`;
+  const imageUrl = article.image?.asset 
+    ? urlFor(article.image).width(1200).height(630).fit('crop').url()
+    : `${baseUrl}/images/ahmet-portrait.png`;
+
+  // Strukturierte Daten (JSON-LD Schema.org)
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description: article.excerpt[locale as 'de' | 'en' | 'tr'] || article.excerpt.de,
+    image: imageUrl,
+    datePublished: article.publishedAt,
+    dateModified: article._createdAt,
+    author: {
+      '@type': 'Person',
+      name: article.author,
+      url: `${baseUrl}/${locale}/about`,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Ahmet Özay',
+      url: baseUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${baseUrl}/images/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': articleUrl,
+    },
+    articleSection: article.category,
+    inLanguage: locale,
+  };
+
   return (
-    <div className="mx-auto px-4 py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <div className="mx-auto px-4 py-12">
       {/* Breadcrumbs */}
       <nav className="max-w-4xl mx-auto mb-8">
         <ol className="flex items-center gap-2 text-sm text-light-text-muted dark:text-dark-text-muted font-sans">
@@ -117,6 +199,14 @@ export default async function ArticlePage({
           <PortableTextRenderer content={content} />
         </div>
 
+        {/* Share Buttons */}
+        <ShareButtons 
+          title={title}
+          url={`/${locale}/artikel/${slug}`}
+          excerpt={article.excerpt[locale as 'de' | 'en' | 'tr'] || article.excerpt.de}
+          locale={locale}
+        />
+
         {/* Article Footer */}
         <footer className="mt-16 pt-8 border-t border-light-border-primary dark:border-dark-border-primary">
           <Link
@@ -131,5 +221,6 @@ export default async function ArticlePage({
         </footer>
       </article>
     </div>
+    </>
   );
 }

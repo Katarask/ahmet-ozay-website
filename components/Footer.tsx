@@ -16,7 +16,7 @@ export default function Footer({ locale }: FooterProps) {
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <div className="text-center mb-8">
-          <h3 className="text-xl font-serif">
+          <h3 className="text-xl font-serif" style={{ color: 'var(--color-footer-text)' }}>
             Ahmet Özay - {t('journalist')}
           </h3>
         </div>

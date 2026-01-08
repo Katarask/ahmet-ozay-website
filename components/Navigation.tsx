@@ -12,137 +12,143 @@ interface NavigationProps {
 
 export default function Navigation({ locale }: NavigationProps) {
   const t = useTranslations('nav');
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const navLinks = [
-    { href: `/${locale}`, label: t('articles') },
-    { href: `/${locale}/about`, label: t('about') },
-    { href: `/${locale}/kontakt`, label: t('contact') },
+  const menuCards = [
+    {
+      title: t('articles'),
+      links: [
+        { label: 'Neueste Artikel', href: `/${locale}` },
+        { label: 'Krimtataren', href: `/${locale}/artikel` },
+        { label: 'Alle Artikel', href: `/${locale}/artikel` }
+      ],
+      bgColor: '#0A0A0B',
+      accentColor: '#024D81'
+    },
+    {
+      title: t('about'),
+      links: [
+        { label: 'Biografie', href: `/${locale}/about` },
+        { label: 'Werdegang', href: `/${locale}/about` },
+        { label: 'Expertise', href: `/${locale}/about` }
+      ],
+      bgColor: '#121214',
+      accentColor: '#024D81'
+    },
+    {
+      title: t('contact'),
+      links: [
+        { label: 'Kontaktformular', href: `/${locale}/kontakt` },
+        { label: 'Social Media', href: `/${locale}/kontakt` },
+        { label: 'Impressum', href: `/${locale}/kontakt` }
+      ],
+      bgColor: '#1A1A1D',
+      accentColor: '#024D81'
+    }
   ];
 
   return (
     <>
-      <nav className="nav">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          {/* Logo */}
-          <Link 
-            href={`/${locale}`} 
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+      <nav className={`nav-wrapper ${isOpen ? 'nav-expanded' : ''}`}>
+        <div className="nav-bar">
+          {/* Hamburger - nur Mobile */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="hamburger md:hidden"
+            aria-label="Toggle menu"
           >
+            <span className={`hamburger-line ${isOpen ? 'open' : ''}`} />
+            <span className={`hamburger-line ${isOpen ? 'open' : ''}`} />
+          </button>
+
+          {/* Logo */}
+          <Link href={`/${locale}`} className="nav-logo">
             <img
-              src="https://cdn.prod.website-files.com/68ff9cf3c843a43aca58193f/691e5abf77147cbe199f263e_android-chrome-192x192.png"
+              src="/images/logo.png"
               width={32}
               height={32}
               alt="Ahmet Özay"
-              className="rounded-full"
+              className="nav-logo-img"
             />
-            <span 
-              className="text-lg font-serif border-l-2 pl-2"
-              style={{ 
-                borderColor: 'var(--color-border-accent)',
-                color: 'var(--color-text-primary)' 
-              }}
-            >
-              Ahmet Özay
-            </span>
+            <span className="nav-logo-text">Ahmet Özay</span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - nur Desktop */}
           <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm transition-colors"
-                style={{ color: 'var(--color-text-secondary)' }}
-              >
-                {link.label}
-              </Link>
-            ))}
+            <Link
+              href={`/${locale}`}
+              className="text-sm transition-colors hover:text-light-accent-primary dark:hover:text-dark-accent-primary"
+              style={{ color: 'var(--color-text-secondary)' }}
+            >
+              {t('articles')}
+            </Link>
+            <Link
+              href={`/${locale}/about`}
+              className="text-sm transition-colors hover:text-light-accent-primary dark:hover:text-dark-accent-primary"
+              style={{ color: 'var(--color-text-secondary)' }}
+            >
+              {t('about')}
+            </Link>
+            <Link
+              href={`/${locale}/kontakt`}
+              className="text-sm transition-colors hover:text-light-accent-primary dark:hover:text-dark-accent-primary"
+              style={{ color: 'var(--color-text-secondary)' }}
+            >
+              {t('contact')}
+            </Link>
           </div>
 
-          {/* Right Side Controls */}
-          <div className="flex items-center gap-3">
+          {/* Right Side */}
+          <div className="nav-right">
             <LanguageSwitcher currentLocale={locale} />
             <ThemeToggle />
-            
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden theme-toggle"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Toggle menu"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                {menuOpen ? (
-                  <>
-                    <line x1="4" y1="4" x2="20" y2="20"/>
-                    <line x1="20" y1="4" x2="4" y2="20"/>
-                  </>
-                ) : (
-                  <>
-                    <line x1="3" y1="6" x2="21" y2="6"/>
-                    <line x1="3" y1="12" x2="21" y2="12"/>
-                    <line x1="3" y1="18" x2="21" y2="18"/>
-                  </>
-                )}
-              </svg>
-            </button>
           </div>
+        </div>
+
+        {/* Expanding Cards - nur Mobile */}
+        <div className="nav-cards-container md:hidden">
+          {menuCards.map((card, idx) => (
+            <div
+              key={card.title}
+              className="nav-card"
+              style={{ '--delay': `${idx * 0.1}s` } as React.CSSProperties}
+            >
+              <div 
+                className="nav-card-inner"
+                style={{ 
+                  backgroundColor: card.bgColor,
+                  borderLeft: `3px solid ${card.accentColor}`
+                }}
+              >
+                <h3 className="nav-card-title">{card.title}</h3>
+                <div className="nav-card-links">
+                  {card.links.map((link) => (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      className="nav-card-link"
+                      onClick={() => setIsOpen(false)}
+                      style={{ 
+                        '--hover-color': card.accentColor 
+                      } as React.CSSProperties}
+                    >
+                      <span style={{ color: card.accentColor }}>→</span>
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
-      {menuOpen && (
+      {/* Overlay */}
+      {isOpen && (
         <div 
-          className="fixed inset-0 z-50 md:hidden"
-          style={{ backgroundColor: 'var(--color-footer-bg)' }}
-        >
-          <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <Link 
-              href={`/${locale}`} 
-              className="flex items-center gap-2"
-              onClick={() => setMenuOpen(false)}
-            >
-              <img
-                src="https://cdn.prod.website-files.com/68ff9cf3c843a43aca58193f/691e5abf77147cbe199f263e_android-chrome-192x192.png"
-                width={32}
-                height={32}
-                alt="Ahmet Özay"
-                className="rounded-full"
-                style={{ filter: 'brightness(1.2)' }}
-              />
-              <span className="text-lg font-serif border-l-2 border-white/50 pl-2 text-white">
-                Ahmet Özay
-              </span>
-            </Link>
-            <button
-              className="p-2 text-white"
-              onClick={() => setMenuOpen(false)}
-              aria-label="Close menu"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="4" y1="4" x2="20" y2="20"/>
-                <line x1="20" y1="4" x2="4" y2="20"/>
-              </svg>
-            </button>
-          </div>
-          
-          <nav className="px-4 pt-12">
-            <ul className="space-y-4">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="block text-3xl font-serif text-white/70 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
+          className="nav-overlay"
+          onClick={() => setIsOpen(false)}
+        />
       )}
     </>
   );

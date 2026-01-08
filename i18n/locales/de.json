@@ -6,7 +6,7 @@
                 "contact":  "Kontakt"
             },
     "home":  {
-                 "eyebrow":  "Journalist | Autor | Experte",
+                 "eyebrow":  "Journalist | Autor | Krim-Experte",
                  "intro":  "40 Jahre Erfahrung als Journalist bei WDR, BBC und Deutsche Welle. Experte für deutsch-türkische Beziehungen, Krimtataren und Minderheitenrechte.",
                  "latestArticles":  "Neueste Artikel",
                  "viewAll":  "Alle Artikel",
@@ -46,6 +46,7 @@
                     "error":  "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
                 },
     "footer":  {
+                   "journalist":  "Journalist",
                    "copyright":  "© 2025 Ahmet Özay. Alle Rechte vorbehalten.",
                    "imprint":  "Impressum",
                    "privacy":  "Datenschutz"

@@ -1,7 +1,6 @@
-﻿import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+﻿import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
-import { getAllArticles } from '@/lib/articles';
+import { getArticles } from '@/lib/sanity';
 import ArticleCard from '@/components/ArticleCard';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
@@ -13,23 +12,38 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default function HomePage({ params: { locale } }: { params: { locale: string } }) {
-  const articles = getAllArticles(locale);
-  const t = useTranslations('home');
+export default async function HomePage({ params: { locale } }: { params: { locale: string } }) {
+  const sanityArticles = await getArticles(locale);
+  const t = await getTranslations({ locale, namespace: 'home' });
+
+  // Transform Sanity articles to match ArticleCard props
+  const articles = sanityArticles.map((article) => ({
+    title: article.title[locale as 'de' | 'en' | 'tr'] || article.title.de,
+    excerpt: article.excerpt[locale as 'de' | 'en' | 'tr'] || article.excerpt.de,
+    date: new Date(article.publishedAt).toLocaleDateString(locale, {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }),
+    category: article.category,
+    readTime: `${article.readTime} min`,
+    slug: article.slug.current,
+    image: article.image?.asset ? article.image : undefined,
+  }));
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
+    <div className="mx-auto px-4 py-12">
       {/* Hero Section */}
-      <section className="mb-16">
+      <section className="max-w-6xl mx-auto mb-16">
         <div className="flex flex-col md:flex-row gap-8 items-center">
-          <div className="md:w-1/3">
+          <div className="hidden md:block md:w-1/4">
             <img 
               src="/images/ahmet-portrait.png" 
               alt="Ahmet Özay"
-              className="w-48 h-48 md:w-full md:h-auto object-cover rounded-sm"
+              className="md:w-56 md:h-auto object-cover rounded-sm"
             />
           </div>
-          <div className="md:w-2/3">
+          <div className="w-full md:w-3/4">
             <p className="eyebrow text-xs uppercase tracking-[0.2em] text-light-text-tertiary dark:text-dark-text-tertiary mb-4">
               {t('eyebrow')}
             </p>
@@ -44,7 +58,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
       </section>
 
       {/* Articles Section */}
-      <section>
+      <section className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-sans font-bold text-light-text-primary dark:text-dark-text-primary">
             {t('latestArticles')}
@@ -57,8 +71,8 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
           </Link>
         </div>
 
-        <div className="space-y-0">
-          {articles.slice(0, 3).map((article) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {articles.slice(0, 6).map((article) => (
             <ArticleCard
               key={article.slug}
               {...article}

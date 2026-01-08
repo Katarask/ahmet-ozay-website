@@ -22,38 +22,41 @@ export default function ArticleCard({
   image
 }: ArticleCardProps) {
   return (
-    <article className="group border-b border-light-border-primary dark:border-dark-border-primary pb-8 mb-8">
-      <Link href={`/${locale}/artikel/${slug}`} className="block">
-        {image && (
-          <div className="mb-4 overflow-hidden">
-            <img 
-              src={image} 
-              alt={title}
-              className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-        )}
-        
-        <div className="flex items-center gap-4 mb-3">
-          <span className="eyebrow text-xs uppercase tracking-[0.2em] text-light-text-tertiary dark:text-dark-text-tertiary">
+    <article className="group flex flex-col pb-6">
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-3 text-sm flex-wrap">
+          <span className="px-3 py-1 bg-light-bg-secondary dark:bg-dark-bg-secondary text-light-text-primary dark:text-dark-text-primary text-xs font-sans rounded-sm">
             {category}
           </span>
-          <span className="text-light-text-muted dark:text-dark-text-muted text-sm">
+          <div className="flex items-center gap-2 text-light-text-muted dark:text-dark-text-muted">
+            <span className="font-sans font-medium">{readTime.split(' ')[0]}</span>
+            <span className="font-sans">Minuten</span>
+          </div>
+          <span className="text-light-text-muted dark:text-dark-text-muted font-sans">
             {date}
-          </span>
-          <span className="text-light-text-muted dark:text-dark-text-muted text-sm">
-            {readTime}
           </span>
         </div>
         
-        <h3 className="heading_h4 text-xl font-sans font-bold text-light-text-primary dark:text-dark-text-primary mb-2 border-l-2 border-light-border-accent dark:border-dark-border-accent pl-4 group-hover:text-light-accent-primary dark:group-hover:text-dark-accent-primary transition-colors">
-          {title}
-        </h3>
+        <Link href={`/${locale}/artikel/${slug}`} className="group">
+          <h3 className="heading_h4 text-xl font-sans font-bold text-light-text-primary dark:text-dark-text-primary mb-3 group-hover:text-light-accent-primary dark:group-hover:text-dark-accent-primary transition-colors">
+            {title}
+          </h3>
+        </Link>
         
-        <p className="text-light-text-secondary dark:text-dark-text-secondary font-serif leading-relaxed">
+        <p className="text-light-text-secondary dark:text-dark-text-secondary font-serif leading-relaxed mb-4 border-l-2 border-light-border-accent dark:border-dark-border-accent pl-4">
           {excerpt}
         </p>
-      </Link>
+        
+        <Link 
+          href={`/${locale}/artikel/${slug}`}
+          className="inline-flex items-center gap-2 text-light-accent-primary dark:text-dark-accent-primary hover:gap-3 transition-all font-sans font-medium text-sm"
+        >
+          <span>Weiterlesen</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-1">
+            <path d="M2 8H14.5M14.5 8L8.5 2M14.5 8L8.5 14" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+          </svg>
+        </Link>
+      </div>
     </article>
   );
 }

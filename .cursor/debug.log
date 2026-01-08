@@ -1,0 +1,12 @@
+{"location":"middleware.ts:14","message":"Incoming request","data":{"pathname":"/studio"},"timestamp":1767908156026,"sessionId":"debug-session","hypothesisId":"A"}
+{"location":"middleware.ts:32","message":"Bypassing i18n for studio","data":{"pathname":"/studio"},"timestamp":1767908156036,"sessionId":"debug-session","hypothesisId":"B"}
+{"location":"middleware.ts:14","message":"Incoming request","data":{"pathname":"/studio"},"timestamp":1767908188570,"sessionId":"debug-session","hypothesisId":"A"}
+{"location":"middleware.ts:32","message":"Bypassing i18n for studio","data":{"pathname":"/studio"},"timestamp":1767908188578,"sessionId":"debug-session","hypothesisId":"B"}
+{"location":"middleware.ts:14","message":"Incoming request","data":{"pathname":"/studio"},"timestamp":1767908192275,"sessionId":"debug-session","hypothesisId":"A"}
+{"location":"middleware.ts:32","message":"Bypassing i18n for studio","data":{"pathname":"/studio"},"timestamp":1767908192281,"sessionId":"debug-session","hypothesisId":"B"}
+{"location":"middleware.ts:14","message":"Incoming request","data":{"pathname":"/studio"},"timestamp":1767908195836,"sessionId":"debug-session","hypothesisId":"A"}
+{"location":"middleware.ts:32","message":"Bypassing i18n for studio","data":{"pathname":"/studio"},"timestamp":1767908195842,"sessionId":"debug-session","hypothesisId":"B"}
+{"location":"middleware.ts:14","message":"Incoming request","data":{"pathname":"/studio"},"timestamp":1767908199718,"sessionId":"debug-session","hypothesisId":"A"}
+{"location":"middleware.ts:32","message":"Bypassing i18n for studio","data":{"pathname":"/studio"},"timestamp":1767908199724,"sessionId":"debug-session","hypothesisId":"B"}
+{"location":"middleware.ts:14","message":"Incoming request","data":{"pathname":"/studio"},"timestamp":1767908206038,"sessionId":"debug-session","hypothesisId":"A"}
+{"location":"middleware.ts:32","message":"Bypassing i18n for studio","data":{"pathname":"/studio"},"timestamp":1767908206045,"sessionId":"debug-session","hypothesisId":"B"}

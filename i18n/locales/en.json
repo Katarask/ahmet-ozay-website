@@ -1,0 +1,55 @@
+﻿{
+  "nav": {
+    "home": "Home",
+    "articles": "Articles",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "eyebrow": "Latest Articles",
+    "title": "Ahmet Özay",
+    "subtitle": "Journalist",
+    "description": "Özay has traveled, observed, and documented Europe, Turkey, and the post-Soviet world – as correspondent, editor-in-chief, and bureau chief. For decades, he has stood between the discursive spaces of these regions, translating them – without partisanship, but with conviction.",
+    "readMore": "Read more",
+    "minutes": "minutes"
+  },
+  "article": {
+    "by": "By",
+    "publishedOn": "Published on",
+    "readingTime": "Reading time",
+    "minutes": "min",
+    "share": "Share article",
+    "relatedArticles": "Related Articles",
+    "toArticle": "read article",
+    "backToOverview": "Back to overview"
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "articles": "Articles"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Have questions or want to get in touch?",
+    "name": "Name",
+    "namePlaceholder": "Your full name",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "What is this about?",
+    "message": "Message",
+    "messagePlaceholder": "Your message...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Thank you! Your message has been sent successfully.",
+    "error": "An error occurred. Please try again."
+  },
+  "footer": {
+    "copyright": "© 2025 Ahmet Özay",
+    "journalist": "Journalist",
+    "imprint": "Imprint"
+  },
+  "meta": {
+    "title": "Ahmet Özay - Journalist & Crimean Tatar Expert",
+    "description": "German-Turkish journalist from Cologne. 40+ years experience at WDR, BBC, Deutsche Welle. Expert on Crimean Tatars, racism, and minority rights."
+  }
+}

@@ -1,0 +1,416 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   CSS Custom Properties - Light/Dark Mode
+   Percentage-based brightness system
+   ======================================== */
+
+:root {
+  /* Light Mode (default) */
+  --color-bg-primary: #FFFFFF;       /* 100% */
+  --color-bg-secondary: #FAFAF9;     /* 98% */
+  --color-bg-tertiary: #F5F5F4;      /* 96% */
+  --color-bg-elevated: #FFFFFF;      /* 100% */
+  
+  --color-text-primary: #0C0C0C;     /* 5% */
+  --color-text-secondary: #525252;   /* 32% */
+  --color-text-tertiary: #737373;    /* 45% */
+  --color-text-muted: #A3A3A3;       /* 64% */
+  --color-text-inverse: #FFFFFF;     /* 100% */
+  
+  --color-border-primary: #E5E5E5;   /* 90% */
+  --color-border-secondary: #D4D4D4; /* 83% */
+  --color-border-accent: #0C0C0C;    /* 5% */
+  
+  --color-accent-primary: #131F5B;
+  --color-accent-hover: #1a2a7a;
+  --color-accent-light: rgba(19, 31, 91, 0.1);
+  
+  /* Footer */
+  --color-footer-bg: #0C0C0C;
+  --color-footer-text: #FAFAFA;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Reading Progress Bar */
+  --color-progress: #131F5B;
+}
+
+.dark {
+  /* Dark Mode */
+  --color-bg-primary: #0A0A0B;       /* 4% */
+  --color-bg-secondary: #121214;     /* 7% */
+  --color-bg-tertiary: #1A1A1D;      /* 10% */
+  --color-bg-elevated: #1F1F23;      /* 12% */
+  
+  --color-text-primary: #FAFAFA;     /* 98% */
+  --color-text-secondary: #A1A1AA;   /* 63% */
+  --color-text-tertiary: #71717A;    /* 44% */
+  --color-text-muted: #52525B;       /* 32% */
+  --color-text-inverse: #0A0A0B;     /* 4% */
+  
+  --color-border-primary: #27272A;   /* 15% */
+  --color-border-secondary: #3F3F46; /* 25% */
+  --color-border-accent: #FAFAFA;    /* 98% */
+  
+  --color-accent-primary: #6B7CFF;
+  --color-accent-hover: #8B99FF;
+  --color-accent-light: rgba(107, 124, 255, 0.15);
+  
+  /* Footer in Dark Mode */
+  --color-footer-bg: #050506;
+  --color-footer-text: #E4E4E7;
+  
+  /* Shadows for Dark Mode */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  
+  /* Reading Progress Bar */
+  --color-progress: #6B7CFF;
+}
+
+/* ========================================
+   Base Styles
+   ======================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font-family: 'Alegreya', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  min-height: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ========================================
+   Typography
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
+h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
+h4 { font-size: clamp(1.1rem, 2.5vw, 1.25rem); }
+
+p {
+  color: var(--color-text-secondary);
+  margin-bottom: 1em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent-primary);
+}
+
+/* ========================================
+   Reading Progress Bar
+   ======================================== */
+
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--color-progress);
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+}
+
+/* ========================================
+   Breadcrumbs
+   ======================================== */
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-tertiary);
+  padding: 1rem 0;
+}
+
+.breadcrumbs a {
+  color: var(--color-text-tertiary);
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--color-text-primary);
+}
+
+.breadcrumbs .separator {
+  color: var(--color-text-muted);
+}
+
+.breadcrumbs .current {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+/* ========================================
+   Components
+   ======================================== */
+
+/* Navigation */
+.nav {
+  background-color: var(--color-bg-primary);
+  border-bottom: 2px solid var(--color-border-accent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Cards & Blocks */
+.card {
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-secondary);
+}
+
+/* Tags */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--color-accent-light);
+  color: var(--color-accent-primary);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-accent-primary);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  color: var(--color-text-inverse);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-text-primary);
+  background-color: var(--color-bg-tertiary);
+}
+
+/* Form Elements */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 6px;
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-accent-primary);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+}
+
+.form-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.form-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  padding: 3rem 1rem 2rem;
+}
+
+/* ========================================
+   Rich Text / Article Content
+   ======================================== */
+
+.prose {
+  max-width: 800px;
+  color: var(--color-text-primary);
+}
+
+.prose p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.prose h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose a {
+  color: var(--color-accent-primary);
+  text-decoration: underline;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-accent-primary);
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+.prose ul, .prose ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   Language Switcher
+   ======================================== */
+
+.lang-switcher {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  background-color: var(--color-bg-tertiary);
+  border-radius: 6px;
+}
+
+.lang-switcher button {
+  padding: 0.375rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-tertiary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.lang-switcher button:hover {
+  color: var(--color-text-primary);
+}
+
+.lang-switcher button.active {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   Dark Mode Toggle
+   ======================================== */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: var(--color-bg-tertiary);
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-border-primary);
+  color: var(--color-text-primary);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 768px) {
+  .breadcrumbs {
+    font-size: 0.75rem;
+    flex-wrap: wrap;
+  }
+}

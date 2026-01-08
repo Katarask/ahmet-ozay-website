@@ -1,0 +1,55 @@
+﻿{
+  "nav": {
+    "home": "Ana Sayfa",
+    "articles": "Makaleler",
+    "about": "Hakkımda",
+    "contact": "İletişim"
+  },
+  "home": {
+    "eyebrow": "Son Yazılar",
+    "title": "Ahmet Özay",
+    "subtitle": "Gazeteci",
+    "description": "Özay, Avrupa'yı, Türkiye'yi ve post-Sovyet dünyasını muhabir, yayın yönetmeni ve genel yayın yönetmeni olarak gezdi, gözlemledi ve anlattı. Onlarca yıldır bu bölgelerin söylem alanları arasında duruyor ve onları tercüme ediyor – tarafsız ama tutumlu.",
+    "readMore": "Devamını oku",
+    "minutes": "dakika"
+  },
+  "article": {
+    "by": "Yazar",
+    "publishedOn": "Yayın tarihi",
+    "readingTime": "Okuma süresi",
+    "minutes": "dk",
+    "share": "Makaleyi paylaş",
+    "relatedArticles": "İlgili Makaleler",
+    "toArticle": "makaleye git",
+    "backToOverview": "Genel bakışa dön"
+  },
+  "breadcrumbs": {
+    "home": "Ana Sayfa",
+    "articles": "Makaleler"
+  },
+  "contact": {
+    "title": "İletişim",
+    "subtitle": "Sorularınız mı var veya benimle iletişime geçmek mi istiyorsunuz?",
+    "name": "İsim",
+    "namePlaceholder": "Tam adınız",
+    "email": "E-posta",
+    "emailPlaceholder": "email@adresiniz.com",
+    "subject": "Konu",
+    "subjectPlaceholder": "Konu nedir?",
+    "message": "Mesaj",
+    "messagePlaceholder": "Mesajınız...",
+    "send": "Mesaj Gönder",
+    "sending": "Gönderiliyor...",
+    "success": "Teşekkürler! Mesajınız başarıyla gönderildi.",
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin."
+  },
+  "footer": {
+    "copyright": "© 2025 Ahmet Özay",
+    "journalist": "Gazeteci",
+    "imprint": "Künye"
+  },
+  "meta": {
+    "title": "Ahmet Özay - Gazeteci & Kırım Tatar Uzmanı",
+    "description": "Köln'den Türk-Alman gazeteci. WDR, BBC, Deutsche Welle'de 40+ yıl deneyim. Kırım Tatarları, ırkçılık ve azınlık hakları uzmanı."
+  }
+}

@@ -1,8 +1,8 @@
-﻿import { Inter } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { locales } from '@/i18n/config';
+import { locales, type Locale } from '@/i18n/config';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -25,6 +25,8 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  setRequestLocale(locale);
+
   const messages = await getMessages();
 
   return (
@@ -37,11 +39,11 @@ export default async function LocaleLayout({
       <body className={inter.className + ' bg-light-bg-primary dark:bg-dark-bg-primary text-light-text-primary dark:text-dark-text-primary min-h-screen flex flex-col'}>
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
-            <Navigation locale={locale} />
+            <Navigation locale={locale as Locale} />
             <main className="flex-grow">
               {children}
             </main>
-            <Footer locale={locale} />
+            <Footer locale={locale as Locale} />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

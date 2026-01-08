@@ -46,6 +46,7 @@
                     "error":  "An error occurred. Please try again."
                 },
     "footer":  {
+                   "journalist": "Journalist",
                    "copyright":  "© 2025 Ahmet Özay. All rights reserved.",
                    "imprint":  "Imprint",
                    "privacy":  "Privacy"

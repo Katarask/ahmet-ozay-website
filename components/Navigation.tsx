@@ -3,11 +3,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { type Locale } from '@/i18n/config';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 
 interface NavigationProps {
-  locale: string;
+  locale: Locale;
 }
 
 export default function Navigation({ locale }: NavigationProps) {

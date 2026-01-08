@@ -1,5 +1,5 @@
 ﻿import { notFound } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getArticleWithHtml, getArticleSlugs } from '@/lib/articles';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ReadingProgress from '@/components/ReadingProgress';
@@ -43,6 +43,7 @@ export default async function ArticlePage({
 }: { 
   params: { locale: string; slug: string } 
 }) {
+  setRequestLocale(locale);
   const article = await getArticleWithHtml(slug, locale);
   const t = await getTranslations({ locale, namespace: 'articles' });
 

@@ -4,7 +4,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { locales, localeNames, type Locale } from '@/i18n/config';
 
 interface LanguageSwitcherProps {
-  currentLocale: string;
+  currentLocale: Locale;
 }
 
 export default function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {

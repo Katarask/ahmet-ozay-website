@@ -1,14 +1,13 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
-import type { Locale } from '@/i18n/config';
 
 interface NavigationProps {
-  locale: Locale;
+  locale: string;
 }
 
 export default function Navigation({ locale }: NavigationProps) {

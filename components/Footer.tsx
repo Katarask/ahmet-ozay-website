@@ -1,11 +1,10 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import type { Locale } from '@/i18n/config';
 
 interface FooterProps {
-  locale: Locale;
+  locale: string;
 }
 
 export default function Footer({ locale }: FooterProps) {
@@ -18,7 +17,7 @@ export default function Footer({ locale }: FooterProps) {
         {/* Title */}
         <div className="text-center mb-8">
           <h3 className="text-xl font-serif">
-            Ahmet Özay • {t('journalist')}
+            Ahmet Özay - {t('journalist')}
           </h3>
         </div>
 

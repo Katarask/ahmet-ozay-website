@@ -1,4 +1,4 @@
-﻿import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ContactForm from '@/components/ContactForm';
@@ -33,7 +33,7 @@ export default function ContactPage({ params: { locale } }: { params: { locale: 
         </p>
       </header>
 
-      <ContactForm locale={locale} />
+      <ContactForm />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 ﻿import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
@@ -12,6 +12,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export default function AboutPage({ params: { locale } }: { params: { locale: string } }) {
+  // Enable static rendering
+  setRequestLocale(locale);
+  
   const t = useTranslations('about');
 
   return (

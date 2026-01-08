@@ -1,15 +1,20 @@
 ﻿import { notFound } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { getArticleBySlug, getArticles } from '@/lib/sanity';
 import PortableTextRenderer from '@/components/PortableTextRenderer';
 
+import { locales } from '@/i18n/config';
+
 export async function generateStaticParams() {
   const articles = await getArticles();
   
-  return articles.map((article) => ({
-    slug: article.slug.current,
-  }));
+  return locales.flatMap((locale) => 
+    articles.map((article) => ({
+      locale,
+      slug: article.slug.current,
+    }))
+  );
 }
 
 export async function generateMetadata({ 
@@ -35,6 +40,9 @@ export default async function ArticlePage({
 }: { 
   params: { locale: string; slug: string } 
 }) {
+  // Enable static rendering
+  setRequestLocale(locale);
+  
   const article = await getArticleBySlug(slug);
   const t = await getTranslations({ locale, namespace: 'articles' });
 

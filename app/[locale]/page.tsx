@@ -1,4 +1,4 @@
-﻿import { getTranslations } from 'next-intl/server';
+﻿import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { getArticles } from '@/lib/sanity';
 import ArticleCard from '@/components/ArticleCard';
@@ -13,6 +13,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export default async function HomePage({ params: { locale } }: { params: { locale: string } }) {
+  // Enable static rendering
+  setRequestLocale(locale);
+  
   const sanityArticles = await getArticles(locale);
   const t = await getTranslations({ locale, namespace: 'home' });
 

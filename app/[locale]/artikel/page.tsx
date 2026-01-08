@@ -1,4 +1,4 @@
-﻿import { getTranslations } from 'next-intl/server';
+﻿import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getArticles } from '@/lib/sanity';
 import ArticlesPageClient from './ArticlesPageClient';
 
@@ -12,6 +12,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export default async function ArticlesPage({ params: { locale } }: { params: { locale: string } }) {
+  // Enable static rendering
+  setRequestLocale(locale);
+  
   const sanityArticles = await getArticles(locale);
   
   // Transform Sanity articles to match ArticleCard props

@@ -13,7 +13,7 @@ interface Article {
   date: string;
   category: string;
   readTime: string;
-  image?: string;
+  image?: any;
 }
 
 interface ArticlesPageClientProps {

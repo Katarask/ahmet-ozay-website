@@ -8,7 +8,7 @@ interface ArticleCardProps {
   readTime: string;
   slug: string;
   locale: string;
-  image?: string;
+  image?: any;
 }
 
 export default function ArticleCard({

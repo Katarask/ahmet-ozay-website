@@ -48,7 +48,8 @@
     "footer":  {
                    "copyright":  "© 2025 Ahmet Özay. All rights reserved.",
                    "imprint":  "Imprint",
-                   "privacy":  "Privacy"
+                   "privacy":  "Privacy",
+                   "journalist": "Journalist"
                },
     "meta":  {
                  "home":  {

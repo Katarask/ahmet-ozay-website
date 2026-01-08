@@ -1,5 +1,5 @@
 ﻿import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { getAllArticles } from '@/lib/articles';
 import ArticleCard from '@/components/ArticleCard';
@@ -14,6 +14,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export default function HomePage({ params: { locale } }: { params: { locale: string } }) {
+  setRequestLocale(locale);
   const articles = getAllArticles(locale);
   const t = useTranslations('home');
 

@@ -48,7 +48,8 @@
     "footer":  {
                    "copyright":  "© 2025 Ahmet Özay. Tüm hakları saklıdır.",
                    "imprint":  "Künye",
-                   "privacy":  "Gizlilik"
+                   "privacy":  "Gizlilik",
+                   "journalist": "Gazeteci"
                },
     "meta":  {
                  "home":  {

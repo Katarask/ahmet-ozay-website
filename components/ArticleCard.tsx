@@ -1,4 +1,4 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 
 interface ArticleCardProps {
   title: string;
@@ -23,7 +23,7 @@ export default function ArticleCard({
 }: ArticleCardProps) {
   return (
     <article className="group border-b border-light-border-primary dark:border-dark-border-primary pb-8 mb-8">
-      <Link href={//artikel/} className="block">
+      <Link href={`/${locale}/artikel/${slug}`} className="block">
         {image && (
           <div className="mb-4 overflow-hidden">
             <img 

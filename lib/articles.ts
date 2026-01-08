@@ -1,4 +1,4 @@
-﻿import fs from 'fs';
+import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
@@ -33,9 +33,9 @@ export function getArticleBySlug(slug: string, locale: string): Article | null {
   const realSlug = slug.replace(/\.mdx?$/, '');
   const localeDir = path.join(articlesDirectory, locale);
   
-  let fullPath = path.join(localeDir, ${realSlug}.mdx);
+  let fullPath = path.join(localeDir, `${realSlug}.mdx`);
   if (!fs.existsSync(fullPath)) {
-    fullPath = path.join(localeDir, ${realSlug}.md);
+    fullPath = path.join(localeDir, `${realSlug}.md`);
   }
   
   if (!fs.existsSync(fullPath)) {

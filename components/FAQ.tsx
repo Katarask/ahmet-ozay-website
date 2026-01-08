@@ -66,7 +66,7 @@ export default function FAQ({ items, title = 'Häufig gestellte Fragen' }: FAQPr
               </button>
               <div
                 id={`faq-answer-${index}`}
-                ref={(el) => (contentRefs.current[index] = el)}
+                ref={(el) => { contentRefs.current[index] = el; }}
                 className="overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
                 style={{
                   maxHeight: isOpen ? `${heights[index] || 0}px` : '0px',

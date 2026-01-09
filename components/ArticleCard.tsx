@@ -22,8 +22,8 @@ export default function ArticleCard({
   image
 }: ArticleCardProps) {
   return (
-    <article className="group flex flex-col pb-6">
-      <div className="flex flex-col gap-3">
+    <article className="group flex flex-col h-full">
+      <div className="flex flex-col gap-3 h-full">
         <div className="flex items-center gap-3 text-sm flex-wrap">
           <span className="px-3 py-1 bg-light-bg-secondary dark:bg-dark-bg-secondary text-light-text-primary dark:text-dark-text-primary text-xs font-sans rounded-sm">
             {category}
@@ -43,18 +43,15 @@ export default function ArticleCard({
           </h3>
         </Link>
         
-        <p className="text-light-text-secondary dark:text-dark-text-secondary font-serif leading-relaxed mb-4 border-l-2 border-light-border-accent dark:border-dark-border-accent pl-4">
+        <p className="text-light-text-secondary dark:text-dark-text-secondary font-serif leading-relaxed border-l-2 border-light-border-accent dark:border-dark-border-accent pl-4 flex-grow">
           {excerpt}
         </p>
         
         <Link 
           href={`/${locale}/artikel/${slug}`}
-          className="inline-flex items-center gap-2 text-light-accent-primary dark:text-dark-accent-primary hover:gap-3 transition-all font-sans font-medium text-sm"
+          className="text-light-accent-primary dark:text-dark-accent-primary hover:underline font-sans font-medium text-sm mt-auto"
         >
-          <span>Weiterlesen</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-1">
-            <path d="M2 8H14.5M14.5 8L8.5 2M14.5 8L8.5 14" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-          </svg>
+          Weiterlesen
         </Link>
       </div>
     </article>

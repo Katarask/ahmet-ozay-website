@@ -83,29 +83,29 @@ export default function ShareButtons({ title, url, excerpt, locale = 'de' }: Sha
         Artikel teilen
       </h3>
       
-      <div className="flex flex-wrap gap-3 mb-4">
+      <div className="flex flex-wrap gap-3 items-center">
         {shareButtons.map((button) => (
           <a
             key={button.name}
             href={button.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-light-bg-secondary dark:bg-dark-bg-secondary hover:bg-light-accent-primary dark:hover:bg-dark-accent-primary hover:text-white dark:hover:text-white text-light-text-primary dark:text-dark-text-primary rounded-sm transition-colors font-sans text-sm border border-light-border-primary dark:border-dark-border-primary hover:border-light-accent-primary dark:hover:border-dark-accent-primary"
+            className="px-4 py-2 bg-light-bg-secondary dark:bg-dark-bg-secondary hover:bg-light-accent-primary dark:hover:bg-dark-accent-primary hover:text-white dark:hover:text-white text-light-text-primary dark:text-dark-text-primary rounded-sm transition-colors font-sans text-sm border border-light-border-primary dark:border-dark-border-primary hover:border-light-accent-primary dark:hover:border-dark-accent-primary whitespace-nowrap"
             aria-label={button.label}
           >
             {button.name}
           </a>
         ))}
+        
+        {/* Copy Link Button */}
+        <button
+          onClick={handleCopyLink}
+          className="px-4 py-2 bg-light-bg-secondary dark:bg-dark-bg-secondary hover:bg-light-accent-primary dark:hover:bg-dark-accent-primary hover:text-white dark:hover:text-white text-light-text-primary dark:text-dark-text-primary rounded-sm transition-colors font-sans text-sm border border-light-border-primary dark:border-dark-border-primary hover:border-light-accent-primary dark:hover:border-dark-accent-primary whitespace-nowrap"
+          aria-label="Link kopieren"
+        >
+          {copied ? 'Link kopiert!' : 'Link kopieren'}
+        </button>
       </div>
-
-      {/* Copy Link Button */}
-      <button
-        onClick={handleCopyLink}
-        className="px-4 py-2 bg-light-bg-secondary dark:bg-dark-bg-secondary hover:bg-light-accent-primary dark:hover:bg-dark-accent-primary hover:text-white dark:hover:text-white text-light-text-primary dark:text-dark-text-primary rounded-sm transition-colors font-sans text-sm border border-light-border-primary dark:border-dark-border-primary hover:border-light-accent-primary dark:hover:border-dark-accent-primary"
-        aria-label="Link kopieren"
-      >
-        {copied ? 'Link kopiert!' : 'Link kopieren'}
-      </button>
     </div>
   );
 }

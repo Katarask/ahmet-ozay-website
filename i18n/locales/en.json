@@ -2,12 +2,13 @@
     "nav":  {
                 "home":  "Home",
                 "articles":  "Articles",
+                "krimtataren":  "Crimean Tatars",
                 "about":  "About",
                 "contact":  "Contact"
             },
     "home":  {
-                 "eyebrow":  "Journalist | Author | Expert",
-                 "intro":  "40 years of experience as a journalist at WDR, BBC and Deutsche Welle. Expert on German-Turkish relations, Crimean Tatars and minority rights.",
+                 "eyebrow":  "Journalist | Author | Crimea Expert",
+                 "intro":  "German Crimea expert from Cologne with 40+ years of experience as a journalist at WDR, BBC and Deutsche Welle. Expert on Crimean Tatars, Crimea politics, German-Turkish relations and minority rights.",
                  "latestArticles":  "Latest Articles",
                  "viewAll":  "View All",
                  "noArticles":  "No articles available yet."
@@ -65,16 +66,16 @@
                },
     "meta":  {
                  "home":  {
-                              "title":  "Ahmet Özay - Journalist \u0026 Author | Cologne",
-                              "description":  "Ahmet Özay - German-Turkish journalist from Cologne with 40+ years experience at WDR, BBC and Deutsche Welle. Expert on Crimean Tatars, German-Turkish relations and minority rights."
+                              "title":  "Ahmet Özay - German Crimea Expert & Journalist | Cologne",
+                              "description":  "Ahmet Özay - German Crimea expert and journalist from Cologne with 40+ years experience at WDR, BBC and Deutsche Welle. Expert on Crimean Tatars, Crimea politics, German-Turkish relations and minority rights. Member of the Crimean Tatar People's Mejlis."
                           },
                  "articles":  {
                                   "title":  "Articles | Ahmet Özay - Journalist Cologne",
                                   "description":  "Analyses, reports and background stories by Ahmet Özay on politics, German-Turkish relations, Crimean Tatars and Europe."
                               },
                  "about":  {
-                               "title":  "About Ahmet Özay | Journalist Cologne",
-                               "description":  "Ahmet Özay - Journalist, author and media expert from Cologne. 40+ years experience at WDR, BBC, Deutsche Welle, TRT and QHA. Member of the Crimean Tatar People's Mejlis."
+                               "title":  "About Ahmet Özay | German Crimea Expert & Journalist Cologne",
+                               "description":  "Ahmet Özay - German Crimea expert, journalist and author from Cologne. 40+ years experience at WDR, BBC, Deutsche Welle, TRT and QHA. Expert on Crimean Tatars, Crimea politics and German-Turkish relations. Member of the Crimean Tatar People's Mejlis."
                            },
                  "contact":  {
                                  "title":  "Contact | Ahmet Özay",
@@ -127,5 +128,64 @@
                      "submitSuccess":  "Thank you! Your comment has been submitted and is awaiting moderation.",
                      "submitError":  "An error occurred. Please try again.",
                      "moderationNote":  "Note: Comments are moderated and will appear after approval."
-                 }
+                 },
+    "krimtataren":  {
+                        "title":  "Crimean Tatars Expert | Ahmet Özay",
+                        "description":  "Ahmet Özay - German Crimean Tatars expert and member of the Crimean Tatar People's Mejlis. Expert on Crimea politics, Crimea analysis and the history of Crimean Tatars.",
+                        "intro":  "Ahmet Özay is one of Germany's leading experts on Crimean Tatars and Crimea politics. As a member of the Crimean Tatar People's Mejlis and a veteran journalist with 40+ years of experience at WDR, BBC and Deutsche Welle, he provides in-depth analysis on the situation of Crimean Tatars, the Crimea annexation and geopolitical developments in the region.",
+                        "content":  [
+                                       "The Crimean Tatars are a Turkic-speaking minority on the Crimean Peninsula who have experienced a complex and often tragic history. From the deportation in 1944 by Stalin to the annexation of Crimea by Russia in 2014, the Crimean Tatars have always fought for their rights and their homeland.",
+                                       "Ahmet Özay, himself of Crimean Tatar origin, has established himself as one of the leading experts on Crimean Tatars in Germany. His work focuses on analyzing the political, social and cultural developments of the Crimean Tatar community, both in Ukraine and in the diaspora.",
+                                       "As a member of the Crimean Tatar People's Mejlis and Germany representative, Ahmet Özay actively advocates for the rights of Crimean Tatars and informs the German public about the current situation in Crimea."
+                                   ],
+                        "expertiseTitle":  "Expertise & Focus Areas",
+                        "expertise":  [
+                                         {
+                                             "title":  "Crimea Politics & Geopolitics",
+                                             "description":  "In-depth analysis of the 2014 Crimea annexation, the geopolitical significance of the Crimean Peninsula and international responses to the Russian occupation."
+                                         },
+                                         {
+                                             "title":  "Crimean Tatar History & Culture",
+                                             "description":  "Comprehensive knowledge of Crimean Tatar history, from the 1944 deportation to the current situation, as well as the cultural identity and traditions of the community."
+                                         },
+                                         {
+                                             "title":  "Minority Rights & Human Rights",
+                                             "description":  "Expertise in minority rights, human rights and the legal situation of Crimean Tatars under Russian occupation."
+                                         },
+                                         {
+                                             "title":  "Diaspora & Integration",
+                                             "description":  "Knowledge of the Crimean Tatar diaspora in Germany, Turkey and other countries, as well as issues of integration and cultural identity."
+                                         }
+                                     ],
+                        "relatedArticlesTitle":  "Recent Articles on Crimean Tatars & Crimea"
+                    },
+    "krimtatarenFaq":  {
+                           "title":  "Frequently Asked Questions about Crimean Tatars",
+                           "items":  [
+                                          {
+                                              "question":  "Who are the Crimean Tatars?",
+                                              "answer":  "The Crimean Tatars are a Turkic-speaking minority on the Crimean Peninsula. They are the original inhabitants of Crimea and have a complex history ranging from the deportation by Stalin in 1944 to the current situation under Russian occupation. The Crimean Tatars are Sunni Muslims and have a rich cultural tradition."
+                                          },
+                                          {
+                                              "question":  "What is the Crimean Tatar People's Mejlis?",
+                                              "answer":  "The Crimean Tatar People's Mejlis (Kırım Tatar Milli Meclisi) is the representative assembly of Crimean Tatars. It was founded in 1991 and represents the interests of Crimean Tatars both in Crimea and in the diaspora. Ahmet Özay is a member of the Mejlis and serves as the Germany representative."
+                                          },
+                                          {
+                                              "question":  "What happened during the 2014 Crimea annexation?",
+                                              "answer":  "In March 2014, Russia annexed the Crimean Peninsula, which was internationally condemned as illegal. The annexation led to a deterioration of the human rights situation for Crimean Tatars, who have been living under Russian occupation since then. Many Crimean Tatars were persecuted, their rights restricted and their cultural institutions closed."
+                                          },
+                                          {
+                                              "question":  "What is the current situation of Crimean Tatars?",
+                                              "answer":  "Crimean Tatars have been living under Russian occupation since 2014 and face numerous challenges: persecution, restriction of their rights, closure of cultural institutions and suppression of their language and culture. Many Crimean Tatars have fled to Ukraine or abroad. The international community has not recognized the annexation."
+                                          },
+                                          {
+                                              "question":  "Why is Ahmet Özay an expert on Crimean Tatars?",
+                                              "answer":  "Ahmet Özay is himself of Crimean Tatar origin and a member of the Crimean Tatar People's Mejlis. With over 40 years of experience as a journalist at renowned media outlets such as WDR, BBC and Deutsche Welle, he has established himself as one of Germany's leading experts on Crimean Tatars. He regularly analyzes the political, social and cultural developments of the Crimean Tatar community."
+                                          },
+                                          {
+                                              "question":  "Is there a Crimean Tatar diaspora in Germany?",
+                                              "answer":  "Yes, there is an active Crimean Tatar community in Germany that advocates for the rights of their compatriots in Crimea. Ahmet Özay, as the Germany representative of the Crimean Tatar People's Mejlis, is an important voice for this community and informs the German public about the situation of Crimean Tatars."
+                                          }
+                                      ]
+                       }
 }

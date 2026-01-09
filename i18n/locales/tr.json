@@ -2,12 +2,13 @@
     "nav":  {
                 "home":  "Ana Sayfa",
                 "articles":  "Makaleler",
+                "krimtataren":  "Kırım Tatarları",
                 "about":  "Hakkımda",
                 "contact":  "İletişim"
             },
     "home":  {
-                 "eyebrow":  "Gazeteci | Yazar | Uzman",
-                 "intro":  "WDR, BBC ve Deutsche Welle\u0027de 40 yıllık gazetecilik deneyimi. Türk-Alman ilişkileri, Kırım Tatarları ve azınlık hakları uzmanı.",
+                 "eyebrow":  "Gazeteci | Yazar | Kırım Uzmanı",
+                 "intro":  "Köln\u0027lü Alman Kırım uzmanı, WDR, BBC ve Deutsche Welle\u0027de 40+ yıllık gazetecilik deneyimi. Kırım Tatarları, Kırım siyaseti, Türk-Alman ilişkileri ve azınlık hakları uzmanı.",
                  "latestArticles":  "Son Makaleler",
                  "viewAll":  "Tümünü Gör",
                  "noArticles":  "Henüz makale bulunmuyor."
@@ -65,16 +66,16 @@
                },
     "meta":  {
                  "home":  {
-                              "title":  "Ahmet Özay - Gazeteci \u0026 Yazar | Köln",
-                              "description":  "Ahmet Özay - WDR, BBC ve Deutsche Welle\u0027de 40+ yıllık deneyime sahip Köln\u0027lü Türk-Alman gazeteci. Kırım Tatarları, Türk-Alman ilişkileri ve azınlık hakları uzmanı."
+                              "title":  "Ahmet Özay - Alman Kırım Uzmanı & Gazeteci | Köln",
+                              "description":  "Ahmet Özay - Köln\u0027lü Alman Kırım uzmanı ve gazeteci, WDR, BBC ve Deutsche Welle\u0027de 40+ yıllık deneyim. Kırım Tatarları, Kırım siyaseti, Türk-Alman ilişkileri ve azınlık hakları uzmanı. Kırım Tatar Milli Meclisi üyesi."
                           },
                  "articles":  {
                                   "title":  "Makaleler | Ahmet Özay - Köln Gazeteci",
                                   "description":  "Ahmet Özay\u0027ın siyaset, Türk-Alman ilişkileri, Kırım Tatarları ve Avrupa konularındaki analizleri, röportajları ve arka plan hikayeleri."
                               },
                  "about":  {
-                               "title":  "Ahmet Özay Hakkında | Köln Gazeteci",
-                               "description":  "Ahmet Özay - Köln\u0027lü gazeteci, yazar ve medya uzmanı. WDR, BBC, Deutsche Welle, TRT ve QHA\u0027da 40+ yıl deneyim. Kırım Tatar Milli Meclisi üyesi."
+                               "title":  "Ahmet Özay Hakkında | Alman Kırım Uzmanı & Köln Gazeteci",
+                               "description":  "Ahmet Özay - Köln\u0027lü Alman Kırım uzmanı, gazeteci ve yazar. WDR, BBC, Deutsche Welle, TRT ve QHA\u0027da 40+ yıl deneyim. Kırım Tatarları, Kırım siyaseti ve Türk-Alman ilişkileri uzmanı. Kırım Tatar Milli Meclisi üyesi."
                            },
                  "contact":  {
                                  "title":  "İletişim | Ahmet Özay",
@@ -127,5 +128,64 @@
                      "submitSuccess":  "Teşekkürler! Yorumunuz gönderildi ve onay bekliyor.",
                      "submitError":  "Bir hata oluştu. Lütfen tekrar deneyin.",
                      "moderationNote":  "Not: Yorumlar moderasyondan geçer ve onaydan sonra görünür."
-                 }
+                 },
+    "krimtataren":  {
+                        "title":  "Kırım Tatarları Uzmanı | Ahmet Özay",
+                        "description":  "Ahmet Özay - Alman Kırım Tatarları uzmanı ve Kırım Tatar Milli Meclisi üyesi. Kırım siyaseti, Kırım analizi ve Kırım Tatarları tarihi uzmanı.",
+                        "intro":  "Ahmet Özay, Almanya'nın önde gelen Kırım Tatarları ve Kırım siyaseti uzmanlarından biridir. Kırım Tatar Milli Meclisi üyesi ve WDR, BBC ve Deutsche Welle'de 40+ yıllık deneyime sahip deneyimli bir gazeteci olarak, Kırım Tatarlarının durumu, Kırım'ın ilhakı ve bölgedeki jeopolitik gelişmeler hakkında derinlemesine analizler sunmaktadır.",
+                        "content":  [
+                                       "Kırım Tatarları, Kırım Yarımadası'nda yaşayan Türk kökenli bir azınlıktır ve karmaşık ve genellikle trajik bir geçmişe sahiptir. Stalin'in 1944'teki sürgününden Rusya'nın 2014'te Kırım'ı ilhakına kadar, Kırım Tatarları her zaman hakları ve vatanları için mücadele etmişlerdir.",
+                                       "Kendisi de Kırım Tatar kökenli olan Ahmet Özay, Almanya'daki önde gelen Kırım Tatarları uzmanlarından biri olarak kendini kanıtlamıştır. Çalışmaları, hem Ukrayna'da hem de diasporada Kırım Tatar toplumunun siyasi, sosyal ve kültürel gelişmelerinin analizine odaklanmaktadır.",
+                                       "Kırım Tatar Milli Meclisi üyesi ve Almanya temsilcisi olarak Ahmet Özay, Kırım Tatarlarının hakları için aktif olarak çalışmakta ve Alman kamuoyunu Kırım'daki mevcut durum hakkında bilgilendirmektedir."
+                                   ],
+                        "expertiseTitle":  "Uzmanlık & Odak Alanları",
+                        "expertise":  [
+                                         {
+                                             "title":  "Kırım Siyaseti & Jeopolitika",
+                                             "description":  "2014 Kırım ilhakı, Kırım Yarımadası'nın jeopolitik önemi ve Rus işgaline uluslararası tepkiler hakkında derinlemesine analizler."
+                                         },
+                                         {
+                                             "title":  "Kırım Tatar Tarihi & Kültürü",
+                                             "description":  "1944 sürgününden günümüze kadar Kırım Tatar tarihi hakkında kapsamlı bilgi ve toplumun kültürel kimliği ve gelenekleri."
+                                         },
+                                         {
+                                             "title":  "Azınlık Hakları & İnsan Hakları",
+                                             "description":  "Rus işgali altındaki Kırım Tatarlarının azınlık hakları, insan hakları ve yasal durumu konusunda uzmanlık."
+                                         },
+                                         {
+                                             "title":  "Diaspora & Entegrasyon",
+                                             "description":  "Almanya, Türkiye ve diğer ülkelerdeki Kırım Tatar diasporası hakkında bilgi ve entegrasyon ile kültürel kimlik sorunları."
+                                         }
+                                     ],
+                        "relatedArticlesTitle":  "Kırım Tatarları & Kırım Hakkında Son Makaleler"
+                    },
+    "krimtatarenFaq":  {
+                           "title":  "Kırım Tatarları Hakkında Sık Sorulan Sorular",
+                           "items":  [
+                                          {
+                                              "question":  "Kırım Tatarları kimlerdir?",
+                                              "answer":  "Kırım Tatarları, Kırım Yarımadası'nda yaşayan Türk kökenli bir azınlıktır. Kırım'ın orijinal sakinleridir ve Stalin'in 1944'teki sürgününden Rus işgali altındaki mevcut duruma kadar karmaşık bir geçmişe sahiptirler. Kırım Tatarları Sünni Müslümanlardır ve zengin bir kültürel geleneğe sahiptirler."
+                                          },
+                                          {
+                                              "question":  "Kırım Tatar Milli Meclisi nedir?",
+                                              "answer":  "Kırım Tatar Milli Meclisi, Kırım Tatarlarının temsilci meclisidir. 1991'de kurulmuştur ve hem Kırım'da hem de diasporada Kırım Tatarlarının çıkarlarını temsil eder. Ahmet Özay Meclis üyesidir ve Almanya temsilcisi olarak görev yapmaktadır."
+                                          },
+                                          {
+                                              "question":  "2014 Kırım ilhakında ne oldu?",
+                                              "answer":  "Mart 2014'te Rusya, Kırım Yarımadası'nı ilhak etti ve bu uluslararası olarak yasadışı olarak kınandı. İlhak, o zamandan beri Rus işgali altında yaşayan Kırım Tatarlarının insan hakları durumunun kötüleşmesine yol açtı. Birçok Kırım Tatarı zulme uğradı, hakları kısıtlandı ve kültürel kurumları kapatıldı."
+                                          },
+                                          {
+                                              "question":  "Kırım Tatarlarının mevcut durumu nedir?",
+                                              "answer":  "Kırım Tatarları 2014'ten beri Rus işgali altında yaşamaktadır ve birçok zorlukla karşı karşıyadır: zulüm, haklarının kısıtlanması, kültürel kurumların kapatılması ve dillerinin ve kültürlerinin bastırılması. Birçok Kırım Tatarı Ukrayna'ya veya yurtdışına kaçtı. Uluslararası toplum ilhakı tanımadı."
+                                          },
+                                          {
+                                              "question":  "Ahmet Özay neden Kırım Tatarları uzmanıdır?",
+                                              "answer":  "Ahmet Özay'ın kendisi de Kırım Tatar kökenlidir ve Kırım Tatar Milli Meclisi üyesidir. WDR, BBC ve Deutsche Welle gibi tanınmış medya kuruluşlarında 40 yılı aşkın gazetecilik deneyimiyle, Almanya'nın önde gelen Kırım Tatarları uzmanlarından biri olarak kendini kanıtlamıştır. Kırım Tatar toplumunun siyasi, sosyal ve kültürel gelişmelerini düzenli olarak analiz etmektedir."
+                                          },
+                                          {
+                                              "question":  "Almanya'da bir Kırım Tatar diasporası var mı?",
+                                              "answer":  "Evet, Almanya'da Kırım'daki soydaşlarının hakları için çalışan aktif bir Kırım Tatar toplumu vardır. Ahmet Özay, Kırım Tatar Milli Meclisi'nin Almanya temsilcisi olarak, bu toplum için önemli bir ses olup Alman kamuoyunu Kırım Tatarlarının durumu hakkında bilgilendirmektedir."
+                                          }
+                                      ]
+                       }
 }

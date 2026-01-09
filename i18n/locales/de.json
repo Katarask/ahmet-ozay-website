@@ -2,12 +2,13 @@
     "nav":  {
                 "home":  "Startseite",
                 "articles":  "Artikel",
+                "krimtataren":  "Krimtataren",
                 "about":  "Über mich",
                 "contact":  "Kontakt"
             },
     "home":  {
                  "eyebrow":  "Journalist | Autor | Krim-Experte",
-                 "intro":  "40 Jahre Erfahrung als Journalist bei WDR, BBC und Deutsche Welle. Experte für deutsch-türkische Beziehungen, Krimtataren und Minderheitenrechte.",
+                 "intro":  "Deutscher Krim-Experte aus Köln mit 40+ Jahren Erfahrung als Journalist bei WDR, BBC und Deutsche Welle. Experte für Krimtataren, Krim-Politik, deutsch-türkische Beziehungen und Minderheitenrechte.",
                  "latestArticles":  "Neueste Artikel",
                  "viewAll":  "Alle Artikel",
                  "noArticles":  "Noch keine Artikel verfügbar."
@@ -65,16 +66,16 @@
                },
     "meta":  {
                  "home":  {
-                              "title":  "Ahmet Özay - Journalist \u0026 Autor | Köln",
-                              "description":  "Ahmet Özay - Deutsch-türkischer Journalist aus Köln mit 40+ Jahren Erfahrung bei WDR, BBC und Deutsche Welle. Experte für Krimtataren, deutsch-türkische Beziehungen und Minderheitenrechte."
+                              "title":  "Ahmet Özay - Deutscher Krim-Experte & Journalist | Köln",
+                              "description":  "Ahmet Özay - Deutscher Krim-Experte und Journalist aus Köln mit 40+ Jahren Erfahrung bei WDR, BBC und Deutsche Welle. Experte für Krimtataren, Krim-Politik, deutsch-türkische Beziehungen und Minderheitenrechte. Mitglied des Kırım Tatar Milli Meclisi."
                           },
                  "articles":  {
                                   "title":  "Artikel | Ahmet Özay - Journalist Köln",
                                   "description":  "Analysen, Reportagen und Hintergrundberichte von Ahmet Özay zu Politik, deutsch-türkischen Beziehungen, Krimtataren und Europa."
                               },
                  "about":  {
-                               "title":  "Über Ahmet Özay | Journalist Köln",
-                               "description":  "Ahmet Özay - Journalist, Autor und Medienexperte aus Köln. 40+ Jahre Erfahrung bei WDR, BBC, Deutsche Welle, TRT und QHA. Mitglied des Kırım Tatar Milli Meclisi."
+                               "title":  "Über Ahmet Özay | Deutscher Krim-Experte & Journalist Köln",
+                               "description":  "Ahmet Özay - Deutscher Krim-Experte, Journalist und Autor aus Köln. 40+ Jahre Erfahrung bei WDR, BBC, Deutsche Welle, TRT und QHA. Experte für Krimtataren, Krim-Politik und deutsch-türkische Beziehungen. Mitglied des Kırım Tatar Milli Meclisi."
                            },
                  "contact":  {
                                  "title":  "Kontakt | Ahmet Özay",
@@ -127,5 +128,64 @@
                      "submitSuccess":  "Vielen Dank! Ihr Kommentar wurde eingereicht und wartet auf Moderation.",
                      "submitError":  "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
                      "moderationNote":  "Hinweis: Kommentare werden moderiert und erscheinen erst nach Genehmigung."
-                 }
+                 },
+    "krimtataren":  {
+                        "title":  "Krimtataren Experte | Ahmet Özay",
+                        "description":  "Ahmet Özay - Deutscher Krimtataren Experte und Mitglied des Kırım Tatar Milli Meclisi. Experte für Krim-Politik, Krim-Analyse und die Geschichte der Krimtataren.",
+                        "intro":  "Ahmet Özay ist einer der führenden deutschen Experten für Krimtataren und Krim-Politik. Als Mitglied des Kırım Tatar Milli Meclisi und langjähriger Journalist mit 40+ Jahren Erfahrung bei WDR, BBC und Deutsche Welle, bietet er tiefgreifende Analysen zur Situation der Krimtataren, der Krim-Annexion und der geopolitischen Entwicklungen in der Region.",
+                        "content":  [
+                                       "Die Krimtataren sind eine turksprachige Minderheit auf der Krim-Halbinsel, die eine komplexe und oft tragische Geschichte durchlebt haben. Von der Deportation 1944 durch Stalin bis zur Annexion der Krim durch Russland 2014 haben die Krimtataren stets um ihre Rechte und ihre Heimat gekämpft.",
+                                       "Ahmet Özay, selbst krimtatarischer Herkunft, hat sich als einer der führenden Experten für Krimtataren in Deutschland etabliert. Seine Arbeit konzentriert sich auf die Analyse der politischen, sozialen und kulturellen Entwicklungen der Krimtataren-Gemeinschaft, sowohl in der Ukraine als auch in der Diaspora.",
+                                       "Als Mitglied des Kırım Tatar Milli Meclisi (Krimtataren-Parlament) und Deutschland-Vertreter setzt sich Ahmet Özay aktiv für die Rechte der Krimtataren ein und informiert die deutsche Öffentlichkeit über die aktuelle Situation auf der Krim."
+                                   ],
+                        "expertiseTitle":  "Expertise & Themenschwerpunkte",
+                        "expertise":  [
+                                         {
+                                             "title":  "Krim-Politik & Geopolitik",
+                                             "description":  "Tiefgreifende Analysen zur Krim-Annexion 2014, der geopolitischen Bedeutung der Krim-Halbinsel und den internationalen Reaktionen auf die russische Besetzung."
+                                         },
+                                         {
+                                             "title":  "Krimtataren-Geschichte & Kultur",
+                                             "description":  "Umfassendes Wissen über die Geschichte der Krimtataren, von der Deportation 1944 bis zur aktuellen Situation, sowie die kulturelle Identität und Traditionen der Gemeinschaft."
+                                         },
+                                         {
+                                             "title":  "Minderheitenrechte & Menschenrechte",
+                                             "description":  "Expertise in den Bereichen Minderheitenrechte, Menschenrechte und der rechtlichen Situation der Krimtataren unter russischer Besatzung."
+                                         },
+                                         {
+                                             "title":  "Diaspora & Integration",
+                                             "description":  "Kenntnisse über die Krimtataren-Diaspora in Deutschland, der Türkei und anderen Ländern sowie Fragen der Integration und kulturellen Identität."
+                                         }
+                                     ],
+                        "relatedArticlesTitle":  "Aktuelle Artikel zu Krimtataren & Krim"
+                    },
+    "krimtatarenFaq":  {
+                           "title":  "Häufig gestellte Fragen zu Krimtataren",
+                           "items":  [
+                                          {
+                                              "question":  "Wer sind die Krimtataren?",
+                                              "answer":  "Die Krimtataren sind eine turksprachige Minderheit auf der Krim-Halbinsel. Sie sind die ursprünglichen Bewohner der Krim und haben eine komplexe Geschichte, die von der Deportation durch Stalin 1944 bis zur aktuellen Situation unter russischer Besatzung reicht. Die Krimtataren sind sunnitische Muslime und haben eine reiche kulturelle Tradition."
+                                          },
+                                          {
+                                              "question":  "Was ist das Kırım Tatar Milli Meclisi?",
+                                              "answer":  "Das Kırım Tatar Milli Meclisi (Krimtataren-Parlament) ist die repräsentative Versammlung der Krimtataren. Es wurde 1991 gegründet und vertritt die Interessen der Krimtataren sowohl auf der Krim als auch in der Diaspora. Ahmet Özay ist Mitglied des Meclisi und fungiert als Deutschland-Vertreter."
+                                          },
+                                          {
+                                              "question":  "Was geschah bei der Krim-Annexion 2014?",
+                                              "answer":  "Im März 2014 annektierte Russland die Krim-Halbinsel, was international als illegal verurteilt wurde. Die Annexion führte zu einer Verschlechterung der Menschenrechtssituation für die Krimtataren, die seitdem unter russischer Besatzung leben. Viele Krimtataren wurden verfolgt, ihre Rechte eingeschränkt und ihre kulturellen Institutionen geschlossen."
+                                          },
+                                          {
+                                              "question":  "Wie ist die aktuelle Situation der Krimtataren?",
+                                              "answer":  "Die Krimtataren leben seit 2014 unter russischer Besatzung und sehen sich zahlreichen Herausforderungen gegenüber: Verfolgung, Einschränkung ihrer Rechte, Schließung kultureller Institutionen und Unterdrückung ihrer Sprache und Kultur. Viele Krimtataren sind in die Ukraine oder ins Ausland geflohen. Die internationale Gemeinschaft hat die Annexion nicht anerkannt."
+                                          },
+                                          {
+                                              "question":  "Warum ist Ahmet Özay ein Experte für Krimtataren?",
+                                              "answer":  "Ahmet Özay ist selbst krimtatarischer Herkunft und Mitglied des Kırım Tatar Milli Meclisi. Mit über 40 Jahren Erfahrung als Journalist bei renommierten Medien wie WDR, BBC und Deutsche Welle hat er sich als einer der führenden deutschen Experten für Krimtataren etabliert. Er analysiert regelmäßig die politischen, sozialen und kulturellen Entwicklungen der Krimtataren-Gemeinschaft."
+                                          },
+                                          {
+                                              "question":  "Gibt es eine Krimtataren-Diaspora in Deutschland?",
+                                              "answer":  "Ja, es gibt eine aktive Krimtataren-Gemeinschaft in Deutschland, die sich für die Rechte ihrer Landsleute auf der Krim einsetzt. Ahmet Özay ist als Deutschland-Vertreter des Kırım Tatar Milli Meclisi eine wichtige Stimme für diese Gemeinschaft und informiert die deutsche Öffentlichkeit über die Situation der Krimtataren."
+                                          }
+                                      ]
+                       }
 }

@@ -38,16 +38,19 @@ export async function generateMetadata({
     : `${baseUrl}/images/ahmet-portrait.png`;
   
   return {
-    title: `${title} | Ahmet Özay`,
+    title: `${title} | Ahmet Özay - Deutscher Krim-Experte`,
     description: excerpt,
     keywords: [
       'Ahmet Özay',
+      'Deutscher Krim Experte',
+      'Krim Experte',
       article.category,
       'Journalist Köln',
       'Politik',
       'Deutschland',
       'Türkei',
       'Europa',
+      ...(article.tags || []),
     ],
     alternates: {
       canonical: articleUrl,
@@ -58,7 +61,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: `${title} | Ahmet Özay`,
+      title: `${title} | Ahmet Özay - Deutscher Krim-Experte`,
       description: excerpt,
       url: articleUrl,
       siteName: 'Ahmet Özay',
@@ -79,7 +82,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${title} | Ahmet Özay`,
+      title: `${title} | Ahmet Özay - Deutscher Krim-Experte`,
       description: excerpt,
       images: [imageUrl],
       creator: '@aoezay',

@@ -26,13 +26,23 @@ export default function Navigation({ locale }: NavigationProps) {
       accentColor: '#024D81'
     },
     {
+      title: t('krimtataren'),
+      links: [
+        { label: 'Krimtataren Experte', href: `/${locale}/krimtataren` },
+        { label: 'Krim-Politik', href: `/${locale}/krimtataren` },
+        { label: 'Krim-Analyse', href: `/${locale}/krimtataren` }
+      ],
+      bgColor: '#121214',
+      accentColor: '#024D81'
+    },
+    {
       title: t('about'),
       links: [
         { label: 'Über mich', href: `/${locale}/about` },
         { label: 'Biografie', href: `/${locale}/about` },
         { label: 'Werdegang', href: `/${locale}/about` }
       ],
-      bgColor: '#121214',
+      bgColor: '#1A1A1D',
       accentColor: '#024D81'
     },
     {
@@ -83,6 +93,13 @@ export default function Navigation({ locale }: NavigationProps) {
               style={{ color: 'var(--color-text-secondary)' }}
             >
               {t('articles')}
+            </Link>
+            <Link
+              href={`/${locale}/krimtataren`}
+              className="text-sm transition-colors hover:text-light-accent-primary dark:hover:text-dark-accent-primary"
+              style={{ color: 'var(--color-text-secondary)' }}
+            >
+              {t('krimtataren')}
             </Link>
             <Link
               href={`/${locale}/about`}

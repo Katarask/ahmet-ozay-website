@@ -17,7 +17,16 @@
                      "subtitle":  "Analysen, Reportagen und Hintergrundberichte aus vier Jahrzehnten Journalismus.",
                      "breadcrumb":  "Artikel",
                      "noArticles":  "Noch keine Artikel verfügbar.",
+                     "noSearchResults":  "Keine Artikel gefunden.",
+                     "searchResults":  "{{count}} Artikel gefunden für \"{{query}}\"",
                      "by":  "Von"
+                 },
+    "search":  {
+                     "placeholder":  "Artikel durchsuchen...",
+                     "ariaLabel":  "Artikel durchsuchen",
+                     "clear":  "Suche zurücksetzen",
+                     "showAll":  "Alle Ergebnisse anzeigen",
+                     "noResults":  "Keine Ergebnisse gefunden"
                  },
     "about":  {
                   "title":  "Über Ahmet Özay",
@@ -101,5 +110,19 @@
                                      "answer":  "Die Website ist in drei Sprachen verfügbar: Deutsch, Englisch und Türkisch. Sie können die Sprache jederzeit über den Sprachumschalter in der Navigation ändern."
                                  }
                              ]
-              }
+              },
+    "comments":  {
+                     "title":  "Kommentare",
+                     "loading":  "Kommentare werden geladen...",
+                     "noComments":  "Noch keine Kommentare. Seien Sie der Erste!",
+                     "author":  "Name",
+                     "email":  "E-Mail",
+                     "comment":  "Kommentar",
+                     "characters":  "Zeichen",
+                     "submit":  "Kommentar absenden",
+                     "submitting":  "Wird gesendet...",
+                     "submitSuccess":  "Vielen Dank! Ihr Kommentar wurde eingereicht und wartet auf Moderation.",
+                     "submitError":  "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+                     "moderationNote":  "Hinweis: Kommentare werden moderiert und erscheinen erst nach Genehmigung."
+                 }
 }

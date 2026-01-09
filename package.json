@@ -24,6 +24,7 @@
     "react-dom": "^18.2.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
+    "resend": "^6.7.0",
     "sanity": "^3.99.0",
     "styled-components": "^6.2.0"
   },

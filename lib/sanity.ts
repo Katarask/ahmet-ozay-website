@@ -46,6 +46,7 @@ export interface Article {
     asset: any;
     alt: string;
   };
+  originalUrl?: string;
 }
 
 // Artikel abrufen (alle)
@@ -62,6 +63,7 @@ export async function getArticles(locale: string = 'de'): Promise<Article[]> {
     readTime,
     featured,
     tags,
+    originalUrl,
     image {
       asset,
       alt
@@ -86,6 +88,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     readTime,
     featured,
     tags,
+    originalUrl,
     image {
       asset,
       alt
@@ -109,6 +112,7 @@ export async function getArticlesByCategory(category: string): Promise<Article[]
     readTime,
     featured,
     tags,
+    originalUrl,
     image {
       asset,
       alt
@@ -132,6 +136,7 @@ export async function getFeaturedArticles(): Promise<Article[]> {
     readTime,
     featured,
     tags,
+    originalUrl,
     image {
       asset,
       alt
@@ -139,5 +144,39 @@ export async function getFeaturedArticles(): Promise<Article[]> {
   }`;
 
   return client.fetch(query);
+}
+
+// Volltextsuche in Artikeln
+export async function searchArticles(searchQuery: string, locale: string = 'de'): Promise<Article[]> {
+  const query = `*[_type == "article" && !(_id in path("drafts.**")) && defined(publishedAt) && (
+    title.de match $query ||
+    title.en match $query ||
+    title.tr match $query ||
+    excerpt.de match $query ||
+    excerpt.en match $query ||
+    excerpt.tr match $query ||
+    pt::text(content.de) match $query ||
+    pt::text(content.en) match $query ||
+    pt::text(content.tr) match $query
+  )] | order(publishedAt desc) {
+    _id,
+    _createdAt,
+    title,
+    slug,
+    excerpt,
+    category,
+    publishedAt,
+    author,
+    readTime,
+    featured,
+    tags,
+    originalUrl,
+    image {
+      asset,
+      alt
+    }
+  }`;
+
+  return client.fetch(query, { query: `*${searchQuery}*` });
 }
 

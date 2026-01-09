@@ -17,7 +17,16 @@
                      "subtitle":  "Kırk yıllık gazeteciliğin analizleri, röportajları ve arka plan hikayeleri.",
                      "breadcrumb":  "Makaleler",
                      "noArticles":  "Henüz makale bulunmuyor.",
+                     "noSearchResults":  "Makale bulunamadı.",
+                     "searchResults":  "\"{{query}}\" için {{count}} makale bulundu",
                      "by":  "Yazan"
+                 },
+    "search":  {
+                     "placeholder":  "Makaleleri ara...",
+                     "ariaLabel":  "Makaleleri ara",
+                     "clear":  "Aramayı temizle",
+                     "showAll":  "Tüm sonuçları göster",
+                     "noResults":  "Sonuç bulunamadı"
                  },
     "about":  {
                   "title":  "Ahmet Özay Hakkında",
@@ -101,5 +110,19 @@
                                      "answer":  "Web sitesi üç dilde mevcuttur: Almanca, İngilizce ve Türkçe. Navigasyondaki dil değiştiriciyi kullanarak istediğiniz zaman dili değiştirebilirsiniz."
                                  }
                              ]
-              }
+              },
+    "comments":  {
+                     "title":  "Yorumlar",
+                     "loading":  "Yorumlar yükleniyor...",
+                     "noComments":  "Henüz yorum yok. İlk yorumu siz yapın!",
+                     "author":  "Ad",
+                     "email":  "E-posta",
+                     "comment":  "Yorum",
+                     "characters":  "karakter",
+                     "submit":  "Yorum Gönder",
+                     "submitting":  "Gönderiliyor...",
+                     "submitSuccess":  "Teşekkürler! Yorumunuz gönderildi ve onay bekliyor.",
+                     "submitError":  "Bir hata oluştu. Lütfen tekrar deneyin.",
+                     "moderationNote":  "Not: Yorumlar moderasyondan geçer ve onaydan sonra görünür."
+                 }
 }

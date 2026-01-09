@@ -17,7 +17,16 @@
                      "subtitle":  "Analyses, reports and background stories from four decades of journalism.",
                      "breadcrumb":  "Articles",
                      "noArticles":  "No articles available yet.",
+                     "noSearchResults":  "No articles found.",
+                     "searchResults":  "{{count}} articles found for \"{{query}}\"",
                      "by":  "By"
+                 },
+    "search":  {
+                     "placeholder":  "Search articles...",
+                     "ariaLabel":  "Search articles",
+                     "clear":  "Clear search",
+                     "showAll":  "Show all results",
+                     "noResults":  "No results found"
                  },
     "about":  {
                   "title":  "About Ahmet Özay",
@@ -101,5 +110,19 @@
                                      "answer":  "The website is available in three languages: German, English, and Turkish. You can change the language at any time using the language switcher in the navigation."
                                  }
                              ]
-              }
+              },
+    "comments":  {
+                     "title":  "Comments",
+                     "loading":  "Loading comments...",
+                     "noComments":  "No comments yet. Be the first!",
+                     "author":  "Name",
+                     "email":  "Email",
+                     "comment":  "Comment",
+                     "characters":  "characters",
+                     "submit":  "Submit Comment",
+                     "submitting":  "Submitting...",
+                     "submitSuccess":  "Thank you! Your comment has been submitted and is awaiting moderation.",
+                     "submitError":  "An error occurred. Please try again.",
+                     "moderationNote":  "Note: Comments are moderated and will appear after approval."
+                 }
 }

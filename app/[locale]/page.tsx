@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getArticles } from '@/lib/sanity';
 import ArticleCard from '@/components/ArticleCard';
+import SearchBar from '@/components/SearchBar';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations({ locale, namespace: 'meta' });
@@ -137,6 +138,19 @@ export default async function HomePage({ params: { locale } }: { params: { local
           >
             {t('viewAll')}
           </Link>
+        </div>
+
+        {/* Suchleiste */}
+        <div className="mb-8">
+          <SearchBar 
+            articles={articles.map(article => ({
+              slug: article.slug,
+              title: article.title,
+              excerpt: article.excerpt,
+              category: article.category,
+            }))}
+            locale={locale}
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">

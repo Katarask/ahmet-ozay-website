@@ -38,12 +38,12 @@ export default function ArticleCard({
         </div>
         
         <Link href={`/${locale}/artikel/${slug}`} className="group">
-          <h3 className="heading_h4 text-xl font-sans font-bold text-light-text-primary dark:text-dark-text-primary mb-3 group-hover:text-light-accent-primary dark:group-hover:text-dark-accent-primary transition-colors">
+          <h3 className="heading_h4 text-xl font-sans font-bold text-light-text-primary dark:text-dark-text-primary mb-3 group-hover:text-light-accent-primary dark:group-hover:text-dark-accent-primary transition-colors border-l-2 border-light-border-accent dark:border-dark-border-accent pl-4">
             {title}
           </h3>
         </Link>
         
-        <p className="text-light-text-secondary dark:text-dark-text-secondary font-serif leading-relaxed border-l-2 border-light-border-accent dark:border-dark-border-accent pl-4 flex-grow">
+        <p className="text-light-text-secondary dark:text-dark-text-secondary font-serif leading-relaxed flex-grow">
           {excerpt}
         </p>
         

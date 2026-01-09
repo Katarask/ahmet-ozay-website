@@ -278,6 +278,15 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'originalUrl',
+      title: 'Original-Link',
+      type: 'url',
+      description: 'URL des ursprünglichen Artikels (falls von externer Quelle)',
+      validation: (Rule) => Rule.uri({
+        scheme: ['http', 'https']
+      }),
+    }),
   ],
   preview: {
     select: {

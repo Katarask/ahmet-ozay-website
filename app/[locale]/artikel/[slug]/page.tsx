@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { getArticleBySlug, getArticles, urlFor } from '@/lib/sanity';
 import PortableTextRenderer from '@/components/PortableTextRenderer';
 import ShareButtons from '@/components/ShareButtons';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import Comments from '@/components/Comments';
 
 import { locales } from '@/i18n/config';
 
@@ -90,6 +92,17 @@ export default async function ArticlePage({
     notFound();
   }
 
+  // Artikel für Suchfunktion holen
+  const allArticles = await getArticles(locale);
+  const searchArticles = allArticles
+    .filter((a) => a.publishedAt && a.readTime)
+    .map((a) => ({
+      slug: a.slug.current,
+      title: a.title[locale as 'de' | 'en' | 'tr'] || a.title.de,
+      excerpt: a.excerpt[locale as 'de' | 'en' | 'tr'] || a.excerpt.de,
+      category: a.category || 'politik',
+    }));
+
   const title = article.title[locale as 'de' | 'en' | 'tr'] || article.title.de;
   const content = article.content[locale as 'de' | 'en' | 'tr'] || article.content.de;
   const formattedDate = new Date(article.publishedAt).toLocaleDateString(locale, {
@@ -142,32 +155,18 @@ export default async function ArticlePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="mx-auto px-4 py-12">
-      {/* Breadcrumbs */}
-      <nav className="max-w-4xl mx-auto mb-8">
-        <ol className="flex items-center gap-2 text-sm text-light-text-muted dark:text-dark-text-muted font-sans">
-          <li>
-            <Link 
-              href={`/${locale}`}
-              className="hover:text-light-accent-primary dark:hover:text-dark-accent-primary transition-colors"
-            >
-              Home
-            </Link>
-          </li>
-          <li>/</li>
-          <li>
-            <Link 
-              href={`/${locale}/artikel`}
-              className="hover:text-light-accent-primary dark:hover:text-dark-accent-primary transition-colors"
-            >
-              {t('breadcrumb')}
-            </Link>
-          </li>
-          <li>/</li>
-          <li className="text-light-text-tertiary dark:text-dark-text-tertiary truncate max-w-xs">
-            {title}
-          </li>
-        </ol>
-      </nav>
+      {/* Breadcrumbs mit Suchfunktion */}
+      <div className="max-w-4xl mx-auto mb-8">
+        <Breadcrumbs 
+          items={[
+            { label: t('breadcrumb'), href: `/${locale}/artikel` },
+            { label: title }
+          ]}
+          locale={locale}
+          articles={searchArticles}
+          showSearch={true}
+        />
+      </div>
 
       {/* Article Header */}
       <article className="max-w-4xl mx-auto">
@@ -206,6 +205,9 @@ export default async function ArticlePage({
           excerpt={article.excerpt[locale as 'de' | 'en' | 'tr'] || article.excerpt.de}
           locale={locale}
         />
+
+        {/* Comments */}
+        <Comments articleSlug={slug} locale={locale} />
 
         {/* Article Footer */}
         <footer className="mt-16 pt-8 border-t border-light-border-primary dark:border-dark-border-primary">

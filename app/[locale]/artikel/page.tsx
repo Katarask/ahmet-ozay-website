@@ -2,6 +2,9 @@
 import { getArticles } from '@/lib/sanity';
 import ArticlesPageClient from './ArticlesPageClient';
 
+// Markiere als dynamisch, da Search-Parameter verwendet werden
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations({ locale, namespace: 'meta' });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';

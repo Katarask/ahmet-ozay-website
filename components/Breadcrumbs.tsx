@@ -27,7 +27,7 @@ export default function Breadcrumbs({ items, locale, articles = [], showSearch =
   const t = useTranslations('breadcrumbs');
 
   return (
-    <div className="flex items-center justify-between gap-4 flex-wrap">
+    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <nav aria-label="Breadcrumb" className="breadcrumbs flex-1 min-w-0">
         <ol className="flex items-center gap-2" itemScope itemType="https://schema.org/BreadcrumbList">
           <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
@@ -62,7 +62,7 @@ export default function Breadcrumbs({ items, locale, articles = [], showSearch =
       </nav>
 
       {showSearch && articles.length > 0 && (
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 w-full md:w-auto">
           <SearchBar articles={articles} locale={locale} />
         </div>
       )}

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { client } from '@/lib/sanity';
+import { client, writeClient } from '@/lib/sanity';
 
 // GET: Kommentare für einen Artikel abrufen
 export async function GET(request: NextRequest) {
@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
       ipAddress,
     };
 
-    const created = await client.create(comment);
+    const created = await writeClient.create(comment);
 
     // Artikel-Details für E-Mail-Benachrichtigung abrufen
     const articleDetailsQuery = `*[_type == "article" && _id == $articleId][0] {

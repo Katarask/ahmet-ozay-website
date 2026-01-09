@@ -147,7 +147,7 @@ export default async function KrimtatarenPage({ params: { locale } }: { params: 
   // Artikel mit Krimtataren-Bezug laden (alle Artikel, da Krimtataren-Thematik in verschiedenen Kategorien vorkommt)
   const allArticles = await getArticles(locale);
   // Filtere Artikel, die Krimtataren-relevante Tags oder Kategorien haben
-  const krimtatarenArticles = allArticles.filter(article => 
+  const filteredArticles = allArticles.filter(article => 
     article.tags?.some(tag => 
       tag.toLowerCase().includes('krim') || 
       tag.toLowerCase().includes('krimtataren') ||
@@ -156,6 +156,23 @@ export default async function KrimtatarenPage({ params: { locale } }: { params: 
     ) || 
     article.category === 'politik'
   );
+  
+  // Transform Sanity articles to match ArticleCard props
+  const krimtatarenArticles = filteredArticles
+    .filter((article) => article.publishedAt && article.readTime)
+    .map((article) => ({
+      title: article.title[locale as 'de' | 'en' | 'tr'] || article.title.de,
+      excerpt: article.excerpt[locale as 'de' | 'en' | 'tr'] || article.excerpt.de,
+      date: new Date(article.publishedAt).toLocaleDateString(locale, {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }),
+      category: article.category || 'politik',
+      readTime: `${article.readTime} Min`,
+      slug: article.slug.current,
+      image: article.image?.asset ? article.image : undefined,
+    }));
 
   return (
     <>
@@ -235,8 +252,8 @@ export default async function KrimtatarenPage({ params: { locale } }: { params: 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {krimtatarenArticles.slice(0, 4).map((article) => (
                   <ArticleCard
-                    key={article._id}
-                    article={article}
+                    key={article.slug}
+                    {...article}
                     locale={locale}
                   />
                 ))}

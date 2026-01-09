@@ -44,7 +44,13 @@ export default function Comments({ articleSlug, locale }: CommentsProps) {
       }
     };
 
+    // Initial laden
     fetchComments();
+
+    // Automatisch alle 30 Sekunden aktualisieren (für neue genehmigte Kommentare)
+    const interval = setInterval(fetchComments, 30000);
+
+    return () => clearInterval(interval);
   }, [articleSlug]);
 
   const handleSubmit = async (e: React.FormEvent) => {

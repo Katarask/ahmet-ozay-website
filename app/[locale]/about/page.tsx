@@ -93,6 +93,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
               alt="Ahmet Özay"
               width={300}
               height={400}
+              sizes="(max-width: 768px) 100vw, 300px"
               className="w-full h-auto object-cover rounded-sm"
               priority
               placeholder="blur"

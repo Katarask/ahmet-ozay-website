@@ -67,6 +67,7 @@ export default function Navigation({ locale }: NavigationProps) {
               src="/images/logo.png"
               width={32}
               height={32}
+              sizes="32px"
               alt="Ahmet Özay"
               className="nav-logo-img"
               priority

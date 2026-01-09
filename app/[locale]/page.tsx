@@ -106,6 +106,7 @@ export default async function HomePage({ params: { locale } }: { params: { local
               alt="Ahmet Özay"
               width={224}
               height={300}
+              sizes="(max-width: 768px) 0px, 224px"
               className="object-cover rounded-sm"
               priority
               placeholder="blur"

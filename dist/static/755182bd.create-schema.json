@@ -1,0 +1,726 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "fields": [
+          {
+            "name": "de",
+            "type": "string",
+            "title": "Deutsch"
+          },
+          {
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          },
+          {
+            "name": "tr",
+            "type": "string",
+            "title": "Türkçe"
+          }
+        ],
+        "name": "title",
+        "type": "object",
+        "title": "Titel"
+      },
+      {
+        "options": {
+          "source": "title.de",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug",
+        "title": "URL Slug"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "fields": [
+          {
+            "rows": 3,
+            "name": "de",
+            "type": "text",
+            "title": "Deutsch"
+          },
+          {
+            "rows": 3,
+            "name": "en",
+            "type": "text",
+            "title": "English"
+          },
+          {
+            "rows": 3,
+            "name": "tr",
+            "type": "text",
+            "title": "Türkçe"
+          }
+        ],
+        "name": "excerpt",
+        "type": "object",
+        "title": "Kurzbeschreibung"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "fields": [
+          {
+            "of": [
+              {
+                "marks": {
+                  "annotations": [
+                    {
+                      "fields": [
+                        {
+                          "validation": [
+                            {
+                              "rules": [
+                                {
+                                  "flag": "uri",
+                                  "constraint": {
+                                    "options": {
+                                      "scheme": [
+                                        "/^http$/",
+                                        "/^https$/"
+                                      ],
+                                      "allowRelative": false,
+                                      "relativeOnly": false,
+                                      "allowCredentials": false
+                                    }
+                                  }
+                                }
+                              ],
+                              "level": "error"
+                            }
+                          ],
+                          "name": "href",
+                          "type": "url",
+                          "title": "URL"
+                        }
+                      ],
+                      "name": "link",
+                      "type": "object"
+                    }
+                  ],
+                  "decorators": [
+                    {
+                      "value": "strong",
+                      "title": "Fett"
+                    },
+                    {
+                      "value": "em",
+                      "title": "Kursiv"
+                    },
+                    {
+                      "value": "underline",
+                      "title": "Unterstrichen"
+                    }
+                  ]
+                },
+                "lists": [
+                  {
+                    "value": "bullet",
+                    "title": "Bulleted list"
+                  },
+                  {
+                    "value": "number",
+                    "title": "Numbered list"
+                  }
+                ],
+                "styles": [
+                  {
+                    "value": "normal",
+                    "title": "Normal"
+                  },
+                  {
+                    "value": "h2",
+                    "title": "H2"
+                  },
+                  {
+                    "value": "h3",
+                    "title": "H3"
+                  },
+                  {
+                    "value": "h4",
+                    "title": "H4"
+                  },
+                  {
+                    "value": "blockquote",
+                    "title": "Zitat"
+                  }
+                ],
+                "of": [],
+                "type": "block"
+              },
+              {
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "type": "string",
+                    "title": "Alt Text"
+                  },
+                  {
+                    "name": "caption",
+                    "type": "string",
+                    "title": "Bildunterschrift"
+                  }
+                ],
+                "type": "image"
+              }
+            ],
+            "name": "de",
+            "type": "array",
+            "title": "Deutsch"
+          },
+          {
+            "of": [
+              {
+                "marks": {
+                  "annotations": [
+                    {
+                      "fields": [
+                        {
+                          "validation": [
+                            {
+                              "rules": [
+                                {
+                                  "flag": "uri",
+                                  "constraint": {
+                                    "options": {
+                                      "scheme": [
+                                        "/^http$/",
+                                        "/^https$/"
+                                      ],
+                                      "allowRelative": false,
+                                      "relativeOnly": false,
+                                      "allowCredentials": false
+                                    }
+                                  }
+                                }
+                              ],
+                              "level": "error"
+                            }
+                          ],
+                          "name": "href",
+                          "type": "url",
+                          "title": "URL"
+                        }
+                      ],
+                      "name": "link",
+                      "type": "object"
+                    }
+                  ],
+                  "decorators": [
+                    {
+                      "value": "strong",
+                      "title": "Bold"
+                    },
+                    {
+                      "value": "em",
+                      "title": "Italic"
+                    },
+                    {
+                      "value": "underline",
+                      "title": "Underline"
+                    }
+                  ]
+                },
+                "lists": [
+                  {
+                    "value": "bullet",
+                    "title": "Bulleted list"
+                  },
+                  {
+                    "value": "number",
+                    "title": "Numbered list"
+                  }
+                ],
+                "styles": [
+                  {
+                    "value": "normal",
+                    "title": "Normal"
+                  },
+                  {
+                    "value": "h2",
+                    "title": "H2"
+                  },
+                  {
+                    "value": "h3",
+                    "title": "H3"
+                  },
+                  {
+                    "value": "h4",
+                    "title": "H4"
+                  },
+                  {
+                    "value": "blockquote",
+                    "title": "Quote"
+                  }
+                ],
+                "of": [],
+                "type": "block"
+              },
+              {
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "type": "string",
+                    "title": "Alt Text"
+                  },
+                  {
+                    "name": "caption",
+                    "type": "string"
+                  }
+                ],
+                "type": "image"
+              }
+            ],
+            "name": "en",
+            "type": "array",
+            "title": "English"
+          },
+          {
+            "of": [
+              {
+                "marks": {
+                  "annotations": [
+                    {
+                      "fields": [
+                        {
+                          "validation": [
+                            {
+                              "rules": [
+                                {
+                                  "flag": "uri",
+                                  "constraint": {
+                                    "options": {
+                                      "scheme": [
+                                        "/^http$/",
+                                        "/^https$/"
+                                      ],
+                                      "allowRelative": false,
+                                      "relativeOnly": false,
+                                      "allowCredentials": false
+                                    }
+                                  }
+                                }
+                              ],
+                              "level": "error"
+                            }
+                          ],
+                          "name": "href",
+                          "type": "url",
+                          "title": "URL"
+                        }
+                      ],
+                      "name": "link",
+                      "type": "object"
+                    }
+                  ],
+                  "decorators": [
+                    {
+                      "value": "strong",
+                      "title": "Kalın"
+                    },
+                    {
+                      "value": "em",
+                      "title": "İtalik"
+                    },
+                    {
+                      "value": "underline",
+                      "title": "Altı Çizili"
+                    }
+                  ]
+                },
+                "lists": [
+                  {
+                    "value": "bullet",
+                    "title": "Bulleted list"
+                  },
+                  {
+                    "value": "number",
+                    "title": "Numbered list"
+                  }
+                ],
+                "styles": [
+                  {
+                    "value": "normal",
+                    "title": "Normal"
+                  },
+                  {
+                    "value": "h2",
+                    "title": "H2"
+                  },
+                  {
+                    "value": "h3",
+                    "title": "H3"
+                  },
+                  {
+                    "value": "h4",
+                    "title": "H4"
+                  },
+                  {
+                    "value": "blockquote",
+                    "title": "Alıntı"
+                  }
+                ],
+                "of": [],
+                "type": "block"
+              },
+              {
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "type": "string",
+                    "title": "Alt Text"
+                  },
+                  {
+                    "name": "caption",
+                    "type": "string",
+                    "title": "Resim Açıklaması"
+                  }
+                ],
+                "type": "image"
+              }
+            ],
+            "name": "tr",
+            "type": "array",
+            "title": "Türkçe"
+          }
+        ],
+        "name": "content",
+        "type": "object",
+        "title": "Inhalt"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Politik",
+              "value": "politik"
+            },
+            {
+              "title": "Gesellschaft",
+              "value": "gesellschaft"
+            },
+            {
+              "title": "Medien",
+              "value": "medien"
+            },
+            {
+              "title": "Geschichte",
+              "value": "geschichte"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "politik",
+                  "gesellschaft",
+                  "medien",
+                  "geschichte"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "category",
+        "type": "string",
+        "title": "Kategorie"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "publishedAt",
+        "type": "datetime",
+        "title": "Veröffentlichungsdatum"
+      },
+      {
+        "initialValue": "Ahmet Özay",
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "author",
+        "type": "string",
+        "title": "Autor"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 1
+              },
+              {
+                "flag": "max",
+                "constraint": 60
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "readTime",
+        "type": "number",
+        "title": "Lesezeit (Minuten)"
+      },
+      {
+        "initialValue": false,
+        "description": "Soll dieser Artikel auf der Startseite hervorgehoben werden?",
+        "name": "featured",
+        "type": "boolean",
+        "title": "Hervorgehoben"
+      },
+      {
+        "options": {
+          "layout": "tags"
+        },
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "tags",
+        "type": "array"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "fields": [
+          {
+            "name": "alt",
+            "type": "string",
+            "title": "Alt Text"
+          }
+        ],
+        "name": "image",
+        "type": "image",
+        "title": "Titelbild"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "URL des ursprünglichen Artikels (falls von externer Quelle)",
+        "name": "originalUrl",
+        "type": "url",
+        "title": "Original-Link"
+      }
+    ],
+    "name": "article",
+    "type": "document",
+    "title": "Artikel"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "to": [
+          {
+            "type": "article"
+          }
+        ],
+        "name": "article",
+        "type": "reference",
+        "title": "Artikel"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 2
+              },
+              {
+                "flag": "max",
+                "constraint": 100
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "author",
+        "type": "string",
+        "title": "Autor"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "email",
+        "type": "string",
+        "title": "E-Mail"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 10
+              },
+              {
+                "flag": "max",
+                "constraint": 2000
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "content",
+        "type": "text",
+        "title": "Kommentar"
+      },
+      {
+        "initialValue": false,
+        "description": "Kommentar muss genehmigt werden, bevor er angezeigt wird.",
+        "name": "approved",
+        "type": "boolean",
+        "title": "Genehmigt"
+      },
+      {
+        "name": "publishedAt",
+        "type": "datetime",
+        "title": "Veröffentlicht am"
+      },
+      {
+        "description": "Wird für Spam-Schutz verwendet",
+        "readOnly": true,
+        "name": "ipAddress",
+        "type": "string",
+        "title": "IP-Adresse"
+      }
+    ],
+    "name": "comment",
+    "type": "document",
+    "title": "Kommentar"
+  }
+]

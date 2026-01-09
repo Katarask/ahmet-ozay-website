@@ -79,6 +79,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
   const t = await getTranslations({ locale, namespace: 'about' });
   const tFaq = await getTranslations({ locale, namespace: 'faq' });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
+  const imageUrl = `${baseUrl}/images/ahmet-portrait.png`;
   
   // FAQ-Daten aus Übersetzungen laden
   const faqItems = tFaq.raw('items') as Array<{ question: string; answer: string }>;

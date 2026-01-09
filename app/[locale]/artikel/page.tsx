@@ -42,19 +42,21 @@ export default async function ArticlesPage({ params: { locale } }: { params: { l
   const sanityArticles = await getArticles(locale);
   
   // Transform Sanity articles to match ArticleCard props
-  const articles = sanityArticles.map((article) => ({
-    title: article.title[locale as 'de' | 'en' | 'tr'] || article.title.de,
-    excerpt: article.excerpt[locale as 'de' | 'en' | 'tr'] || article.excerpt.de,
-    date: new Date(article.publishedAt).toLocaleDateString(locale, {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    }),
-    category: article.category,
-    readTime: `${article.readTime} min`,
-    slug: article.slug.current,
-    image: article.image?.asset ? article.image : undefined,
-  }));
+  const articles = sanityArticles
+    .filter((article) => article.publishedAt && article.readTime) // Nur Artikel mit publishedAt und readTime
+    .map((article) => ({
+      title: article.title[locale as 'de' | 'en' | 'tr'] || article.title.de,
+      excerpt: article.excerpt[locale as 'de' | 'en' | 'tr'] || article.excerpt.de,
+      date: new Date(article.publishedAt!).toLocaleDateString(locale, {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }),
+      category: article.category || 'politik',
+      readTime: `${article.readTime} Min`,
+      slug: article.slug.current,
+      image: article.image?.asset ? article.image : undefined,
+    }));
   
   // Extract unique categories
   const categories = Array.from(new Set(articles.map(article => article.category)));

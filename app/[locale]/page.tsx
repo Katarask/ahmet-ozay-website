@@ -55,19 +55,21 @@ export default async function HomePage({ params: { locale } }: { params: { local
   const t = await getTranslations({ locale, namespace: 'home' });
 
   // Transform Sanity articles to match ArticleCard props
-  const articles = sanityArticles.map((article) => ({
-    title: article.title[locale as 'de' | 'en' | 'tr'] || article.title.de,
-    excerpt: article.excerpt[locale as 'de' | 'en' | 'tr'] || article.excerpt.de,
-    date: new Date(article.publishedAt).toLocaleDateString(locale, {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    }),
-    category: article.category,
-    readTime: `${article.readTime} min`,
-    slug: article.slug.current,
-    image: article.image?.asset ? article.image : undefined,
-  }));
+  const articles = sanityArticles
+    .filter((article) => article.publishedAt && article.readTime) // Nur Artikel mit publishedAt und readTime
+    .map((article) => ({
+      title: article.title[locale as 'de' | 'en' | 'tr'] || article.title.de,
+      excerpt: article.excerpt[locale as 'de' | 'en' | 'tr'] || article.excerpt.de,
+      date: new Date(article.publishedAt!).toLocaleDateString(locale, {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }),
+      category: article.category || 'politik',
+      readTime: `${article.readTime} Min`,
+      slug: article.slug.current,
+      image: article.image?.asset ? article.image : undefined,
+    }));
 
   // Strukturierte Daten (JSON-LD Schema.org) - Person Schema
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';

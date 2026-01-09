@@ -50,7 +50,7 @@ export interface Article {
 
 // Artikel abrufen (alle)
 export async function getArticles(locale: string = 'de'): Promise<Article[]> {
-  const query = `*[_type == "article"] | order(publishedAt desc) {
+  const query = `*[_type == "article" && !(_id in path("drafts.**")) && defined(publishedAt)] | order(publishedAt desc) {
     _id,
     _createdAt,
     title,
@@ -73,7 +73,7 @@ export async function getArticles(locale: string = 'de'): Promise<Article[]> {
 
 // Einzelnen Artikel abrufen
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
-  const query = `*[_type == "article" && slug.current == $slug][0] {
+  const query = `*[_type == "article" && slug.current == $slug && !(_id in path("drafts.**")) && defined(publishedAt)][0] {
     _id,
     _createdAt,
     title,
@@ -97,7 +97,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
 
 // Artikel nach Kategorie filtern
 export async function getArticlesByCategory(category: string): Promise<Article[]> {
-  const query = `*[_type == "article" && category == $category] | order(publishedAt desc) {
+  const query = `*[_type == "article" && category == $category && !(_id in path("drafts.**")) && defined(publishedAt)] | order(publishedAt desc) {
     _id,
     _createdAt,
     title,
@@ -120,7 +120,7 @@ export async function getArticlesByCategory(category: string): Promise<Article[]
 
 // Hervorgehobene Artikel (für Startseite)
 export async function getFeaturedArticles(): Promise<Article[]> {
-  const query = `*[_type == "article" && featured == true] | order(publishedAt desc) [0...6] {
+  const query = `*[_type == "article" && featured == true && !(_id in path("drafts.**")) && defined(publishedAt)] | order(publishedAt desc) [0...6] {
     _id,
     _createdAt,
     title,

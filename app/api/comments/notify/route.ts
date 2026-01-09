@@ -94,8 +94,12 @@ Sanity Studio: ${studioUrl}
     `;
 
     // E-Mail senden
+    // Falls keine Domain verifiziert: Verwende Resend Test-Domain (onboarding@resend.dev)
+    // Oder: Eigene Domain in Resend verifizieren und dann z.B. noreply@ahmetoezay.de verwenden
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+    
     const { data, error } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || 'Ahmet Özay Website <noreply@ahmetoezay.de>',
+      from: fromEmail,
       to: authorEmail,
       subject: `Neuer Kommentar: ${articleTitle}`,
       html: emailHtml,

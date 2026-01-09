@@ -40,6 +40,15 @@ export async function generateMetadata({
   return {
     title: `${title} | Ahmet Özay`,
     description: excerpt,
+    keywords: [
+      'Ahmet Özay',
+      article.category,
+      'Journalist Köln',
+      'Politik',
+      'Deutschland',
+      'Türkei',
+      'Europa',
+    ],
     alternates: {
       canonical: articleUrl,
       languages: {
@@ -66,6 +75,7 @@ export async function generateMetadata({
       publishedTime: article.publishedAt,
       authors: [article.author],
       section: article.category,
+      tags: article.tags || [],
     },
     twitter: {
       card: 'summary_large_image',
@@ -73,6 +83,7 @@ export async function generateMetadata({
       description: excerpt,
       images: [imageUrl],
       creator: '@aoezay',
+      site: '@aoezay',
     },
   };
 }
@@ -148,11 +159,35 @@ export default async function ArticlePage({
     inLanguage: locale,
   };
 
+  // BreadcrumbList Schema
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: t('breadcrumb'),
+        item: `${baseUrl}/${locale}/artikel`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: title,
+        item: articleUrl,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="mx-auto px-4 py-12">
       {/* Breadcrumbs mit Suchfunktion */}

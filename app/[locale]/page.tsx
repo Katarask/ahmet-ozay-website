@@ -14,6 +14,19 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   return {
     title: t('home.title'),
     description: t('home.description'),
+    keywords: [
+      'Ahmet Özay',
+      'Journalist Köln',
+      'Deutsch-türkischer Journalist',
+      'Krimtataren Experte',
+      'WDR Journalist',
+      'BBC Journalist',
+      'Deutsche Welle',
+      'Kırım Tatar Milli Meclisi',
+      'Medienexperte',
+      'Politik Journalist',
+      'Europa Journalist',
+    ],
     alternates: {
       canonical: url,
       languages: {
@@ -36,7 +49,12 @@ export async function generateMetadata({ params: { locale } }: { params: { local
         },
       ],
       locale: locale,
-      type: 'website',
+      type: 'profile',
+      profile: {
+        firstName: 'Ahmet',
+        lastName: 'Özay',
+        username: 'aoezay',
+      },
     },
     twitter: {
       card: 'summary_large_image',
@@ -44,6 +62,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       description: t('home.description'),
       images: [imageUrl],
       creator: '@aoezay',
+      site: '@aoezay',
     },
   };
 }
@@ -78,16 +97,95 @@ export default async function HomePage({ params: { locale } }: { params: { local
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Ahmet Özay',
-    jobTitle: 'Journalist & Autor',
+    alternateName: ['Ahmet Özay', 'Ahmet Ozay'],
+    jobTitle: ['Journalist', 'Autor', 'Medienexperte', 'Verleger'],
     description: t('intro'),
     url: `${baseUrl}/${locale}`,
     image: `${baseUrl}/images/ahmet-portrait.png`,
+    birthDate: '1961-11-01',
+    birthPlace: {
+      '@type': 'Place',
+      name: 'Istanbul, Türkei',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Köln',
+      addressCountry: 'DE',
+    },
+    alumniOf: [
+      {
+        '@type': 'EducationalOrganization',
+        name: 'Istanbul Üniversitesi',
+        description: 'Magister Soziologie & Anthropologie (1978-1984)',
+      },
+      {
+        '@type': 'EducationalOrganization',
+        name: 'Universität zu Köln',
+        description: 'PhD Ethnologie (1987)',
+      },
+    ],
+    worksFor: [
+      {
+        '@type': 'Organization',
+        name: 'Yeni Safak',
+        jobTitle: 'Analyst-Writer',
+      },
+      {
+        '@type': 'Organization',
+        name: 'KitapAvrupa GmbH',
+        jobTitle: 'Geschäftsführer',
+      },
+    ],
+    memberOf: {
+      '@type': 'Organization',
+      name: 'Kırım Tatar Milli Meclisi',
+      jobTitle: 'Mitglied & Almanya Temsilcisi',
+    },
     sameAs: [
       'https://x.com/aoezay',
-      'https://www.linkedin.com/in/ahmet-özay-34b97a200/',
+      'https://www.instagram.com/ahmet_oezay/',
+      'https://www.linkedin.com/pub/dir/Ahmet/Ozay',
     ],
-    knowsAbout: ['Journalismus', 'Deutsch-türkische Beziehungen', 'Krimtataren', 'Minderheitenrechte'],
+    knowsAbout: [
+      'Journalismus',
+      'Deutsch-türkische Beziehungen',
+      'Krimtataren',
+      'Krim Tatar Milli Meclisi',
+      'Minderheitenrechte',
+      'Migration',
+      'Integration',
+      'Pressefreiheit',
+      'Ukraine',
+      'Russland',
+      'Europa',
+    ],
     inLanguage: locale,
+    nationality: {
+      '@type': 'Country',
+      name: 'Deutschland',
+    },
+  };
+
+  // WebSite Schema mit SearchAction
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Ahmet Özay',
+    url: baseUrl,
+    description: t('intro'),
+    inLanguage: [locale, 'de', 'en', 'tr'],
+    publisher: {
+      '@type': 'Person',
+      name: 'Ahmet Özay',
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${baseUrl}/${locale}/artikel?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   };
 
   return (
@@ -95,6 +193,10 @@ export default async function HomePage({ params: { locale } }: { params: { local
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <div className="mx-auto px-4 py-12">
       {/* Hero Section */}

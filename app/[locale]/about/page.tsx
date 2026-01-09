@@ -12,6 +12,19 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   return {
     title: t('about.title'),
     description: t('about.description'),
+    keywords: [
+      'Ahmet Özay',
+      'Journalist Köln',
+      'Deutsch-türkischer Journalist',
+      'Krimtataren',
+      'Kırım Tatar Milli Meclisi',
+      'WDR',
+      'BBC',
+      'Deutsche Welle',
+      'TRT',
+      'QHA',
+      'Medienexperte',
+    ],
     alternates: {
       canonical: url,
       languages: {
@@ -35,6 +48,11 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       ],
       locale: locale,
       type: 'profile',
+      profile: {
+        firstName: 'Ahmet',
+        lastName: 'Özay',
+        username: 'aoezay',
+      },
     },
     twitter: {
       card: 'summary_large_image',
@@ -42,6 +60,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       description: t('about.description'),
       images: [imageUrl],
       creator: '@aoezay',
+      site: '@aoezay',
     },
   };
 }
@@ -71,11 +90,113 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
     })),
   };
 
+  // Erweiterte Person Schema für About-Seite
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Ahmet Özay',
+    alternateName: ['Ahmet Özay', 'Ahmet Ozay'],
+    jobTitle: ['Journalist', 'Autor', 'Medienexperte', 'Verleger'],
+    description: t('intro'),
+    url: `${baseUrl}/${locale}/about`,
+    image: imageUrl,
+    birthDate: '1961-11-01',
+    birthPlace: {
+      '@type': 'Place',
+      name: 'Istanbul, Türkei',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Köln',
+      addressCountry: 'DE',
+    },
+    alumniOf: [
+      {
+        '@type': 'EducationalOrganization',
+        name: 'Istanbul Üniversitesi',
+        description: 'Magister Soziologie & Anthropologie (1978-1984)',
+      },
+      {
+        '@type': 'EducationalOrganization',
+        name: 'Universität zu Köln',
+        description: 'PhD Ethnologie (1987)',
+      },
+    ],
+    worksFor: [
+      {
+        '@type': 'Organization',
+        name: 'Yeni Safak',
+        jobTitle: 'Analyst-Writer',
+      },
+      {
+        '@type': 'Organization',
+        name: 'KitapAvrupa GmbH',
+        jobTitle: 'Geschäftsführer',
+      },
+    ],
+    memberOf: {
+      '@type': 'Organization',
+      name: 'Kırım Tatar Milli Meclisi',
+      jobTitle: 'Mitglied & Almanya Temsilcisi',
+    },
+    sameAs: [
+      'https://x.com/aoezay',
+      'https://www.instagram.com/ahmet_oezay/',
+      'https://www.linkedin.com/pub/dir/Ahmet/Ozay',
+    ],
+    knowsAbout: [
+      'Journalismus',
+      'Deutsch-türkische Beziehungen',
+      'Krimtataren',
+      'Krim Tatar Milli Meclisi',
+      'Minderheitenrechte',
+      'Migration',
+      'Integration',
+      'Pressefreiheit',
+      'Ukraine',
+      'Russland',
+      'Europa',
+    ],
+    inLanguage: locale,
+    nationality: {
+      '@type': 'Country',
+      name: 'Deutschland',
+    },
+  };
+
+  // BreadcrumbList Schema
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Startseite',
+        item: `${baseUrl}/${locale}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: t('breadcrumb'),
+        item: url,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     <div className="max-w-4xl mx-auto px-4 py-12">
       <Breadcrumbs 

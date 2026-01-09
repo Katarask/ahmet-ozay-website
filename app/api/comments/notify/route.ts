@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { client } from '@/lib/sanity';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // E-Mail-Benachrichtigung an Autor senden, wenn neuer Kommentar eingereicht wird
 export async function POST(request: NextRequest) {
   try {
@@ -92,6 +90,17 @@ Der Kommentar wartet auf Ihre Moderation. Sie können ihn in Sanity Studio geneh
 Artikel ansehen: ${articleUrl}
 Sanity Studio: ${studioUrl}
     `;
+
+    // Resend nur initialisieren, wenn API Key vorhanden
+    if (!process.env.RESEND_API_KEY) {
+      console.warn('RESEND_API_KEY nicht gesetzt - E-Mail-Benachrichtigung wird nicht gesendet');
+      return NextResponse.json(
+        { success: false, message: 'E-Mail-Konfiguration fehlt' },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     // E-Mail senden
     // Falls keine Domain verifiziert: Verwende Resend Test-Domain (onboarding@resend.dev)

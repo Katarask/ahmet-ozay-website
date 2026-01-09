@@ -148,16 +148,20 @@ export async function getFeaturedArticles(): Promise<Article[]> {
 
 // Volltextsuche in Artikeln
 export async function searchArticles(searchQuery: string, locale: string = 'de'): Promise<Article[]> {
+  // Escape special characters for GROQ
+  const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const searchPattern = `*${escapedQuery}*`;
+  
   const query = `*[_type == "article" && !(_id in path("drafts.**")) && defined(publishedAt) && (
-    title.de match $query ||
-    title.en match $query ||
-    title.tr match $query ||
-    excerpt.de match $query ||
-    excerpt.en match $query ||
-    excerpt.tr match $query ||
-    pt::text(content.de) match $query ||
-    pt::text(content.en) match $query ||
-    pt::text(content.tr) match $query
+    title.de match $searchPattern ||
+    title.en match $searchPattern ||
+    title.tr match $searchPattern ||
+    excerpt.de match $searchPattern ||
+    excerpt.en match $searchPattern ||
+    excerpt.tr match $searchPattern ||
+    pt::text(content.de) match $searchPattern ||
+    pt::text(content.en) match $searchPattern ||
+    pt::text(content.tr) match $searchPattern
   )] | order(publishedAt desc) {
     _id,
     _createdAt,
@@ -177,6 +181,6 @@ export async function searchArticles(searchQuery: string, locale: string = 'de')
     }
   }`;
 
-  return client.fetch(query, { query: `*${searchQuery}*` });
+  return client.fetch(query, { searchPattern });
 }
 

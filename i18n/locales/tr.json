@@ -80,7 +80,11 @@
                  "contact":  {
                                  "title":  "İletişim | Ahmet Özay",
                                  "description":  "Ahmet Özay ile iletişime geçin - Köln\u0027lü gazeteci ve medya uzmanı."
-                             }
+                             },
+                 "krimtataren":  {
+                                   "title":  "Kırım Tatarları Uzmanı | Ahmet Özay",
+                                   "description":  "Ahmet Özay - Alman Kırım Tatarları uzmanı ve Kırım Tatar Milli Meclisi üyesi. Kırım siyaseti, Kırım analizi ve Kırım Tatarları tarihi uzmanı."
+                               }
              },
     "breadcrumbs":  {
                         "home":  "Ana Sayfa",

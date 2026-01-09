@@ -80,7 +80,11 @@
                  "contact":  {
                                  "title":  "Contact | Ahmet Özay",
                                  "description":  "Get in touch with Ahmet Özay - journalist and media expert from Cologne."
-                             }
+                             },
+                 "krimtataren":  {
+                                   "title":  "Crimean Tatars Expert | Ahmet Özay",
+                                   "description":  "Ahmet Özay - German Crimean Tatars expert and member of the Crimean Tatar People's Mejlis. Expert on Crimea politics, Crimea analysis and the history of Crimean Tatars."
+                               }
              },
     "breadcrumbs":  {
                         "home":  "Home",

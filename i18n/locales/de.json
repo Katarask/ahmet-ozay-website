@@ -80,7 +80,11 @@
                  "contact":  {
                                  "title":  "Kontakt | Ahmet Özay",
                                  "description":  "Nehmen Sie Kontakt mit Ahmet Özay auf - Journalist und Medienexperte aus Köln."
-                             }
+                             },
+                 "krimtataren":  {
+                                   "title":  "Krimtataren Experte | Ahmet Özay",
+                                   "description":  "Ahmet Özay - Deutscher Krimtataren Experte und Mitglied des Kırım Tatar Milli Meclisi. Experte für Krim-Politik, Krim-Analyse und die Geschichte der Krimtataren."
+                               }
              },
     "breadcrumbs":  {
                         "home":  "Startseite",

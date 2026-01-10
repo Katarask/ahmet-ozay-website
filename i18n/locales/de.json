@@ -110,6 +110,10 @@
                  "impressum":  {
                                  "title":  "Impressum | Ahmet Özay",
                                  "description":  "Impressum und rechtliche Informationen zu ahmetoezay.de"
+                             },
+                 "notFound":  {
+                                 "title":  "404 - Seite nicht gefunden | Ahmet Özay",
+                                 "description":  "Die angeforderte Seite konnte nicht gefunden werden."
                              }
              },
     "breadcrumbs":  {
@@ -201,6 +205,13 @@
                                      ],
                         "relatedArticlesTitle":  "Aktuelle Artikel zu Krimtataren & Krim"
                     },
+    "notFound":  {
+                     "title":  "404 - Seite nicht gefunden",
+                     "description":  "Die angeforderte Seite konnte nicht gefunden werden.",
+                     "message":  "Die Seite, die Sie suchen, existiert nicht oder wurde verschoben.",
+                     "backHome":  "Zur Startseite",
+                     "backArticles":  "Zu den Artikeln"
+                 },
     "krimtatarenFaq":  {
                            "title":  "Häufig gestellte Fragen zu Krimtataren",
                            "items":  [

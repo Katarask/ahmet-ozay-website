@@ -12,7 +12,8 @@
     "sanity:deploy": "sanity deploy",
     "generate-indexnow-key": "node scripts/generate-indexnow-key.js",
     "test-webhook": "node scripts/test-webhook.js",
-    "test-google-indexing": "node scripts/test-google-indexing.js"
+    "test-google-indexing": "node scripts/test-google-indexing.js",
+    "test-pagespeed": "node scripts/test-pagespeed.js"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.2",

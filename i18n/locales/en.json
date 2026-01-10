@@ -110,6 +110,10 @@
                  "impressum":  {
                                  "title":  "Imprint | Ahmet Özay",
                                  "description":  "Imprint and legal information for ahmetoezay.de"
+                             },
+                 "notFound":  {
+                                 "title":  "404 - Page Not Found | Ahmet Özay",
+                                 "description":  "The requested page could not be found."
                              }
              },
     "breadcrumbs":  {
@@ -201,6 +205,13 @@
                                      ],
                         "relatedArticlesTitle":  "Recent Articles on Crimean Tatars & Crimea"
                     },
+    "notFound":  {
+                     "title":  "404 - Page Not Found",
+                     "description":  "The requested page could not be found.",
+                     "message":  "The page you are looking for does not exist or has been moved.",
+                     "backHome":  "Back to Home",
+                     "backArticles":  "View Articles"
+                 },
     "krimtatarenFaq":  {
                            "title":  "Frequently Asked Questions about Crimean Tatars",
                            "items":  [

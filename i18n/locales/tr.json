@@ -110,6 +110,10 @@
                  "impressum":  {
                                  "title":  "Künye | Ahmet Özay",
                                  "description":  "ahmetoezay.de için künye ve yasal bilgiler"
+                             },
+                 "notFound":  {
+                                 "title":  "404 - Sayfa Bulunamadı | Ahmet Özay",
+                                 "description":  "İstenen sayfa bulunamadı."
                              }
              },
     "breadcrumbs":  {
@@ -201,6 +205,13 @@
                                      ],
                         "relatedArticlesTitle":  "Kırım Tatarları & Kırım Hakkında Son Makaleler"
                     },
+    "notFound":  {
+                     "title":  "404 - Sayfa Bulunamadı",
+                     "description":  "İstenen sayfa bulunamadı.",
+                     "message":  "Aradığınız sayfa mevcut değil veya taşınmış.",
+                     "backHome":  "Ana Sayfaya Dön",
+                     "backArticles":  "Makalelere Git"
+                 },
     "krimtatarenFaq":  {
                            "title":  "Kırım Tatarları Hakkında Sık Sorulan Sorular",
                            "items":  [

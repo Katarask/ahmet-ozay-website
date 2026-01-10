@@ -1,5 +1,5 @@
 ﻿import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { locales } from '@/i18n/config';
+import { locales, defaultLocale } from '@/i18n/config';
 import { resolveParams } from '@/lib/params';
 import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -9,8 +9,8 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
-  const { locale } = await resolveParams(params);
+export async function generateMetadata({ params }: { params?: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params, { locale: defaultLocale });
   const t = await getTranslations({ locale, namespace: 'meta' });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
   const url = `${baseUrl}/${locale}/about`;
@@ -60,8 +60,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function AboutPage({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
-  const { locale } = await resolveParams(params);
+export default async function AboutPage({ params }: { params?: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params, { locale: defaultLocale });
   // Enable static rendering
   setRequestLocale(locale);
   

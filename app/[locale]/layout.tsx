@@ -2,7 +2,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { locales } from '@/i18n/config';
+import { locales, defaultLocale } from '@/i18n/config';
 import { resolveParams } from '@/lib/params';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Navigation from '@/components/Navigation';
@@ -34,9 +34,9 @@ export default async function LocaleLayout({
   params
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }> | { locale: string };
+  params?: Promise<{ locale: string }> | { locale: string };
 }) {
-  const { locale } = await resolveParams(params);
+  const { locale } = await resolveParams(params, { locale: defaultLocale });
   if (!locales.includes(locale as any)) {
     notFound();
   }

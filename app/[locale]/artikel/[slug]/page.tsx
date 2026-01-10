@@ -10,7 +10,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import Comments from '@/components/Comments';
 import ArticleCard from '@/components/ArticleCard';
 
-import { locales } from '@/i18n/config';
+import { locales, defaultLocale } from '@/i18n/config';
 
 export async function generateStaticParams() {
   const articles = await getArticles();
@@ -26,9 +26,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({ 
   params 
 }: { 
-  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string } 
+  params?: Promise<{ locale: string; slug: string }> | { locale: string; slug: string } 
 }) {
-  const { locale, slug } = await resolveParams(params);
+  // Für Artikel-Seiten können wir keinen sinnvollen Fallback für slug verwenden
+  // Wenn params undefined ist, sollte generateStaticParams die richtigen Werte liefern
+  // Falls nicht, verwenden wir defaultLocale und einen leeren slug (wird später zu notFound führen)
+  const { locale, slug } = await resolveParams(params, { locale: defaultLocale, slug: '' });
   const article = await getArticleBySlug(slug);
   
   if (!article) return { title: 'Artikel nicht gefunden' };
@@ -87,9 +90,12 @@ export async function generateMetadata({
 export default async function ArticlePage({ 
   params 
 }: { 
-  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string } 
+  params?: Promise<{ locale: string; slug: string }> | { locale: string; slug: string } 
 }) {
-  const { locale, slug } = await resolveParams(params);
+  // Für Artikel-Seiten können wir keinen sinnvollen Fallback für slug verwenden
+  // Wenn params undefined ist, sollte generateStaticParams die richtigen Werte liefern
+  // Falls nicht, verwenden wir defaultLocale und einen leeren slug (wird später zu notFound führen)
+  const { locale, slug } = await resolveParams(params, { locale: defaultLocale, slug: '' });
   // Enable static rendering
   setRequestLocale(locale);
   

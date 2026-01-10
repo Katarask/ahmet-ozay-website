@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { google } from 'googleapis';
 
 /**
  * Google Indexing API Route für automatische Indexierung
@@ -40,26 +41,78 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Google Indexing API erfordert googleapis Package
-    // Installiere: npm install googleapis
-    // Für jetzt geben wir eine Anleitung zurück
-    
+    // Decode Base64 Service Account Key
+    let serviceAccount;
+    try {
+      serviceAccount = JSON.parse(
+        Buffer.from(serviceAccountKey, 'base64').toString('utf-8')
+      );
+    } catch (error) {
+      return NextResponse.json(
+        { 
+          error: 'Invalid GOOGLE_SERVICE_ACCOUNT_KEY',
+          message: 'Key must be a valid Base64-encoded JSON string'
+        },
+        { status: 400 }
+      );
+    }
+
+    // Authenticate with Google
+    const jwtClient = new google.auth.JWT(
+      serviceAccount.client_email,
+      undefined,
+      serviceAccount.private_key,
+      ['https://www.googleapis.com/auth/indexing'],
+      undefined
+    );
+
+    // Get access token
+    await jwtClient.authorize();
+
+    // Create indexing client
+    const indexing = google.indexing({
+      version: 'v3',
+      auth: jwtClient,
+    });
+
+    // Submit URLs
+    const results = [];
+    for (const url of urls) {
+      try {
+        const response = await indexing.urlNotifications.publish({
+          requestBody: {
+            url: url,
+            type: action,
+          },
+        });
+        results.push({
+          url,
+          status: 'success',
+          response: response.data,
+        });
+      } catch (error: any) {
+        results.push({
+          url,
+          status: 'error',
+          error: error.message || 'Unknown error',
+          details: error.response?.data || undefined,
+        });
+      }
+    }
+
     return NextResponse.json({
-      success: false,
-      message: 'Google Indexing API requires googleapis package',
-      instructions: [
-        '1. Install: npm install googleapis',
-        '2. Set GOOGLE_SERVICE_ACCOUNT_KEY in .env.local',
-        '3. Enable Indexing API in Google Cloud Console',
-        '4. Create Service Account and download JSON key',
-        '5. Base64 encode the JSON key and set as GOOGLE_SERVICE_ACCOUNT_KEY',
-      ],
-      note: 'This endpoint will be fully implemented once googleapis is installed',
+      success: true,
+      urlsSubmitted: urls.length,
+      action,
+      results,
     });
   } catch (error) {
     console.error('Google Indexing API error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { 
+        error: 'Internal server error', 
+        details: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     );
   }

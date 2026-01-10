@@ -1,6 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&display=swap');
-
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -93,7 +91,7 @@ html {
 }
 
 body {
-  font-family: 'Alegreya', Georgia, serif;
+  font-family: var(--font-alegreya), Georgia, serif;
   font-size: 16px;
   line-height: 1.6;
   color: var(--color-text-primary);

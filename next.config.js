@@ -16,6 +16,12 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  // Performance optimizations
+  experimental: {
+    optimizeCss: true,
+  },
+  // Optimize font loading
+  optimizeFonts: true,
 }
 
 module.exports = withNextIntl(nextConfig);

@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['Alegreya', 'Georgia', 'serif'],
-        sans: ['Arial', 'Helvetica', 'sans-serif'],
+        serif: ['var(--font-alegreya)', 'Georgia', 'serif'],
+        sans: ['var(--font-inter)', 'Arial', 'Helvetica', 'sans-serif'],
       },
       colors: {
         // Light Mode - Warm Stone Palette

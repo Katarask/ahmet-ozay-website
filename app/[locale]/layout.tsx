@@ -1,4 +1,4 @@
-﻿import { Inter } from 'next/font/google';
+﻿import { Inter, Alegreya } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -8,7 +8,21 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import '@/styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-inter',
+});
+
+const alegreya = Alegreya({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-alegreya',
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -31,17 +45,11 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning className={`${inter.variable} ${alegreya.variable}`}>
       <head>
         <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed.xml" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link 
-          href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" 
-          rel="stylesheet"
-        />
       </head>
-      <body className={inter.className + ' bg-light-bg-primary dark:bg-dark-bg-primary text-light-text-primary dark:text-dark-text-primary min-h-screen flex flex-col'}>
+      <body className={`${inter.className} bg-light-bg-primary dark:bg-dark-bg-primary text-light-text-primary dark:text-dark-text-primary min-h-screen flex flex-col`}>
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             <Navigation locale={locale} />

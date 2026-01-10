@@ -27,6 +27,7 @@ export default function SearchBar({ articles, locale, onSearch }: SearchBarProps
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const listboxId = `search-results-${Math.random().toString(36).substr(2, 9)}`;
 
   // Client-seitige Volltextsuche
   const performSearch = (searchQuery: string) => {
@@ -108,9 +109,13 @@ export default function SearchBar({ articles, locale, onSearch }: SearchBarProps
           onFocus={() => query && performSearch(query)}
           placeholder={t('placeholder')}
           className="w-full px-4 py-2 pl-10 pr-10 bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border-primary dark:border-dark-border-primary rounded-sm text-light-text-primary dark:text-dark-text-primary placeholder-light-text-muted dark:placeholder-dark-text-muted focus:outline-none focus:ring-2 focus:ring-light-accent-primary dark:focus:ring-dark-accent-primary focus:border-transparent font-sans text-sm transition-all"
+          role="combobox"
           aria-label={t('ariaLabel')}
           aria-expanded={isOpen}
           aria-haspopup="listbox"
+          aria-autocomplete="list"
+          aria-controls={isOpen ? listboxId : undefined}
+          aria-activedescendant={focusedIndex >= 0 ? `${listboxId}-option-${focusedIndex}` : undefined}
         />
         <svg
           className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-light-text-muted dark:text-dark-text-muted"
@@ -146,11 +151,16 @@ export default function SearchBar({ articles, locale, onSearch }: SearchBarProps
 
       {/* Dropdown Ergebnisse */}
       {isOpen && results.length > 0 && (
-        <div className="absolute z-50 w-full mt-2 bg-light-bg-primary dark:bg-dark-bg-primary border border-light-border-primary dark:border-dark-border-primary rounded-sm shadow-lg max-h-96 overflow-y-auto">
+        <div
+          id={listboxId}
+          role="listbox"
+          className="absolute z-50 w-full mt-2 bg-light-bg-primary dark:bg-dark-bg-primary border border-light-border-primary dark:border-dark-border-primary rounded-sm shadow-lg max-h-96 overflow-y-auto"
+        >
           <div className="p-2">
             {results.map((article, index) => (
               <button
                 key={article.slug}
+                id={`${listboxId}-option-${index}`}
                 onClick={() => handleResultClick(article.slug)}
                 onMouseEnter={() => setFocusedIndex(index)}
                 className={`w-full text-left p-3 rounded-sm transition-colors ${

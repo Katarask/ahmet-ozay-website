@@ -2,6 +2,8 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { getArticleBySlug, getArticles, getRelatedArticles, urlFor } from '@/lib/sanity';
+import { extractPlainTextFromPortableText, calculateWordCount } from '@/lib/articleUtils';
+import { resolveParams } from '@/lib/params';
 import PortableTextRenderer from '@/components/PortableTextRenderer';
 import ShareButtons from '@/components/ShareButtons';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -22,10 +24,11 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ 
-  params: { locale, slug } 
+  params 
 }: { 
-  params: { locale: string; slug: string } 
+  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string } 
 }) {
+  const { locale, slug } = await resolveParams(params);
   const article = await getArticleBySlug(slug);
   
   if (!article) return { title: 'Artikel nicht gefunden' };
@@ -41,18 +44,7 @@ export async function generateMetadata({
   return {
     title: `${title} | Ahmet Özay - Deutscher Krim-Experte`,
     description: excerpt,
-    keywords: [
-      'Ahmet Özay',
-      'Deutscher Krim Experte',
-      'Krim Experte',
-      article.category,
-      'Journalist Köln',
-      'Politik',
-      'Deutschland',
-      'Türkei',
-      'Europa',
-      ...(article.tags || []),
-    ],
+    // Keywords entfernt - werden nur im Schema.org verwendet (Meta Keywords werden seit 2009 ignoriert)
     alternates: {
       canonical: articleUrl,
       languages: {
@@ -93,10 +85,11 @@ export async function generateMetadata({
 }
 
 export default async function ArticlePage({ 
-  params: { locale, slug } 
+  params 
 }: { 
-  params: { locale: string; slug: string } 
+  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string } 
 }) {
+  const { locale, slug } = await resolveParams(params);
   // Enable static rendering
   setRequestLocale(locale);
   
@@ -145,6 +138,7 @@ export default async function ArticlePage({
 
   const title = article.title[locale as 'de' | 'en' | 'tr'] || article.title.de;
   const content = article.content[locale as 'de' | 'en' | 'tr'] || article.content.de;
+  const excerpt = article.excerpt[locale as 'de' | 'en' | 'tr'] || article.excerpt.de;
   const formattedDate = new Date(article.publishedAt).toLocaleDateString(locale, {
     year: 'numeric',
     month: 'long',
@@ -157,22 +151,30 @@ export default async function ArticlePage({
     ? urlFor(article.image).width(1200).height(630).fit('crop').url()
     : `${baseUrl}/images/ahmet-portrait.png`;
 
-  // Strukturierte Daten (JSON-LD Schema.org)
+  // Plain Text für articleBody extrahieren (kritisch für AI-Crawling)
+  const articleBody = extractPlainTextFromPortableText(content);
+  const wordCount = calculateWordCount(content);
+
+  // Strukturierte Daten (JSON-LD Schema.org) - Optimiert für AI-Zitierung
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
-    description: article.excerpt[locale as 'de' | 'en' | 'tr'] || article.excerpt.de,
+    description: excerpt,
+    articleBody: articleBody, // Vollständiger Text für AI-Systeme
+    wordCount: wordCount, // Hilft AI-Systemen, Artikel-Tiefe einzuschätzen
     image: imageUrl,
     datePublished: article.publishedAt,
-    dateModified: article._createdAt,
+    dateModified: article._updatedAt || article._createdAt,
     author: {
       '@type': 'Person',
+      '@id': `${baseUrl}/#ahmetozay`, // @id Verknüpfung für Entity-Disambiguation
       name: article.author,
       url: `${baseUrl}/${locale}/about`,
     },
     publisher: {
       '@type': 'Person',
+      '@id': `${baseUrl}/#ahmetozay`, // @id Verknüpfung
       name: 'Ahmet Özay',
       url: baseUrl,
       logo: {
@@ -180,12 +182,18 @@ export default async function ArticlePage({
         url: `${baseUrl}/images/logo.png`,
       },
     },
+    keywords: article.tags?.join(', ') || '', // Keywords aus Tags für AI
+    articleSection: article.category,
+    inLanguage: locale,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': articleUrl,
     },
-    articleSection: article.category,
-    inLanguage: locale,
+    // Speakable für Voice Search (Google Assistant, Siri)
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.prose-custom p:first-of-type'],
+    },
   };
 
   // BreadcrumbList Schema

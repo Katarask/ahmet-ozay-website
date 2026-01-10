@@ -1,7 +1,14 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { locales } from '@/i18n/config';
+import { resolveParams } from '@/lib/params';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params);
   const t = await getTranslations({ locale, namespace: 'meta' });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
   const url = `${baseUrl}/${locale}/impressum`;
@@ -34,7 +41,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function ImpressumPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function ImpressumPage({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params);
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'impressum' });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';

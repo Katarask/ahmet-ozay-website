@@ -1,9 +1,16 @@
 ﻿import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { locales } from '@/i18n/config';
+import { resolveParams } from '@/lib/params';
 import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQ from '@/components/FAQ';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params);
   const t = await getTranslations({ locale, namespace: 'meta' });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
   const url = `${baseUrl}/${locale}/about`;
@@ -12,26 +19,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   return {
     title: t('about.title'),
     description: t('about.description'),
-    keywords: [
-      'Ahmet Özay',
-      'Deutscher Krim Experte',
-      'Krim Experte Deutschland',
-      'Krim Experte Köln',
-      'Journalist Köln',
-      'Deutsch-türkischer Journalist',
-      'Krimtataren',
-      'Krim Tatar Experte',
-      'Krim Experte',
-      'Kırım Tatar Milli Meclisi',
-      'WDR',
-      'BBC',
-      'Deutsche Welle',
-      'TRT',
-      'QHA',
-      'Medienexperte',
-      'Krim-Analyse',
-      'Krimtataren Deutschland',
-    ],
+    // Keywords entfernt - werden nur im Schema.org verwendet (Meta Keywords werden seit 2009 ignoriert)
     alternates: {
       canonical: url,
       languages: {
@@ -72,7 +60,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function AboutPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params);
   // Enable static rendering
   setRequestLocale(locale);
   
@@ -173,6 +162,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
       'https://wikitia.com/wiki/Ahmet_%C3%95zay',
       'https://www.yenisafak.com/yazarlar/ahmet-ozay',
     ],
+    aboutPage: `${baseUrl}/${locale}/about`, // Verknüpfung zur About-Seite
     knowsAbout: [
       // Krimtataren (mehrsprachig + Synonyme)
       'Krimtataren',

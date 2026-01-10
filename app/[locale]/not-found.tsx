@@ -1,9 +1,15 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { locales } from '@/i18n/config';
+import { resolveParams } from '@/lib/params';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params);
   const t = await getTranslations({ locale, namespace: 'meta.notFound' });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
   const url = `${baseUrl}/${locale}/404`;
@@ -24,7 +30,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function NotFoundPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function NotFoundPage({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params);
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'notFound' });
   const tNav = await getTranslations({ locale, namespace: 'nav' });

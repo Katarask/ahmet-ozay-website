@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/config';
+import { resolveParams } from '@/lib/params';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -30,11 +31,12 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
-  params: { locale }
+  params
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }> | { locale: string };
 }) {
+  const { locale } = await resolveParams(params);
   if (!locales.includes(locale as any)) {
     notFound();
   }
@@ -43,11 +45,13 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const messages = await getMessages();
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
 
   return (
     <html lang={locale} suppressHydrationWarning className={`${inter.variable} ${alegreya.variable}`}>
       <head>
         <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed.xml" />
+        {/* Hreflang Links werden automatisch von Next.js aus alternates.languages in generateMetadata generiert */}
       </head>
       <body className={`${inter.className} bg-light-bg-primary dark:bg-dark-bg-primary text-light-text-primary dark:text-dark-text-primary min-h-screen flex flex-col`}>
         <ThemeProvider>

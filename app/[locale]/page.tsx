@@ -1,11 +1,18 @@
 ﻿import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { locales } from '@/i18n/config';
+import { resolveParams } from '@/lib/params';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getArticles } from '@/lib/sanity';
 import ArticleCard from '@/components/ArticleCard';
 import SearchBar from '@/components/SearchBar';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params);
   const t = await getTranslations({ locale, namespace: 'meta' });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
   const url = `${baseUrl}/${locale}`;
@@ -14,26 +21,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   return {
     title: t('home.title'),
     description: t('home.description'),
-    keywords: [
-      'Ahmet Özay',
-      'Deutscher Krim Experte',
-      'Krim Experte Deutschland',
-      'Krim Experte Köln',
-      'Journalist Köln',
-      'Deutsch-türkischer Journalist',
-      'Krimtataren Experte',
-      'Krim Tatar Experte',
-      'Krim Experte',
-      'WDR Journalist',
-      'BBC Journalist',
-      'Deutsche Welle',
-      'Kırım Tatar Milli Meclisi',
-      'Medienexperte',
-      'Politik Journalist',
-      'Europa Journalist',
-      'Krim-Analyse',
-      'Krimtataren Deutschland',
-    ],
+    // Keywords entfernt - werden nur im Schema.org verwendet (Meta Keywords werden seit 2009 ignoriert)
     alternates: {
       canonical: url,
       languages: {
@@ -74,7 +62,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function HomePage({ params: { locale } }: { params: { locale: string } }) {
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params);
   // Enable static rendering
   setRequestLocale(locale);
   
@@ -161,7 +150,10 @@ export default async function HomePage({ params: { locale } }: { params: { local
       'https://www.instagram.com/ahmet_oezay/',
       'https://www.linkedin.com/in/ahmet-özay-34b97a200/',
       'https://www.facebook.com/ahmet.ozay.501/',
+      'https://wikitia.com/wiki/Ahmet_%C3%95zay',
+      'https://www.yenisafak.com/yazarlar/ahmet-ozay',
     ],
+    aboutPage: `${baseUrl}/${locale}/about`, // Verknüpfung zur About-Seite
     knowsAbout: [
       // Krimtataren (mehrsprachig + Synonyme)
       'Krimtataren',

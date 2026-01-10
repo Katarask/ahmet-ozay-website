@@ -1,10 +1,17 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { locales } from '@/i18n/config';
+import { resolveParams } from '@/lib/params';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQ from '@/components/FAQ';
 import { getArticles } from '@/lib/sanity';
 import ArticleCard from '@/components/ArticleCard';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params);
   const t = await getTranslations({ locale, namespace: 'meta' });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
   const url = `${baseUrl}/${locale}/krimtataren`;
@@ -13,28 +20,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   return {
     title: t('krimtataren.title'),
     description: t('krimtataren.description'),
-    keywords: [
-      'Krimtataren',
-      'Crimean Tatars',
-      'Kırım Tatarları',
-      'Krimtataren Experte',
-      'Krimtataren Experte Deutschland',
-      'Deutscher Krimtataren Experte',
-      'Krim Experte',
-      'Crimea Expert',
-      'Krim Tatar Milli Meclisi',
-      'Crimean Tatar People\'s Mejlis',
-      'Kırım Tatar Milli Meclisi',
-      'Krim-Analyse',
-      'Crimea Analysis',
-      'Krim-Politik',
-      'Crimea Politics',
-      'Krim-Annexion',
-      'Crimea Annexation',
-      'Ahmet Özay',
-      'Krimtataren Deutschland',
-      'Crimean Tatars Germany',
-    ],
+    // Keywords entfernt - werden nur im Schema.org verwendet (Meta Keywords werden seit 2009 ignoriert)
     alternates: {
       canonical: url,
       languages: {
@@ -70,7 +56,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function KrimtatarenPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function KrimtatarenPage({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params);
   setRequestLocale(locale);
   
   const t = await getTranslations({ locale, namespace: 'krimtataren' });

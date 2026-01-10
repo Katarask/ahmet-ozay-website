@@ -1,11 +1,18 @@
 ﻿import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { locales } from '@/i18n/config';
+import { resolveParams } from '@/lib/params';
 import { getArticles } from '@/lib/sanity';
 import ArticlesPageClient from './ArticlesPageClient';
 
 // Markiere als dynamisch, da Search-Parameter verwendet werden
 export const dynamic = 'force-dynamic';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params);
   const t = await getTranslations({ locale, namespace: 'meta' });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ahmetoezay.de';
   const url = `${baseUrl}/${locale}/artikel`;
@@ -38,7 +45,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function ArticlesPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function ArticlesPage({ params }: { params: Promise<{ locale: string }> | { locale: string } }) {
+  const { locale } = await resolveParams(params);
   // Enable static rendering
   setRequestLocale(locale);
   

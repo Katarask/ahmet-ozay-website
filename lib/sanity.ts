@@ -28,6 +28,7 @@ export function urlFor(source: any) {
 export interface Article {
   _id: string;
   _createdAt: string;
+  _updatedAt?: string; // Optional, falls Sanity es zurückgibt
   title: {
     de: string;
     en: string;
@@ -88,6 +89,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
   const query = `*[_type == "article" && slug.current == $slug && !(_id in path("drafts.**")) && defined(publishedAt)][0] {
     _id,
     _createdAt,
+    _updatedAt,
     title,
     slug,
     excerpt,

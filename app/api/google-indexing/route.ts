@@ -58,13 +58,11 @@ export async function POST(request: NextRequest) {
     }
 
     // Authenticate with Google
-    const jwtClient = new google.auth.JWT(
-      serviceAccount.client_email,
-      undefined,
-      serviceAccount.private_key,
-      ['https://www.googleapis.com/auth/indexing'],
-      undefined
-    );
+    const jwtClient = new google.auth.JWT({
+      email: serviceAccount.client_email,
+      key: serviceAccount.private_key,
+      scopes: ['https://www.googleapis.com/auth/indexing'],
+    });
 
     // Get access token
     await jwtClient.authorize();

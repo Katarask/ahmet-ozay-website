@@ -26,8 +26,9 @@ interface ArticlesPageClientProps {
 export default function ArticlesPageClient({ articles, locale, categories }: ArticlesPageClientProps) {
   const t = useTranslations('articles');
   const searchParams = useSearchParams();
-  const searchQuery = searchParams.get('q') || '';
-  const [selectedCategory, setSelectedCategory] = useState('Alle');
+  const searchQuery = searchParams.get('q') || searchParams.get('search') || '';
+  const categoryParam = searchParams.get('category') || '';
+  const [selectedCategory, setSelectedCategory] = useState(categoryParam || 'Alle');
   const [searchTerm, setSearchTerm] = useState(searchQuery);
 
   // Artikel für Suchfunktion vorbereiten

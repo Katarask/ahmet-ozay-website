@@ -132,6 +132,72 @@ export async function getArticlesByCategory(category: string): Promise<Article[]
   return client.fetch(query, { category });
 }
 
+// Verwandte Artikel basierend auf Tags und Kategorie
+export async function getRelatedArticles(
+  currentArticleSlug: string,
+  category: string,
+  tags?: string[],
+  limit: number = 4
+): Promise<Article[]> {
+  // Wenn Tags vorhanden sind, suche nach Artikeln mit gleichen Tags oder Kategorie
+  // Sonst nur nach Kategorie
+  const hasTags = tags && tags.length > 0;
+  
+  const query = hasTags
+    ? `*[_type == "article" && slug.current != $currentSlug && !(_id in path("drafts.**")) && defined(publishedAt) && (
+        category == $category ||
+        tags[] match $tagsPattern
+      )] | order(publishedAt desc) [0...$limit] {
+        _id,
+        _createdAt,
+        title,
+        slug,
+        excerpt,
+        category,
+        publishedAt,
+        author,
+        readTime,
+        featured,
+        tags,
+        originalUrl,
+        image {
+          asset,
+          alt
+        }
+      }`
+    : `*[_type == "article" && slug.current != $currentSlug && !(_id in path("drafts.**")) && defined(publishedAt) && category == $category] | order(publishedAt desc) [0...$limit] {
+        _id,
+        _createdAt,
+        title,
+        slug,
+        excerpt,
+        category,
+        publishedAt,
+        author,
+        readTime,
+        featured,
+        tags,
+        originalUrl,
+        image {
+          asset,
+          alt
+        }
+      }`;
+
+  const params: any = {
+    currentSlug: currentArticleSlug,
+    category,
+    limit,
+  };
+
+  if (hasTags) {
+    // Erstelle Pattern für Tag-Matching (z.B. "tag1" || "tag2")
+    params.tagsPattern = tags!.map(tag => `*${tag}*`).join(' || ');
+  }
+
+  return client.fetch(query, params);
+}
+
 // Hervorgehobene Artikel (für Startseite)
 export async function getFeaturedArticles(): Promise<Article[]> {
   const query = `*[_type == "article" && featured == true && !(_id in path("drafts.**")) && defined(publishedAt)] | order(publishedAt desc) [0...6] {

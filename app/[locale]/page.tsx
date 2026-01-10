@@ -103,16 +103,24 @@ export default async function HomePage({ params: { locale } }: { params: { local
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': 'https://www.ahmetoezay.de/#ahmetozay',
     name: 'Ahmet Özay',
+    givenName: 'Ahmet',
+    familyName: 'Özay',
     alternateName: ['Ahmet Özay', 'Ahmet Ozay'],
     jobTitle: ['Journalist', 'Autor', 'Krim-Experte', 'Medienexperte', 'Verleger'],
     description: t('intro'),
     url: `${baseUrl}/${locale}`,
     image: `${baseUrl}/images/ahmet-portrait.png`,
+    email: 'ao@ahmetoezay.de',
     birthDate: '1961-11-01',
     birthPlace: {
       '@type': 'Place',
       name: 'Istanbul, Türkei',
+    },
+    homeLocation: {
+      '@type': 'Place',
+      name: 'Köln, Deutschland',
     },
     address: {
       '@type': 'PostalAddress',

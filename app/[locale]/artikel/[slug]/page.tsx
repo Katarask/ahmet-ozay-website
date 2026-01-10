@@ -1,11 +1,12 @@
 ﻿import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
-import { getArticleBySlug, getArticles, urlFor } from '@/lib/sanity';
+import { getArticleBySlug, getArticles, getRelatedArticles, urlFor } from '@/lib/sanity';
 import PortableTextRenderer from '@/components/PortableTextRenderer';
 import ShareButtons from '@/components/ShareButtons';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Comments from '@/components/Comments';
+import ArticleCard from '@/components/ArticleCard';
 
 import { locales } from '@/i18n/config';
 
@@ -117,6 +118,31 @@ export default async function ArticlePage({
       category: a.category || 'politik',
     }));
 
+  // Verwandte Artikel holen (basierend auf Kategorie und Tags)
+  const relatedArticles = await getRelatedArticles(
+    slug,
+    article.category,
+    article.tags,
+    4
+  );
+  
+  // Transform related articles for ArticleCard
+  const transformedRelatedArticles = relatedArticles
+    .filter((a) => a.publishedAt && a.readTime)
+    .map((a) => ({
+      title: a.title[locale as 'de' | 'en' | 'tr'] || a.title.de,
+      excerpt: a.excerpt[locale as 'de' | 'en' | 'tr'] || a.excerpt.de,
+      date: new Date(a.publishedAt).toLocaleDateString(locale, {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }),
+      category: a.category || 'politik',
+      readTime: `${a.readTime} Min`,
+      slug: a.slug.current,
+      image: a.image?.asset ? a.image : undefined,
+    }));
+
   const title = article.title[locale as 'de' | 'en' | 'tr'] || article.title.de;
   const content = article.content[locale as 'de' | 'en' | 'tr'] || article.content.de;
   const formattedDate = new Date(article.publishedAt).toLocaleDateString(locale, {
@@ -210,9 +236,12 @@ export default async function ArticlePage({
       <article className="max-w-4xl mx-auto">
         <header className="mb-12">
           <div className="flex items-center gap-3 mb-4 text-sm flex-wrap">
-            <span className="px-3 py-1 bg-light-bg-secondary dark:bg-dark-bg-secondary text-light-text-primary dark:text-dark-text-primary text-xs font-sans rounded-sm">
+            <Link
+              href={`/${locale}/artikel?category=${article.category}`}
+              className="px-3 py-1 bg-light-bg-secondary dark:bg-dark-bg-secondary text-light-text-primary dark:text-dark-text-primary text-xs font-sans rounded-sm hover:bg-light-accent-primary dark:hover:bg-dark-accent-primary hover:text-white dark:hover:text-white transition-colors"
+            >
               {article.category}
-            </span>
+            </Link>
             <div className="flex items-center gap-2 text-light-text-muted dark:text-dark-text-muted">
               <span className="font-sans font-medium">{article.readTime}</span>
               <span className="font-sans">Minuten</span>
@@ -226,14 +255,29 @@ export default async function ArticlePage({
             {title}
           </h1>
 
-          <p className="text-light-text-muted dark:text-dark-text-muted font-sans text-sm">
+          <p className="text-light-text-muted dark:text-dark-text-muted font-sans text-sm mb-4">
             {t('by')} {article.author}
           </p>
+
+          {/* Tags */}
+          {article.tags && article.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-6">
+              {article.tags.map((tag) => (
+                <Link
+                  key={tag}
+                  href={`/${locale}/artikel?search=${encodeURIComponent(tag)}`}
+                  className="px-2 py-1 bg-light-bg-secondary dark:bg-dark-bg-secondary text-light-text-secondary dark:text-dark-text-secondary text-xs font-sans rounded-sm hover:bg-light-accent-primary dark:hover:bg-dark-accent-primary hover:text-white dark:hover:text-white transition-colors"
+                >
+                  #{tag}
+                </Link>
+              ))}
+            </div>
+          )}
         </header>
 
         {/* Article Content */}
         <div className="prose-custom">
-          <PortableTextRenderer content={content} />
+          <PortableTextRenderer content={content} locale={locale} />
         </div>
 
         {/* Share Buttons */}
@@ -247,17 +291,43 @@ export default async function ArticlePage({
         {/* Comments */}
         <Comments articleSlug={slug} locale={locale} />
 
+        {/* Related Articles */}
+        {transformedRelatedArticles.length > 0 && (
+          <div className="mt-16 pt-8 border-t border-light-border-primary dark:border-dark-border-primary">
+            <h2 className="text-2xl font-sans font-bold text-light-text-primary dark:text-dark-text-primary mb-8 border-l-2 border-light-border-accent dark:border-dark-border-accent pl-4">
+              {t('relatedArticles')}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {transformedRelatedArticles.map((relatedArticle) => (
+                <ArticleCard
+                  key={relatedArticle.slug}
+                  {...relatedArticle}
+                  locale={locale}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Article Footer */}
-        <footer className="mt-16 pt-8 border-t border-light-border-primary dark:border-dark-border-primary">
-          <Link
-            href={`/${locale}/artikel`}
-            className="inline-flex items-center gap-2 text-light-accent-primary dark:text-dark-accent-primary hover:underline font-sans font-medium"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="rotate-180">
-              <path d="M2 8H14.5M14.5 8L8.5 2M14.5 8L8.5 14" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-            </svg>
-            <span>Zurück zu allen Artikeln</span>
-          </Link>
+        <footer className="mt-12 pt-8 border-t border-light-border-primary dark:border-dark-border-primary">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <Link
+              href={`/${locale}/artikel?category=${article.category}`}
+              className="inline-flex items-center gap-2 text-light-accent-primary dark:text-dark-accent-primary hover:underline font-sans font-medium"
+            >
+              <span>Weitere Artikel in "{article.category}"</span>
+            </Link>
+            <Link
+              href={`/${locale}/artikel`}
+              className="inline-flex items-center gap-2 text-light-text-secondary dark:text-dark-text-secondary hover:text-light-accent-primary dark:hover:text-dark-accent-primary hover:underline font-sans font-medium"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="rotate-180">
+                <path d="M2 8H14.5M14.5 8L8.5 2M14.5 8L8.5 14" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+              </svg>
+              <span>{t('backToAllArticles')}</span>
+            </Link>
+          </div>
         </footer>
       </article>
     </div>

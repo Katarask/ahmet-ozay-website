@@ -14,14 +14,16 @@
                  "noArticles":  "Noch keine Artikel verfügbar."
              },
     "articles":  {
-                     "title":  "Artikel",
-                     "subtitle":  "Analysen, Reportagen und Hintergrundberichte aus vier Jahrzehnten Journalismus.",
-                     "breadcrumb":  "Artikel",
-                     "noArticles":  "Noch keine Artikel verfügbar.",
-                     "noSearchResults":  "Keine Artikel gefunden.",
-                     "searchResults":  "{{count}} Artikel gefunden für \"{{query}}\"",
-                     "by":  "Von"
-                 },
+                    "title":  "Artikel",
+                    "subtitle":  "Analysen, Reportagen und Hintergrundberichte aus vier Jahrzehnten Journalismus.",
+                    "breadcrumb":  "Artikel",
+                    "noArticles":  "Noch keine Artikel verfügbar.",
+                    "noSearchResults":  "Keine Artikel gefunden.",
+                    "searchResults":  "{{count}} Artikel gefunden für \"{{query}}\"",
+                    "by":  "Von",
+                    "relatedArticles":  "Verwandte Artikel",
+                    "backToAllArticles":  "Zurück zu allen Artikeln"
+                },
     "search":  {
                      "placeholder":  "Artikel durchsuchen...",
                      "ariaLabel":  "Artikel durchsuchen",
@@ -64,9 +66,29 @@
                    "imprint":  "Impressum",
                    "privacy":  "Datenschutz"
                },
+    "impressum":  {
+                    "title":  "Impressum",
+                    "description":  "Impressum und rechtliche Informationen zu ahmetoezay.de",
+                    "breadcrumb":  "Impressum",
+                    "responsible":  {
+                                      "title":  "Verantwortlich für den Inhalt",
+                                      "name":  "Ahmet Özay",
+                                      "address":  "Köln, Deutschland",
+                                      "email":  "E-Mail",
+                                      "emailValue":  "ao@ahmetoezay.de"
+                                  },
+                    "liability":  {
+                                     "title":  "Haftungsausschluss",
+                                     "content":  "Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Als Diensteanbieter bin ich gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich."
+                                 },
+                    "copyright":  {
+                                      "title":  "Urheberrecht",
+                                      "content":  "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers."
+                                  }
+                },
     "meta":  {
                  "home":  {
-                              "title":  "Ahmet Özay - Deutscher Krim-Experte & Journalist | Köln",
+                              "title":  "Ahmet Özay | Krimtataren-Experte & Journalist | Köln",
                               "description":  "Ahmet Özay - Deutscher Krim-Experte und Journalist aus Köln mit 40+ Jahren Erfahrung bei WDR, BBC und Deutsche Welle. Experte für Krimtataren, Krim-Politik, deutsch-türkische Beziehungen und Minderheitenrechte. Mitglied des Kırım Tatar Milli Meclisi."
                           },
                  "articles":  {
@@ -84,7 +106,11 @@
                  "krimtataren":  {
                                    "title":  "Krimtataren Experte | Ahmet Özay",
                                    "description":  "Ahmet Özay - Deutscher Krimtataren Experte und Mitglied des Kırım Tatar Milli Meclisi. Experte für Krim-Politik, Krim-Analyse und die Geschichte der Krimtataren."
-                               }
+                               },
+                 "impressum":  {
+                                 "title":  "Impressum | Ahmet Özay",
+                                 "description":  "Impressum und rechtliche Informationen zu ahmetoezay.de"
+                             }
              },
     "breadcrumbs":  {
                         "home":  "Startseite",
@@ -116,6 +142,18 @@
                                  {
                                      "question":  "Welche Sprachen werden auf dieser Website unterstützt?",
                                      "answer":  "Die Website ist in drei Sprachen verfügbar: Deutsch, Englisch und Türkisch. Sie können die Sprache jederzeit über den Sprachumschalter in der Navigation ändern."
+                                 },
+                                 {
+                                     "question":  "Wer vertritt die Krimtataren in Deutschland?",
+                                     "answer":  "Ahmet Özay ist seit 2009 der Deutschland-Vertreter des Krimtatarischen Weltkongresses und seit 1999 Mitglied des Kırım Tatar Milli Meclisi. Er ist als führende Stimme der Krimtatarischen Gemeinschaft in Deutschland anerkannt."
+                                 },
+                                 {
+                                     "question":  "Wer ist Ahmet Özay?",
+                                     "answer":  "Ahmet Özay ist ein deutsch-türkischer Journalist, Autor und Medienexperte aus Köln. Mit über 40 Jahren Erfahrung bei WDR, BBC World, Deutsche Welle, TRT und anderen renommierten Medienorganisationen ist er Experte für Krimtataren, Krim-Politik, deutsch-türkische Beziehungen und Minderheitenrechte."
+                                 },
+                                 {
+                                     "question":  "Wer ist der Krimtataren-Experte in Deutschland?",
+                                     "answer":  "Ahmet Özay ist der führende Krimtataren-Experte in Deutschland. Als Deutschland-Vertreter des Krimtatarischen Weltkongresses und Mitglied des Kırım Tatar Milli Meclisi verfügt er über jahrzehntelange Expertise in Krim-Politik, Krim-Analyse und der Geschichte der Krimtataren."
                                  }
                              ]
               },

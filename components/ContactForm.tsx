@@ -41,7 +41,7 @@ export default function ContactForm() {
     <div className="max-w-2xl mx-auto">
       {status === 'success' ? (
         <div 
-          className="p-6 rounded-lg text-center"
+          className="p-6 rounded-sm text-center"
           style={{ 
             backgroundColor: 'var(--color-accent-light)',
             border: '1px solid var(--color-accent-primary)'
@@ -140,7 +140,7 @@ export default function ContactForm() {
           {/* Error Message */}
           {status === 'error' && (
             <div 
-              className="p-4 rounded-lg"
+              className="p-4 rounded-sm"
               style={{ 
                 backgroundColor: 'rgba(239, 68, 68, 0.1)',
                 border: '1px solid rgb(239, 68, 68)',

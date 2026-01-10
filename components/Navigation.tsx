@@ -20,7 +20,8 @@ export default function Navigation({ locale }: NavigationProps) {
       title: t('articles'),
       links: [
         { label: 'Neueste Artikel', href: `/${locale}` },
-        { label: 'Alle Artikel', href: `/${locale}/artikel` }
+        { label: 'Alle Artikel', href: `/${locale}/artikel` },
+        { label: 'Politik', href: `/${locale}/artikel?category=politik` }
       ],
       bgColor: '#0A0A0B',
       accentColor: '#024D81'
@@ -29,8 +30,7 @@ export default function Navigation({ locale }: NavigationProps) {
       title: t('krimtataren'),
       links: [
         { label: 'Krimtataren Experte', href: `/${locale}/krimtataren` },
-        { label: 'Krim-Politik', href: `/${locale}/krimtataren` },
-        { label: 'Krim-Analyse', href: `/${locale}/krimtataren` }
+        { label: 'Krimtataren Artikel', href: `/${locale}/artikel?category=krimtataren` }
       ],
       bgColor: '#121214',
       accentColor: '#024D81'
@@ -39,8 +39,7 @@ export default function Navigation({ locale }: NavigationProps) {
       title: t('about'),
       links: [
         { label: 'Über mich', href: `/${locale}/about` },
-        { label: 'Biografie', href: `/${locale}/about` },
-        { label: 'Werdegang', href: `/${locale}/about` }
+        { label: 'Impressum', href: `/${locale}/impressum` }
       ],
       bgColor: '#1A1A1D',
       accentColor: '#024D81'
@@ -48,9 +47,7 @@ export default function Navigation({ locale }: NavigationProps) {
     {
       title: t('contact'),
       links: [
-        { label: 'Kontakt', href: `/${locale}/kontakt` },
-        { label: 'Kontaktformular', href: `/${locale}/kontakt` },
-        { label: 'Social Media', href: `/${locale}/kontakt` }
+        { label: 'Kontakt', href: `/${locale}/kontakt` }
       ],
       bgColor: '#1A1A1D',
       accentColor: '#024D81'
@@ -88,7 +85,7 @@ export default function Navigation({ locale }: NavigationProps) {
           {/* Desktop Navigation - nur Desktop */}
           <div className="hidden md:flex items-center gap-6">
             <Link
-              href={`/${locale}`}
+              href={`/${locale}/artikel`}
               className="text-sm transition-colors hover:text-light-accent-primary dark:hover:text-dark-accent-primary"
               style={{ color: 'var(--color-text-secondary)' }}
             >

@@ -10,7 +10,8 @@
     "sanity:init": "sanity init",
     "sanity:manage": "sanity manage",
     "sanity:deploy": "sanity deploy",
-    "generate-indexnow-key": "node scripts/generate-indexnow-key.js"
+    "generate-indexnow-key": "node scripts/generate-indexnow-key.js",
+    "test-webhook": "node scripts/test-webhook.js"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.2",

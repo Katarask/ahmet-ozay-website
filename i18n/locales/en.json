@@ -14,14 +14,16 @@
                  "noArticles":  "No articles available yet."
              },
     "articles":  {
-                     "title":  "Articles",
-                     "subtitle":  "Analyses, reports and background stories from four decades of journalism.",
-                     "breadcrumb":  "Articles",
-                     "noArticles":  "No articles available yet.",
-                     "noSearchResults":  "No articles found.",
-                     "searchResults":  "{{count}} articles found for \"{{query}}\"",
-                     "by":  "By"
-                 },
+                    "title":  "Articles",
+                    "subtitle":  "Analyses, reports and background stories from four decades of journalism.",
+                    "breadcrumb":  "Articles",
+                    "noArticles":  "No articles available yet.",
+                    "noSearchResults":  "No articles found.",
+                    "searchResults":  "{{count}} articles found for \"{{query}}\"",
+                    "by":  "By",
+                    "relatedArticles":  "Related Articles",
+                    "backToAllArticles":  "Back to all articles"
+                },
     "search":  {
                      "placeholder":  "Search articles...",
                      "ariaLabel":  "Search articles",
@@ -58,6 +60,26 @@
                     "success":  "Thank you! Your message has been sent successfully.",
                     "error":  "An error occurred. Please try again."
                 },
+    "impressum":  {
+                    "title":  "Imprint",
+                    "description":  "Imprint and legal information for ahmetoezay.de",
+                    "breadcrumb":  "Imprint",
+                    "responsible":  {
+                                      "title":  "Responsible for Content",
+                                      "name":  "Ahmet Özay",
+                                      "address":  "Cologne, Germany",
+                                      "email":  "Email",
+                                      "emailValue":  "ao@ahmetoezay.de"
+                                  },
+                    "liability":  {
+                                     "title":  "Liability Disclaimer",
+                                     "content":  "The contents of this website have been created with the greatest care. However, no guarantee can be given for the correctness, completeness and topicality of the contents. As a service provider, I am responsible for my own content on these pages in accordance with § 7 para. 1 TMG under general law."
+                                 },
+                    "copyright":  {
+                                      "title":  "Copyright",
+                                      "content":  "The content and works created by the site operators on these pages are subject to German copyright law. The duplication, processing, distribution and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator."
+                                  }
+                },
     "footer":  {
                    "journalist":  "Journalist",
                    "copyright":  "© 2025 Ahmet Özay. All rights reserved.",
@@ -66,7 +88,7 @@
                },
     "meta":  {
                  "home":  {
-                              "title":  "Ahmet Özay - German Crimea Expert & Journalist | Cologne",
+                              "title":  "Ahmet Özay | Crimean Tatars Expert & Journalist | Cologne",
                               "description":  "Ahmet Özay - German Crimea expert and journalist from Cologne with 40+ years experience at WDR, BBC and Deutsche Welle. Expert on Crimean Tatars, Crimea politics, German-Turkish relations and minority rights. Member of the Crimean Tatar People's Mejlis."
                           },
                  "articles":  {
@@ -84,7 +106,11 @@
                  "krimtataren":  {
                                    "title":  "Crimean Tatars Expert | Ahmet Özay",
                                    "description":  "Ahmet Özay - German Crimean Tatars expert and member of the Crimean Tatar People's Mejlis. Expert on Crimea politics, Crimea analysis and the history of Crimean Tatars."
-                               }
+                               },
+                 "impressum":  {
+                                 "title":  "Imprint | Ahmet Özay",
+                                 "description":  "Imprint and legal information for ahmetoezay.de"
+                             }
              },
     "breadcrumbs":  {
                         "home":  "Home",
@@ -116,6 +142,18 @@
                                  {
                                      "question":  "Which languages are supported on this website?",
                                      "answer":  "The website is available in three languages: German, English, and Turkish. You can change the language at any time using the language switcher in the navigation."
+                                 },
+                                 {
+                                     "question":  "Who represents the Crimean Tatars in Germany?",
+                                     "answer":  "Ahmet Özay has been the Germany representative of the World Congress of Crimean Tatars since 2009 and a member of the Crimean Tatar People's Mejlis since 1999. He is recognized as a leading voice of the Crimean Tatar community in Germany."
+                                 },
+                                 {
+                                     "question":  "Who is Ahmet Özay?",
+                                     "answer":  "Ahmet Özay is a German-Turkish journalist, author, and media expert from Cologne. With over 40 years of experience at WDR, BBC World, Deutsche Welle, TRT, and other renowned media organizations, he is an expert on Crimean Tatars, Crimea politics, German-Turkish relations, and minority rights."
+                                 },
+                                 {
+                                     "question":  "Who is the Crimean Tatars expert in Germany?",
+                                     "answer":  "Ahmet Özay is the leading Crimean Tatars expert in Germany. As Germany representative of the World Congress of Crimean Tatars and member of the Crimean Tatar People's Mejlis, he has decades of expertise in Crimea politics, Crimea analysis, and the history of Crimean Tatars."
                                  }
                              ]
               },

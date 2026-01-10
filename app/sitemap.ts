@@ -31,13 +31,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
-    {
-      url: `${baseUrl}/${locale}/krimtataren`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-  ]);
+          {
+            url: `${baseUrl}/${locale}/krimtataren`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.9,
+          },
+          {
+            url: `${baseUrl}/${locale}/impressum`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.5,
+          },
+        ]);
 
   // Dynamische Artikel-Seiten
   const articles = await getArticles();

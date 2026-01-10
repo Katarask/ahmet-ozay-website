@@ -1,5 +1,8 @@
+'use client';
+
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { urlFor } from '@/lib/sanity';
 
 const components: PortableTextComponents = {
@@ -101,9 +104,62 @@ const components: PortableTextComponents = {
 
 interface PortableTextRendererProps {
   content: any[];
+  locale?: string;
 }
 
-export default function PortableTextRenderer({ content }: PortableTextRendererProps) {
-  return <PortableText value={content} components={components} />;
+export default function PortableTextRenderer({ content, locale = 'de' }: PortableTextRendererProps) {
+  // Erstelle components mit locale-aware links
+  const localeAwareComponents: PortableTextComponents = {
+    ...components,
+    marks: {
+      ...components.marks,
+      link: ({ children, value }) => {
+        const href = value?.href || '';
+        
+        // Prüfe ob es ein interner Link ist (relativ oder zu /artikel/)
+        const isInternal = !href.startsWith('http') && (
+          href.startsWith('/') || 
+          href.includes('/artikel/')
+        );
+        
+        // Konvertiere interne Links zu Next.js Links
+        if (isInternal) {
+          // Stelle sicher, dass der Link die Locale enthält
+          let internalHref = href;
+          if (!href.startsWith(`/${locale}`)) {
+            // Füge Locale hinzu falls nicht vorhanden
+            if (href.startsWith('/artikel/')) {
+              internalHref = `/${locale}${href}`;
+            } else if (href.startsWith('/')) {
+              internalHref = `/${locale}${href}`;
+            }
+          }
+          
+          return (
+            <Link
+              href={internalHref}
+              className="text-light-accent-primary dark:text-dark-accent-primary hover:underline font-medium"
+            >
+              {children}
+            </Link>
+          );
+        }
+        
+        // Externe Links
+        return (
+          <a
+            href={href}
+            rel="noopener noreferrer"
+            target="_blank"
+            className="text-light-accent-primary dark:text-dark-accent-primary hover:underline"
+          >
+            {children}
+          </a>
+        );
+      },
+    },
+  };
+  
+  return <PortableText value={content} components={localeAwareComponents} />;
 }
 

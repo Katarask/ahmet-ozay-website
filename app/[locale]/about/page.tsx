@@ -103,16 +103,24 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': 'https://www.ahmetoezay.de/#ahmetozay',
     name: 'Ahmet Özay',
+    givenName: 'Ahmet',
+    familyName: 'Özay',
     alternateName: ['Ahmet Özay', 'Ahmet Ozay'],
     jobTitle: ['Journalist', 'Autor', 'Krim-Experte', 'Medienexperte', 'Verleger'],
     description: t('intro'),
     url: `${baseUrl}/${locale}/about`,
     image: imageUrl,
+    email: 'ao@ahmetoezay.de',
     birthDate: '1961-11-01',
     birthPlace: {
       '@type': 'Place',
       name: 'Istanbul, Türkei',
+    },
+    homeLocation: {
+      '@type': 'Place',
+      name: 'Köln, Deutschland',
     },
     address: {
       '@type': 'PostalAddress',
@@ -143,16 +151,27 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
         jobTitle: 'Geschäftsführer',
       },
     ],
-    memberOf: {
-      '@type': 'Organization',
-      name: 'Kırım Tatar Milli Meclisi',
-      jobTitle: 'Mitglied & Almanya Temsilcisi',
-    },
+    memberOf: [
+      {
+        '@type': 'Organization',
+        name: 'Kırım Tatar Milli Meclisi',
+        alternateName: 'Mejlis of the Crimean Tatar People',
+        jobTitle: 'Mitglied & Almanya Temsilcisi',
+      },
+      {
+        '@type': 'Organization',
+        name: 'Weltkongress der Krimtataren',
+        alternateName: 'World Congress of Crimean Tatars',
+        jobTitle: 'Exekutivkomitee',
+      },
+    ],
     sameAs: [
       'https://x.com/aoezay',
       'https://www.instagram.com/ahmet_oezay/',
       'https://www.linkedin.com/in/ahmet-özay-34b97a200/',
       'https://www.facebook.com/ahmet.ozay.501/',
+      'https://wikitia.com/wiki/Ahmet_%C3%95zay',
+      'https://www.yenisafak.com/yazarlar/ahmet-ozay',
     ],
     knowsAbout: [
       // Krimtataren (mehrsprachig + Synonyme)
@@ -275,6 +294,23 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
     },
   };
 
+  // Organization Schema für KitapAvrupa
+  const kitapAvrupaSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'KitapAvrupa GmbH',
+    founder: {
+      '@id': 'https://www.ahmetoezay.de/#ahmetozay',
+    },
+    foundingDate: '2015',
+    url: 'https://www.kitapavrupa.com',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Köln',
+      addressCountry: 'DE',
+    },
+  };
+
   // BreadcrumbList Schema
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -304,6 +340,10 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(kitapAvrupaSchema) }}
       />
       <script
         type="application/ld+json"

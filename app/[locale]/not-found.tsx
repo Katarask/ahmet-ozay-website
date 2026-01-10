@@ -34,14 +34,13 @@ export default async function NotFoundPage({ params: { locale } }: { params: { l
 
   const breadcrumbItems = [
     {
-      name: tBreadcrumb('home'),
-      url: `${baseUrl}/${locale}`,
+      label: t('title'),
     },
   ];
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <Breadcrumbs items={breadcrumbItems} />
+      <Breadcrumbs items={breadcrumbItems} locale={locale} />
       
       <div className="text-center py-16">
         <h1 className="text-6xl font-bold text-light-text-primary dark:text-dark-text-primary mb-4">
